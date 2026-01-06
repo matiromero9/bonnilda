@@ -2,80 +2,109 @@
 
 Landing page premium para Bonnilda: bombones de fruta 100% artesanales.
 
+**Stack:** Next.js 15 + TypeScript + TailwindCSS
+
+---
+
+## 🚀 Inicio Rápido
+
+```bash
+# Instalar dependencias
+npm install
+
+# Desarrollo
+npm run dev
+# → http://localhost:3000
+
+# Build de producción
+npm run build
+npm start
+```
+
+### Comandos disponibles
+
+```bash
+npm run dev      # Servidor de desarrollo con hot reload
+npm run build    # Build optimizado para producción
+npm run start    # Servidor de producción
+npm run lint     # Linter de código
+```
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```
 bonnilda/
 ├── app/
-│   ├── layout.tsx          # Layout principal con fuentes
-│   ├── page.tsx            # Home page (ensambla todas las secciones)
+│   ├── layout.tsx          # Layout raíz + fuentes
+│   ├── page.tsx            # Homepage (ensambla secciones)
 │   └── globals.css         # Design System tokens + estilos globales
+│
 ├── components/
-│   ├── ui/                 # Componentes base del Design System
-│   │   ├── Button.tsx      # Botón con variants (primary, secondary, ghost)
-│   │   ├── Container.tsx   # Container responsive
-│   │   ├── SectionHeading.tsx  # Títulos de sección
-│   │   ├── Card.tsx        # Card con shadow y hover
-│   │   └── Badge.tsx       # Badge/etiqueta
+│   ├── ui/                 # Componentes base reutilizables
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   ├── Container.tsx
+│   │   ├── Badge.tsx
+│   │   ├── SectionHeading.tsx
+│   │   ├── SkipLink.tsx
+│   │   └── Skeleton*.tsx   # Loading states
+│   │
 │   └── sections/           # Secciones de la landing
-│       ├── Header.tsx      # Header sticky con nav
-│       ├── Hero.tsx        # Hero con headline + CTAs
-│       ├── ProductSection.tsx      # 3 sabores/productos
-│       ├── WholesalersSection.tsx  # Para mayoristas
-│       ├── TestimonialsSection.tsx # 3 testimonios
-│       ├── FAQSection.tsx  # Preguntas frecuentes (acordeón)
-│       ├── ContactSection.tsx      # Formulario de contacto
-│       └── Footer.tsx      # Footer con links y redes
-├── tailwind.config.ts      # Configuración Tailwind + tokens
-├── tsconfig.json
-├── package.json
-└── README.md
+│       ├── Header.tsx      # Header sticky con navegación
+│       ├── Hero.tsx        # Hero principal con CTAs
+│       ├── WholesalersSection.tsx
+│       ├── TestimonialsSection.tsx
+│       ├── FAQSection.tsx
+│       ├── ContactSection.tsx
+│       └── Footer.tsx
+│
+├── lib/                    # Lógica de negocio
+│   ├── validations.ts      # Validaciones de formularios
+│   └── security.ts         # Sanitización y protección anti-spam
+│
+├── hooks/                  # Custom hooks
+│   └── useFormValidation.ts
+│
+└── tailwind.config.ts      # Configuración de Tailwind + tokens
 ```
+
+---
 
 ## 🎨 Design System
 
-### Tokens de Diseño
+### Filosofía Visual
 
-Todos los tokens están definidos como CSS variables en `app/globals.css` y mapeados en `tailwind.config.ts`.
+**Premium Artesanal**: Balance entre lo hecho a mano y lo profesional. Cálido sin ser infantil, elegante sin ser corporativo.
 
-#### Colores
+### Paleta de Colores
 
-- **Background**: Crema suave (#FAF7F2) y crema claro (#FFF9F0)
-- **Surface**: Blanco puro para cards
-- **Accent Peach**: Durazno (#F4A261) - Color principal
-- **Accent Raspberry**: Frambuesa (#C85C5C) - Color secundario
-- **Text**: Marrón chocolate oscuro (#3E2723), medio y suave
+```css
+/* Base */
+--color-background: #FAF7F2        /* Crema suave */
+--color-surface: #FFFFFF           /* Blanco para cards */
 
-#### Tipografía
+/* Acentos */
+--color-accent-peach: #F4A261      /* Durazno - Principal */
+--color-accent-raspberry: #C85C5C  /* Frambuesa - Secundario */
 
-- **Serif**: Playfair Display (títulos, headlines)
-- **Sans**: Inter (cuerpo, UI)
-- **Escala**: xs, sm, base, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl
+/* Textos */
+--color-text-primary: #3E2723      /* Marrón chocolate */
+--color-text-secondary: #5D4037    /* Marrón medio */
+--color-text-muted: #8D6E63        /* Marrón suave */
+```
 
-#### Espaciado
+### Tipografía
 
-Usa la escala estándar de Tailwind (4, 6, 8, 12, 16, 24, 32, etc.)
+- **Playfair Display** (Serif): Títulos y headlines
+- **Inter** (Sans): Cuerpo y UI
 
-#### Border Radius
-
-- sm: 8px
-- md: 12px
-- lg: 16px
-- xl: 24px
-- 2xl: 32px
-
-#### Shadows
-
-- soft: Sombra suave
-- medium: Sombra media
-- large: Sombra pronunciada
+Escala: `text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`, `text-3xl`, `text-4xl`, `text-5xl`, `text-6xl`
 
 ### Componentes Base
 
 #### Button
-
-Tres variantes: `primary`, `secondary`, `ghost`
-Tres tamaños: `sm`, `md`, `lg`
 
 ```tsx
 <Button variant="primary" size="lg">
@@ -83,158 +112,171 @@ Tres tamaños: `sm`, `md`, `lg`
 </Button>
 ```
 
-#### Container
+Variantes: `primary`, `secondary`, `ghost`  
+Tamaños: `sm`, `md`, `lg`
 
-Wrapper responsive con max-width y padding automático.
+#### Container
 
 ```tsx
 <Container>
-  {/* Contenido */}
+  {/* Contenido responsive con max-width y padding automático */}
 </Container>
 ```
 
 #### SectionHeading
 
-Título + subtítulo para secciones.
-
 ```tsx
 <SectionHeading
-  title="Nuestros sabores"
-  subtitle="Cada bombón es único"
+  title="Título de Sección"
+  subtitle="Subtítulo descriptivo"
   align="center"
 />
 ```
 
 #### Card
 
-Card con sombra, border y hover opcional.
-
 ```tsx
 <Card hover padding="lg">
-  {/* Contenido */}
+  {/* Contenido con sombra y border */}
 </Card>
 ```
 
-#### Badge
+---
 
-Etiquetas con variantes de color.
+## 🛡️ Seguridad y Validación
 
-```tsx
-<Badge variant="peach">Nuevo</Badge>
-```
+El formulario de contacto incluye:
 
-## 🚀 Instalación y Desarrollo
+- ✅ **Validación robusta** (nombres, teléfonos, mensajes)
+- ✅ **Sanitización de inputs** (escape de HTML peligroso)
+- ✅ **Rate limiting** (30 seg entre envíos, máx 5 por hora)
+- ✅ **Honeypot field** (trampa invisible para bots)
+- ✅ **Verificación de tiempo mínimo** (anti-bots rápidos)
 
-### Requisitos
+Ver: `lib/validations.ts` y `lib/security.ts`
 
-- Node.js 18+
-- npm o yarn
+---
 
-### Instalación
+## ♿ Accesibilidad
+
+Cumple con **WCAG 2.1 Level AA**:
+
+- ✅ Navegación completa por teclado
+- ✅ Compatible con screen readers (NVDA, JAWS, VoiceOver)
+- ✅ Skip link para saltar al contenido principal
+- ✅ Patrones ARIA apropiados (accordion, carousel, forms)
+- ✅ Focus states visibles en todos los elementos interactivos
+- ✅ Landmarks semánticos correctos
+- ✅ Contraste de colores adecuado
+
+Ver: `ACCESSIBILITY_IMPROVEMENTS.md`
+
+---
+
+## 📱 Responsive
+
+Optimizado para:
+
+- **Mobile**: 320px - 640px
+- **Tablet**: 640px - 1024px
+- **Desktop**: 1024px+
+
+Breakpoints: `sm`, `md`, `lg`, `xl`, `2xl`
+
+---
+
+## 📝 TODOs Pendientes
+
+### Contenido a reemplazar
+
+- [ ] **Imagen del Hero**: Reemplazar placeholder con imagen real del producto (`Hero.tsx`)
+- [ ] **Número de WhatsApp**: Actualizar en Header, ContactSection y Footer
+- [ ] **Links de redes sociales**: Configurar Instagram, Facebook, WhatsApp en Footer
+- [ ] **Logo**: Reemplazar texto "Bonnilda" con imagen/SVG si está disponible
+
+### Funcionalidad
+
+- [ ] **Envío de formulario**: Implementar integración real con API/email service (`ContactSection.tsx`)
+  - Opciones: Formspree, Resend, EmailJS, o WhatsApp Business API
+- [ ] **Google Analytics**: Agregar tracking (opcional)
+
+---
+
+## 🚢 Deploy
+
+### Vercel (Recomendado)
+
+1. Push a GitHub/GitLab
+2. Importar proyecto en [vercel.com](https://vercel.com)
+3. Deploy automático en cada push
+
+### Netlify
 
 ```bash
-npm install
+Build command: npm run build
+Publish directory: .next
 ```
 
-### Desarrollo
-
-```bash
-npm run dev
-```
-
-Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
-
-### Build de Producción
+### Otro hosting
 
 ```bash
 npm run build
 npm start
+# Servidor en puerto 3000
 ```
 
-## ✅ Checklist de Implementación
+---
 
-- [x] Estructura de carpetas (Design System)
-- [x] Tokens de diseño (colores, tipografía, espaciado, radius, shadows)
-- [x] Componentes base (Button, Container, SectionHeading, Card, Badge)
-- [x] Header con navegación responsive
-- [x] Hero con headline + CTAs
-- [x] Sección Producto (3 sabores)
-- [x] Sección Mayoristas (beneficios + CTA)
-- [x] Sección Testimonios (3 quotes)
-- [x] Sección FAQ (acordeón)
-- [x] Sección Contacto (formulario)
-- [x] Footer (links + redes)
-- [x] Responsive mobile-first
-- [x] Accesibilidad (focus states, semántica)
-- [x] Copys en español rioplatense
+## ✅ Checklist Pre-Launch
 
-## 📝 TODOs
+- [ ] Reemplazar todas las imágenes placeholder
+- [ ] Actualizar número de WhatsApp en todos los lugares
+- [ ] Configurar links de redes sociales
+- [ ] Implementar envío real del formulario
+- [ ] Probar en mobile/tablet/desktop
+- [ ] Verificar navegación por teclado (Tab)
+- [ ] Optimizar imágenes (WebP, lazy loading)
+- [ ] Configurar meta tags SEO (`layout.tsx`)
+- [ ] Probar en Chrome, Firefox, Safari
+- [ ] Validar con Lighthouse (Performance, Accessibility, SEO)
 
-### Imágenes
+---
 
-- [ ] Reemplazar placeholder del Hero con imagen real del producto
-- [ ] Agregar imágenes a las cards de productos
-- [ ] Agregar fotos de clientes en testimonios
-- [ ] Agregar logo real de Bonnilda (actualmente es texto)
+## 🎯 Características Implementadas
 
-### Links y Configuración
+- ✅ Design System completo con tokens
+- ✅ Componentes reutilizables
+- ✅ Header sticky con navegación responsive
+- ✅ Hero con parallax y efectos visuales
+- ✅ Sección de mayoristas con beneficios
+- ✅ Testimonios con carousel mobile
+- ✅ FAQ con accordion accesible
+- ✅ Formulario con validación completa
+- ✅ Footer optimizado para mobile
+- ✅ Scroll progress indicator
+- ✅ Hover states y micro-interacciones
+- ✅ Loading states con skeletons
+- ✅ Overlaps entre secciones
+- ✅ Optimización mobile (vertical reducida)
+- ✅ Accesibilidad WCAG 2.1 AA
 
-- [ ] Actualizar número de WhatsApp en Header, Hero, Mayoristas y Contacto
-- [ ] Configurar links de redes sociales en Footer (Instagram, Facebook, WhatsApp)
-- [ ] Configurar navegación anchor links (#producto, #mayoristas, etc.)
-- [ ] Implementar lógica de envío del formulario de contacto
+---
 
-### Funcionalidad
+## 🛠️ Tecnologías
 
-- [ ] Implementar envío de formulario (API, email service, o WhatsApp API)
-- [ ] Agregar smooth scroll a las secciones
-- [ ] Agregar animaciones de entrada (opcional)
+- **Next.js 15**: Framework React con App Router
+- **TypeScript**: Type safety
+- **TailwindCSS**: Utility-first CSS
+- **Google Fonts**: Playfair Display + Inter
+- **React Hooks**: Estado y efectos
+- **CSS Variables**: Design tokens
 
-## 🎯 Próximas Iteraciones
+---
 
-1. **Galería de Productos**: Sección con carrusel de imágenes de los bombones, close-ups, packaging.
+## 📚 Documentación Adicional
 
-2. **Integración WhatsApp Business**: Botón flotante de WhatsApp, mensajes pre-cargados según contexto (mayorista/minorista).
-
-3. **Sistema de Pedidos**: Implementar carrito básico o formulario de pedido con cantidades y sabores.
-
-4. **Microanimaciones**: 
-   - Fade-in en scroll para secciones
-   - Hover effects más elaborados en cards
-   - Loading states en formularios
-
-5. **Sección "Sobre Bonnilda"**: 
-   - Historia de la marca
-   - Proceso artesanal
-   - Valores y compromiso
-   - Fotos del proceso de elaboración
-
-## 🛠 Stack Tecnológico
-
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: TailwindCSS
-- **Fonts**: Google Fonts (Playfair Display + Inter)
-- **Icons**: Inline SVG (Heroicons style)
-
-## 📱 Responsive
-
-La landing está optimizada para:
-- Mobile: 320px - 640px
-- Tablet: 640px - 1024px
-- Desktop: 1024px+
-
-Breakpoints de Tailwind: `sm`, `md`, `lg`, `xl`, `2xl`
-
-## ♿️ Accesibilidad
-
-- Semántica HTML correcta
-- Focus states visibles en todos los elementos interactivos
-- Contraste de colores AAA
-- Labels en formularios
-- ARIA labels en botones sin texto
+- `ACCESSIBILITY_IMPROVEMENTS.md` - Detalles de mejoras de accesibilidad implementadas
 
 ---
 
 **Hecho con ❤️ para Bonnilda**
-
