@@ -57,7 +57,7 @@ export const analytics = {
   },
 
   // Tracking de WhatsApp
-  trackWhatsAppClick: (source: 'hero' | 'footer' | 'contact') => {
+  trackWhatsAppClick: (source: 'hero' | 'footer' | 'contact' | 'mayoristas' | 'floating-cta') => {
     trackEvent('whatsapp_click', {
       event_category: 'engagement',
       event_label: `whatsapp_${source}`,
@@ -88,4 +88,3 @@ export const analytics = {
     })
   },
 }
-

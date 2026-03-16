@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
               </p>
               <div className="inline-flex items-baseline gap-2 bg-accent-peach/10 px-4 py-2 rounded-full border-2 border-accent-peach/30">
                 <span className="text-sm md:text-base text-text-secondary font-medium">Desde</span>
-                <span className="text-2xl md:text-3xl font-bold text-accent-raspberry">$500</span>
+                <span className="text-2xl md:text-3xl font-bold text-accent-raspberry">$11.000</span>
                 <span className="text-sm md:text-base text-text-muted">por caja</span>
               </div>
             </div>
