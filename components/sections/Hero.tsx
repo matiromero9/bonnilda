@@ -45,17 +45,16 @@ const Hero: React.FC = () => {
             style={{ transform: `translateY(${scrollY * 0.1}px)`, transition: 'transform 0.1s ease-out' }}
           >
             <div className="space-y-4 md:space-y-6">
-              <h1 className="text-balance relative text-4xl md:text-5xl lg:text-6xl">
-                <span className="absolute inset-0 blur-sm text-accent-peach/20 translate-y-2 select-none hidden md:block">Dulzura natural,</span>
+              <h1 className="text-balance relative text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
                 <span className="relative block">Dulzura natural,</span>
-                <span className="relative block text-accent-raspberry italic mt-1 md:mt-2">sabor artesanal</span>
+                <span className="relative block text-accent-peach mt-1 md:mt-2">sabor artesanal</span>
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-text-secondary max-w-xl leading-relaxed">
                 Bombones de fruta 100% artesanales de San Luis. Sin conservantes, sin culpa. Cada bocado es una explosión de sabor auténtico.
               </p>
               <div className="inline-flex items-baseline gap-2 bg-accent-peach/10 px-4 py-2 rounded-full border-2 border-accent-peach/30">
                 <span className="text-sm md:text-base text-text-secondary font-medium">Desde</span>
-                <span className="text-2xl md:text-3xl font-bold text-accent-raspberry">$11.000</span>
+                <span className="text-2xl md:text-3xl font-bold text-accent-peach">$11.000</span>
                 <span className="text-sm md:text-base text-text-muted">por caja</span>
               </div>
             </div>
@@ -81,7 +80,7 @@ const Hero: React.FC = () => {
                 { icon: '✓', text: 'Envíos a todo el país' },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm text-text-secondary font-medium">
-                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent-peach/20 text-accent-raspberry text-xs font-bold">{item.icon}</span>
+                  <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent-peach/20 text-accent-peach text-xs font-bold">{item.icon}</span>
                   <span>{item.text}</span>
                 </div>
               ))}
@@ -96,7 +95,7 @@ const Hero: React.FC = () => {
             aria-label="Bombones artesanales Bonnilda - Caja de producto que al pasar el mouse revela los bombones en su interior"
           >
             <div className="absolute inset-0 rotate-[-2deg] hover:rotate-0 transition-transform duration-500 group">
-              <div className="relative w-full h-full bg-gradient-to-br from-accent-peach to-accent-raspberry rounded-[2.5rem] shadow-[12px_12px_0px_0px_rgba(200,92,92,0.3)] overflow-hidden">
+              <div className="relative w-full h-full bg-gradient-to-br from-accent-peach to-accent-raspberry rounded-[2.5rem] shadow-[12px_12px_0px_0px_rgba(254,3,0,0.3)] overflow-hidden">
                 
                 <div className="w-full h-full group-hover:scale-110 transition-transform duration-500">
                   <Image

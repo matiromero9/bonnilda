@@ -9,21 +9,18 @@ const FAQSection: React.FC = () => {
   const [showAll, setShowAll] = useState(false)
 
   const faqs = [
-    {
-      question: '¿Los bombones tienen conservantes o aditivos?',
-      answer: 'No, todos nuestros bombones son 100% artesanales y naturales. Usamos únicamente fruta seleccionada, sin conservantes, colorantes ni saborizantes artificiales. Por eso es importante conservarlos en lugar fresco y seco.',
-    },
+    
     {
       question: '¿Cuál es la cantidad mínima para compra mayorista?',
-      answer: 'Para revendedores y mayoristas, la compra mínima es de 10 cajas (cada caja trae 12 unidades). Contamos con precios especiales y descuentos progresivos según la cantidad. Consultanos por WhatsApp para más info.',
+      answer: 'Para revendedores y mayoristas, la compra mínima es de 16 cajas (cada caja trae 56 unidades). Contamos con precios especiales y descuentos según la cantidad. Consultanos por WhatsApp para más info.',
     },
     {
       question: '¿Hacen envíos a todo el país?',
-      answer: 'Sí, despachamos a todo el país. En CABA y GBA el envío es gratis en compras mayores a $15.000. Para el interior trabajamos con correo o transporte, coordinando la mejor opción según tu ubicación.',
+      answer: 'Sí, despachamos a todo el país. En San Luis y Córdoba capital el envío es gratis en compras mayores a 4 cajas. Para el resto del país trabajamos con Vía Cargo, coordinando la mejor opción según tu ubicación.',
     },
     {
       question: '¿Cuánto duran los bombones?',
-      answer: 'Al ser un producto artesanal sin conservantes, recomendamos consumirlos dentro de los 30 días desde la fecha de elaboración (que figura en el packaging). Deben conservarse en lugar fresco, seco y alejado de la luz solar.',
+      answer: 'Los bombones tienen 6 meses de vencimiento desde la fecha de elaboración que figura en el packaging. Deben conservarse en lugar fresco, seco y alejado de la luz solar.',
     },
   ]
 

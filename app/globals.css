@@ -13,9 +13,9 @@
   --color-surface: #FFFFFF; /* Blanco puro para cards */
   --color-surface-hover: #FFF5EB; /* Hover cálido */
 
-  /* Acentos Frutales */
-  --color-accent-peach: #F4A261; /* Durazno principal */
-  --color-accent-peach-light: #F9C9A0; /* Durazno claro */
+  /* Acentos Frutales - Ajustados para combinar con packaging vintage */
+  --color-accent-peach: #D96C61; /* Terracota suave / Rojo vintage - Menos saturado */
+  --color-accent-peach-light: #EBB2A6; /* Versión clara */
   --color-accent-raspberry: #C85C5C; /* Frambuesa */
   --color-accent-raspberry-light: #E89B9B; /* Frambuesa clara */
 
@@ -30,7 +30,7 @@
   --color-border-light: #F2EDE6; /* Borde muy suave */
 
   /* Tipografía */
-  --font-serif: 'Playfair Display', serif;
+  --font-title: 'Montserrat', sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Border Radius */
@@ -62,7 +62,7 @@
 
   /* Tipografía base */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-bold text-text-primary;
+    @apply font-title font-extrabold tracking-tight text-text-primary;
   }
 
   h1 {
@@ -287,4 +287,3 @@ html {
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent-peach) var(--color-background);
 }
-

@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Lora, Inter } from 'next/font/google'
 import './globals.css'
 import SkipLink from '@/components/ui/SkipLink'
 import StructuredData from '@/components/StructuredData'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 
-const playfair = Playfair_Display({
+const lora = Lora({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-title',
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 })
 
@@ -85,7 +86,7 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
   return (
-    <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="es" className={`${lora.variable} ${inter.variable}`}>
       <head>
         <StructuredData />
       </head>
@@ -97,4 +98,3 @@ export default function RootLayout({
     </html>
   )
 }
-

@@ -39,7 +39,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ['var(--font-serif)'],
+        title: ['var(--font-title)'],
         sans: ['var(--font-sans)'],
       },
       fontSize: {
@@ -81,4 +81,3 @@ const config: Config = {
   plugins: [],
 }
 export default config
-
