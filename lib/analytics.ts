@@ -15,7 +15,15 @@ interface GAEventParams {
   event_category?: string
   event_label?: string
   value?: number
-  [key: string]: any
+  [key: string]: unknown
+}
+
+type GtagFunction = (command: 'event', eventName: GAEventName, params?: GAEventParams) => void
+
+declare global {
+  interface Window {
+    gtag?: GtagFunction
+  }
 }
 
 /**
@@ -31,8 +39,8 @@ export const trackEvent = (eventName: GAEventName, params?: GAEventParams) => {
   }
 
   // Verificar que gtag esté disponible
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', eventName, params)
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params)
   }
 }
 

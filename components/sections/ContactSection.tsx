@@ -171,7 +171,6 @@ ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
 
   const isSubmitting = submitState === 'submitting' || submitState === 'validating'
   const showSuccessMessage = submitState === 'success'
-  const showErrorMessage = submitState === 'error'
 
   return (
     <section id="contacto" className="py-16 md:py-24 pb-32 md:pb-40 bg-background">
