@@ -8,15 +8,40 @@ import { analytics } from '@/lib/analytics'
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0)
+  const [isParallaxEnabled, setIsParallaxEnabled] = useState(false)
 
   useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 1024px)')
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const updateParallaxMode = () => {
+      setIsParallaxEnabled(desktopQuery.matches && !reducedMotionQuery.matches)
+    }
+
+    updateParallaxMode()
+
+    desktopQuery.addEventListener('change', updateParallaxMode)
+    reducedMotionQuery.addEventListener('change', updateParallaxMode)
+
+    return () => {
+      desktopQuery.removeEventListener('change', updateParallaxMode)
+      reducedMotionQuery.removeEventListener('change', updateParallaxMode)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isParallaxEnabled) {
+      setScrollY(0)
+      return
+    }
+
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isParallaxEnabled])
 
   return (
     <section className="relative py-12 md:py-20 lg:py-28 pb-24 md:pb-36 overflow-hidden">
@@ -42,7 +67,11 @@ const Hero: React.FC = () => {
           {/* Content con parallax */}
           <div 
             className="space-y-8 relative z-10"
-            style={{ transform: `translateY(${scrollY * 0.1}px)`, transition: 'transform 0.1s ease-out' }}
+            style={
+              isParallaxEnabled
+                ? { transform: `translateY(${scrollY * 0.1}px)`, transition: 'transform 0.1s ease-out' }
+                : undefined
+            }
           >
             <div className="space-y-4 md:space-y-6">
               <h1 className="text-balance relative text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
@@ -90,7 +119,11 @@ const Hero: React.FC = () => {
           {/* Image con diseño artesanal, parallax y efecto hover de 2 imágenes */}
           <div 
             className="relative h-[400px] md:h-[500px] lg:h-[600px]"
-            style={{ transform: `translateY(${scrollY * -0.15}px)`, transition: 'transform 0.1s ease-out' }}
+            style={
+              isParallaxEnabled
+                ? { transform: `translateY(${scrollY * -0.15}px)`, transition: 'transform 0.1s ease-out' }
+                : undefined
+            }
             role="img"
             aria-label="Bombones artesanales Bonnilda - Caja de producto que al pasar el mouse revela los bombones en su interior"
           >
