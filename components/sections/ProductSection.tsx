@@ -6,34 +6,52 @@ import Card from '@/components/ui/Card'
 const ProductSection: React.FC = () => {
   const products = [
     {
-      name: 'Durazno & Miel',
-      description: 'La combinación perfecta entre lo frutal y lo dulce. Durazno natural con un toque de miel artesanal.',
-      benefits: ['Alto en fibra', 'Sin azúcar añadida', 'Energía natural'],
-      badge: 'Más pedido',
-      emoji: '🍑',
+      name: 'Frutilla',
+      description: 'Dulce, suave y delicada. Frutillas frescas transformadas en pequeñas joyas de sabor.',
+      emoji: '🍓',
       rotation: 'rotate-[-1.5deg]',
+      hoverRotation: 'hover:rotate-0',
+      shadowColor: 'shadow-[6px_6px_0px_0px_rgba(232,155,155,0.25)]',
+    },
+    {
+      name: 'Naranja',
+      description: 'El cítrico que refresca. Naranja natural con un sabor intenso y vibrante.',
+      emoji: '🍊',
+      rotation: 'rotate-[0.5deg]',
       hoverRotation: 'hover:rotate-0',
       shadowColor: 'shadow-[6px_6px_0px_0px_rgba(244,162,97,0.25)]',
     },
     {
-      name: 'Frambuesa Silvestre',
-      description: 'Frambuesas seleccionadas con ese toque ácido que conquista. Intenso, vibrante y adictivo.',
-      benefits: ['Antioxidantes', 'Sabor intenso', 'Bajo en calorías'],
-      badge: 'Favorito',
-      emoji: '🫐',
-      rotation: 'rotate-[0.5deg]',
-      hoverRotation: 'hover:rotate-0',
-      shadowColor: 'shadow-[6px_6px_0px_0px_rgba(200,92,92,0.25)]',
-    },
-    {
-      name: 'Frutilla del Bosque',
-      description: 'Dulce, suave y delicada. Frutillas frescas transformadas en pequeñas joyas de sabor.',
-      benefits: ['Vitamina C', 'Sabor clásico', 'Para toda la familia'],
-      badge: 'Clásico',
-      emoji: '🍓',
+      name: 'Manzana',
+      description: 'El clásico de siempre. Manzana fresca con ese toque dulce que enamora.',
+      emoji: '🍏',
       rotation: 'rotate-[-0.8deg]',
       hoverRotation: 'hover:rotate-0',
-      shadowColor: 'shadow-[6px_6px_0px_0px_rgba(232,155,155,0.25)]',
+      shadowColor: 'shadow-[6px_6px_0px_0px_rgba(144,238,144,0.25)]',
+    },
+    {
+      name: 'Ananá',
+      description: 'Tropical y exótico. El sabor del ananá en cada bocado.',
+      emoji: '🍍',
+      rotation: 'rotate-[0.8deg]',
+      hoverRotation: 'hover:rotate-0',
+      shadowColor: 'shadow-[6px_6px_0px_0px_rgba(255,223,0,0.25)]',
+    },
+    {
+      name: 'Uva',
+      description: 'Suave y elegante. El sabor de la uva en su máxima expresión.',
+      emoji: '🍇',
+      rotation: 'rotate-[-0.5deg]',
+      hoverRotation: 'hover:rotate-0',
+      shadowColor: 'shadow-[6px_6px_0px_0px_rgba(128,0,128,0.25)]',
+    },
+    {
+      name: 'Cereza',
+      description: 'Intenso y seductor. Cerezas seleccionadas para un sabor inolvidable.',
+      emoji: '🍒',
+      rotation: 'rotate-[1deg]',
+      hoverRotation: 'hover:rotate-0',
+      shadowColor: 'shadow-[6px_6px_0px_0px_rgba(200,92,92,0.25)]',
     },
   ]
 
@@ -56,7 +74,7 @@ const ProductSection: React.FC = () => {
           className="mb-12 md:mb-16"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
           {products.map((product, index) => (
             <div
               key={index}
@@ -67,7 +85,7 @@ const ProductSection: React.FC = () => {
               `}
             >
               <Card 
-                padding="lg"
+                padding="md"
                 className={`
                   relative
                   border-2 border-text-primary/5
@@ -76,52 +94,17 @@ const ProductSection: React.FC = () => {
                   hover:-translate-y-2
                   transition-all duration-300
                   group
+                  text-center
                 `}
               >
-                {/* Emoji decorativo grande en el fondo */}
-                <div className="absolute -top-4 -right-4 text-[120px] opacity-5 select-none pointer-events-none group-hover:opacity-10 transition-opacity">
-                  {product.emoji}
-                </div>
-
-                <div className="space-y-5 relative z-10">
-                  {/* Header con badge estilo sticker */}
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="text-2xl font-serif font-bold text-text-primary mb-1">
-                        {product.name}
-                      </h3>
-                      <span className="text-4xl">{product.emoji}</span>
-                    </div>
-                    
-                    {/* Badge artesanal tipo sticker */}
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-accent-peach/20 blur-md rounded-full" />
-                      <div className="relative bg-accent-peach-light text-accent-raspberry px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide border-2 border-accent-peach/30 shadow-sm rotate-3 group-hover:rotate-0 transition-transform">
-                        {product.badge}
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="text-text-secondary leading-relaxed text-base">
+                <div className="space-y-3 relative z-10">
+                  <span className="text-5xl block">{product.emoji}</span>
+                  <h3 className="text-lg font-serif font-bold text-text-primary">
+                    {product.name}
+                  </h3>
+                  <p className="text-text-secondary leading-relaxed text-sm">
                     {product.description}
                   </p>
-
-                  {/* Beneficios con diseño mejorado */}
-                  <div className="pt-4 space-y-3 border-t border-border-light">
-                    {product.benefits.map((benefit, idx) => (
-                      <div 
-                        key={idx} 
-                        className="flex items-center gap-3 text-sm text-text-secondary group/benefit"
-                      >
-                        <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent-peach/20 text-accent-raspberry flex-shrink-0 group-hover/benefit:bg-accent-peach/30 transition-colors">
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </span>
-                        <span className="font-medium">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </Card>
             </div>
@@ -129,16 +112,14 @@ const ProductSection: React.FC = () => {
         </div>
 
         {/* CTA adicional con diseño artesanal */}
-        <div className="mt-16 text-center">
+        <div className="mt-12 text-center">
           <div className="inline-block relative">
             <div className="absolute -inset-2 bg-accent-peach/10 blur-xl rounded-full" />
-            <p className="relative text-text-muted text-sm mb-4">
-              ¿No sabés cuál elegir? Cada sabor es una experiencia única
+            <p className="relative text-text-muted text-sm">
+              ¿No sabés cuál elegir? Cada sabor es una experiencia única. ¡Consultá precios por WhatsApp!
             </p>
           </div>
         </div>
-
-        {/* TODO: Agregar galería de imágenes de productos */}
       </Container>
     </section>
   )

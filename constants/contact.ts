@@ -6,23 +6,16 @@
 // Número de WhatsApp
 export const PHONE_NUMBER = {
   raw: '2664580822',
-  formatted: '+54 9 266 458-0822', // Formato legible
-  display: '266 458-0822', // Para mostrar en la UI
-  whatsappApi: '5492664580822', // Para WhatsApp API (sin espacios ni guiones)
+  formatted: '+54 9 266 458-0822',
+  display: '266 458-0822',
+  whatsappApi: '5492664580822',
 }
-
-// Email
-export const EMAIL = 'hola@bonnilda.com' // TODO: Actualizar con email real si tienen
 
 // Redes sociales
 export const SOCIAL_MEDIA = {
   instagram: {
     handle: '@bonnildadulzuras',
     url: 'https://www.instagram.com/bonnildadulzuras',
-  },
-  facebook: {
-    handle: '@bonnildadulzuras',
-    url: 'https://www.facebook.com/bonnildadulzuras',
   },
   whatsapp: {
     url: `https://wa.me/${PHONE_NUMBER.whatsappApi}`,
@@ -31,30 +24,19 @@ export const SOCIAL_MEDIA = {
   },
 }
 
-// Ubicación
+// Ubicación - Los Molles, San Luis
 export const LOCATION = {
-  city: 'San Luis',
+  city: 'Los Molles',
   province: 'San Luis',
   country: 'Argentina',
   countryCode: 'AR',
-  displayShort: 'San Luis, Argentina',
-  displayLong: 'San Luis, San Luis, Argentina',
-  // Coordenadas aproximadas de San Luis capital
+  displayShort: 'Los Molles, San Luis',
+  displayLong: 'Los Molles, San Luis, Argentina',
+  // Coordenadas aproximadas de Los Molles, San Luis
   coordinates: {
-    latitude: -33.3017,
-    longitude: -66.3378,
+    latitude: -32.4833,
+    longitude: -65.5167,
   },
-}
-
-// Horarios (opcional - ajustar según sea necesario)
-export const BUSINESS_HOURS = {
-  weekdays: {
-    open: '09:00',
-    close: '18:00',
-    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-  },
-  display: 'Lun - Vie: 9:00 - 18:00 hs',
-  note: 'Atención por WhatsApp las 24hs',
 }
 
 // URLs del sitio
@@ -64,7 +46,14 @@ export const SITE_URL = 'https://bonnilda.vercel.app'
 export const BUSINESS_INFO = {
   name: 'Bonnilda',
   legalName: 'Bonnilda Dulzuras Artesanales',
-  description: 'Bombones de fruta 100% artesanales de San Luis, Argentina. Sin conservantes, dulzura natural.',
+  description: 'Bombones de fruta 100% artesanales de Los Molles, San Luis. Sin conservantes, dulzura natural.',
   slogan: 'Dulzura natural, sabor artesanal',
+}
+
+// Información de pedidos
+export const ORDER_INFO = {
+  whatsappMessage: '¡Hola! 🍑 Me interesa hacer un pedido de bombones Bonnilda.',
+  paymentMethods: ['Efectivo', 'Transferencia bancaria'],
+  shipping: 'Envíos a todo el país',
 }
 
