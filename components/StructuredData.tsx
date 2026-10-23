@@ -1,5 +1,5 @@
 import React from 'react'
-import { SOCIAL_MEDIA, PHONE_NUMBER, EMAIL, LOCATION, SITE_URL, BUSINESS_HOURS } from '@/constants/contact'
+import { SOCIAL_MEDIA, PHONE_NUMBER, LOCATION, SITE_URL } from '@/constants/contact'
 
 /**
  * Structured Data (JSON-LD) para SEO
@@ -12,12 +12,11 @@ const StructuredData: React.FC = () => {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Bonnilda',
-    description: `Bombones de fruta artesanales de ${LOCATION.displayShort}`,
+    description: `Bombones frutales artesanales de ${LOCATION.displayShort}`,
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.jpeg`,
-    image: `${SITE_URL}/images/hero-product.jpeg`,
+    image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
     telephone: PHONE_NUMBER.formatted,
-    email: EMAIL,
     address: {
       '@type': 'PostalAddress',
       addressLocality: LOCATION.city,
@@ -32,7 +31,6 @@ const StructuredData: React.FC = () => {
     },
     sameAs: [
       SOCIAL_MEDIA.instagram.url,
-      SOCIAL_MEDIA.facebook.url,
     ],
   }
 
@@ -42,11 +40,10 @@ const StructuredData: React.FC = () => {
     '@type': 'LocalBusiness',
     '@id': SITE_URL,
     name: 'Bonnilda',
-    description: 'Bombones de fruta 100% artesanales. Sin conservantes, dulzura natural. Para vos o para revender.',
+    description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Para vos o para revender.',
     url: SITE_URL,
     telephone: PHONE_NUMBER.formatted,
-    email: EMAIL,
-    image: `${SITE_URL}/images/hero-product.jpeg`,
+    image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
@@ -59,14 +56,7 @@ const StructuredData: React.FC = () => {
       latitude: LOCATION.coordinates.latitude,
       longitude: LOCATION.coordinates.longitude,
     },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: BUSINESS_HOURS.weekdays.days,
-        opens: BUSINESS_HOURS.weekdays.open,
-        closes: BUSINESS_HOURS.weekdays.close,
-      },
-    ],
+    paymentAccepted: ['Efectivo', 'Transferencia bancaria', 'Mercado Pago'],
   }
 
   // Schema.org Product
@@ -74,8 +64,8 @@ const StructuredData: React.FC = () => {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: 'Bombones Artesanales de Fruta',
-    description: `Bombones de fruta 100% artesanales, sin conservantes ni aditivos. Elaborados con frutas seleccionadas en ${LOCATION.displayShort}.`,
-    image: `${SITE_URL}/images/hero-product.jpeg`,
+    description: `Bombones frutales 100% artesanales. Elaborados a mano con la receta tradicional en ${LOCATION.displayShort}.`,
+    image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
     brand: {
       '@type': 'Brand',
       name: 'Bonnilda',
@@ -85,11 +75,6 @@ const StructuredData: React.FC = () => {
       priceCurrency: 'ARS',
       availability: 'https://schema.org/InStock',
       url: SITE_URL,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      reviewCount: '500',
     },
   }
 

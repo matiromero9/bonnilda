@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Bonnilda - Bombones Artesanales',
     short_name: 'Bonnilda',
-    description: 'Bombones de fruta 100% artesanales de Buenos Aires',
+    description: 'Bombones frutales 100% artesanales de Los Molles, San Luis',
     start_url: '/',
     display: 'standalone',
     background_color: '#FAF8F6',

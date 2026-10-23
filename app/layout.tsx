@@ -19,18 +19,18 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Bonnilda | Bombones de Fruta Artesanales - Buenos Aires',
-  description: 'Bombones de fruta 100% artesanales de Buenos Aires. Sin conservantes, dulzura natural. Compra para vos o reventa mayorista. Envíos a todo el país.',
+  title: 'Bonnilda | Bombones Frutales Artesanales - Los Molles, San Luis',
+  description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Compra para vos o reventa mayorista. Envíos a todo el país.',
   keywords: [
     'bombones artesanales',
-    'bombones de fruta',
+    'bombones frutales',
     'dulces artesanales',
-    'golosinas naturales',
-    'sin conservantes',
-    'bombones buenos aires',
+    'golosinas artesanales',
+    'bombones san luis',
+    'bombones los molles',
     'reventa mayorista',
     'dulces para revender',
-    'bombones naturales',
+    'bombones hechos a mano',
     'artesanal argentina'
   ],
   authors: [{ name: 'Bonnilda' }],
@@ -45,22 +45,22 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: 'https://bonnilda.vercel.app',
     siteName: 'Bonnilda',
-    title: 'Bonnilda | Bombones de Fruta Artesanales',
-    description: 'Bombones de fruta 100% artesanales de Buenos Aires. Sin conservantes, dulzura natural. Compra para vos o reventa mayorista.',
+    title: 'Bonnilda | Bombones Frutales Artesanales',
+    description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Compra para vos o reventa mayorista.',
     images: [
       {
-        url: '/images/hero-product.jpeg',
+        url: '/images/hero-caja-abierta.jpeg',
         width: 1200,
         height: 630,
-        alt: 'Bombones artesanales Bonnilda - Dulces de fruta naturales',
+        alt: 'Bombones frutales artesanales Bonnilda',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bonnilda | Bombones de Fruta Artesanales',
-    description: 'Bombones de fruta 100% artesanales. Sin conservantes, dulzura natural. Para vos o para revender.',
-    images: ['/images/hero-product.jpeg'],
+    title: 'Bonnilda | Bombones Frutales Artesanales',
+    description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Para vos o para revender.',
+    images: ['/images/hero-caja-abierta.jpeg'],
   },
   robots: {
     index: true,
@@ -86,7 +86,7 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
   return (
-    <html lang="es" className={`${lora.variable} ${inter.variable}`}>
+    <html lang="es-AR" className={`${lora.variable} ${inter.variable}`}>
       <head>
         <StructuredData />
       </head>
