@@ -28,9 +28,8 @@ const WholesalersSection: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      title: 'Márgenes competitivos',
-      description: 'Hasta 40% de ganancia en cada venta. Precios especiales para revendedores.',
-      highlight: '40%',
+      title: 'Precios por cantidad',
+      description: 'Consultanos por WhatsApp según el volumen que necesites.',
       emoji: '💰',
     },
     {
@@ -51,8 +50,8 @@ const WholesalersSection: React.FC = () => {
         </svg>
       ),
       title: 'Envíos rápidos',
-      description: 'Despachamos en 24/48hs. Stock permanente y entregas coordinadas.',
-      highlight: '24hs',
+      description: 'Despachamos en 48 hs a todo el país.',
+      highlight: '48hs',
       emoji: '⚡',
     },
     {
@@ -160,13 +159,15 @@ const WholesalersSection: React.FC = () => {
                     <h3 className="text-sm md:text-xl font-serif font-bold text-text-primary mb-1 leading-tight">
                       {benefit.title}
                     </h3>
-                    <span className={`
-                      inline-block text-lg md:text-2xl font-black text-accent-raspberry
-                      transition-all duration-300
-                      ${hoveredCard === index ? 'scale-125' : 'scale-100'}
-                    `}>
-                      {benefit.highlight}
-                    </span>
+                    {benefit.highlight && (
+                      <span className={`
+                        inline-block text-lg md:text-2xl font-black text-accent-raspberry
+                        transition-all duration-300
+                        ${hoveredCard === index ? 'scale-125' : 'scale-100'}
+                      `}>
+                        {benefit.highlight}
+                      </span>
+                    )}
                   </div>
 
                   <p className="text-text-secondary text-xs md:text-sm leading-relaxed hidden md:block">

@@ -122,7 +122,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Image con diseño artesanal, parallax y efecto hover de 2 imágenes */}
+          {/* Image con diseño artesanal y parallax */}
           <div 
             className="relative h-[400px] md:h-[500px] lg:h-[600px]"
             style={
@@ -130,30 +130,17 @@ const Hero: React.FC = () => {
                 ? { transform: `translateY(${scrollY * -0.15}px)`, transition: 'transform 0.1s ease-out' }
                 : undefined
             }
-            role="img"
-            aria-label="Bombones artesanales Bonnilda - Caja de producto que al pasar el mouse revela los bombones en su interior"
           >
-            <div className="absolute inset-0 rotate-[-2deg] hover:rotate-0 transition-transform duration-500 group">
+            <div className="absolute inset-0 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
               <div className="relative w-full h-full bg-gradient-to-br from-accent-peach to-accent-raspberry rounded-[2.5rem] shadow-[12px_12px_0px_0px_rgba(254,3,0,0.3)] overflow-hidden">
-                
-                <div className="w-full h-full group-hover:scale-110 transition-transform duration-500">
-                  <Image
-                    src="/images/hero-caja-cerrada.jpeg"
-                    alt="Caja de bombones Bonnilda cerrada, con diseño de packaging rojo estilo vintage."
-                    fill
-                    className="object-cover transition-opacity duration-700"
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                  />
-                  <Image
-                    src="/images/hero-caja-abierta.jpeg"
-                    alt="Caja de bombones Bonnilda abierta mostrando el interior con bombones frutales de múltiples colores."
-                    fill
-                    className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                  />
-                </div>
-
+                <Image
+                  src="/images/hero-caja-abierta.jpeg"
+                  alt="Caja de bombones Bonnilda abierta mostrando bombones de fruta artesanales de múltiples colores y sabores"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                />
               </div>
             </div>
 
