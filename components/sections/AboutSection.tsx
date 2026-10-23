@@ -22,8 +22,8 @@ const AboutSection: React.FC = () => {
     },
     {
       icon: '🍓',
-      title: 'La fruta es protagonista',
-      description: 'Sin moldes, cada bombón es distinto. Hechos a mano con fruta de verdad.',
+      title: 'Sabor frutal único',
+      description: 'Sin moldes, cada bombón es distinto. Hechos a mano con dedicación.',
     },
     {
       icon: '❤️',
@@ -60,7 +60,7 @@ const AboutSection: React.FC = () => {
               </p>
               <p>
                 En 2013, nuestros padres empezaron a elaborarlos a mano en Los Molles, San Luis: sin moldes, 
-                cada uno distinto, con la fruta como protagonista.
+                cada uno distinto, con el sabor frutal como protagonista.
               </p>
               <p className="font-medium text-text-primary">
                 Con los años fuimos creciendo, sumamos maquinaria y herramientas de fábrica, pero mantenemos 

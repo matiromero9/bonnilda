@@ -11,11 +11,11 @@ import Footer from '@/components/sections/Footer'
 import FloatingCTA from '@/components/ui/FloatingCTA'
 
 export const metadata: Metadata = {
-  title: 'Bonnilda | Bombones Artesanales de Fruta - Compra Minorista y Mayorista',
-  description: 'Descubrí los mejores bombones artesanales de fruta de Los Molles, San Luis. 100% naturales, sin conservantes. Ideales para regalar o revender. Envíos a todo el país.',
+  title: 'Bonnilda | Bombones Frutales Artesanales - Compra Minorista y Mayorista',
+  description: 'Descubrí los mejores bombones frutales artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Ideales para regalar o revender. Envíos a todo el país.',
   openGraph: {
-    title: 'Bonnilda - Bombones Artesanales de Fruta',
-    description: 'Bombones 100% artesanales y naturales de Los Molles, San Luis. Dulzura auténtica sin conservantes. Para vos o para revender.',
+    title: 'Bonnilda - Bombones Frutales Artesanales',
+    description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Sabor auténtico hecho a mano. Para vos o para revender.',
     images: ['/images/hero-caja-abierta.jpeg'],
   },
 }

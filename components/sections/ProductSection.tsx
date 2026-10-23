@@ -15,7 +15,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Naranja',
-      description: 'El cítrico que refresca. Naranja natural con un sabor intenso y vibrante.',
+      description: 'El cítrico que refresca. Sabor a naranja intenso y vibrante.',
       emoji: '🍊',
       rotation: 'rotate-[0.5deg]',
       hoverRotation: 'hover:rotate-0',
@@ -70,7 +70,7 @@ const ProductSection: React.FC = () => {
       <Container>
         <SectionHeading
           title="Nuestros sabores"
-          subtitle="Cada bombón es único, hecho con frutas seleccionadas y mucho amor"
+          subtitle="Cada bombón es único, hecho a mano con mucho amor"
           className="mb-12 md:mb-16"
         />
 
@@ -111,12 +111,17 @@ const ProductSection: React.FC = () => {
           ))}
         </div>
 
-        {/* CTA adicional con diseño artesanal */}
-        <div className="mt-12 text-center">
-          <div className="inline-block relative">
-            <div className="absolute -inset-2 bg-accent-peach/10 blur-xl rounded-full" />
-            <p className="relative text-text-muted text-sm">
-              ¿No sabés cuál elegir? Cada sabor es una experiencia única. ¡Consultá precios por WhatsApp!
+        {/* Ingredientes */}
+        <div className="mt-12 bg-surface rounded-2xl p-6 md:p-8 shadow-soft border border-border-light max-w-2xl mx-auto">
+          <div className="text-center space-y-4">
+            <h3 className="text-xl font-serif font-bold text-text-primary">
+              Solo 5 ingredientes
+            </h3>
+            <p className="text-text-secondary">
+              Azúcar, glucosa, pectina, ácido cítrico y esencia de cada fruta.
+            </p>
+            <p className="text-text-muted text-sm">
+              ¿No sabés cuál elegir? ¡Consultá precios por WhatsApp!
             </p>
           </div>
         </div>

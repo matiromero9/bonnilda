@@ -115,8 +115,8 @@ const Footer: React.FC = () => {
           <div className="md:col-span-5">
             <h3 className="text-3xl lg:text-4xl font-serif font-bold mb-4">Bonnilda</h3>
             <p className="text-white/80 text-base mb-6 leading-relaxed">
-              Bombones de fruta 100% artesanales. Dulzura natural, sabor auténtico.
-              Cada bombón está hecho a mano con frutas seleccionadas y mucho amor en {LOCATION.displayShort}.
+              Bombones frutales 100% artesanales. Sabor auténtico, hecho con amor.
+              Cada bombón está hecho a mano con la receta de siempre en {LOCATION.displayShort}.
             </p>
             
             {/* Info de contacto destacada */}
@@ -214,7 +214,7 @@ const Footer: React.FC = () => {
                 <svg className="w-5 h-5 text-accent-peach flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>100% artesanal y natural</span>
+                <span>100% artesanal</span>
               </li>
               <li className="flex items-start gap-2 text-white/70">
                 <svg className="w-5 h-5 text-accent-peach flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">

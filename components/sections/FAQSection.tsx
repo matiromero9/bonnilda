@@ -27,7 +27,11 @@ const FAQSection: React.FC = () => {
     },
     {
       question: '¿Qué sabores tienen?',
-      answer: 'Tenemos 6 sabores: frutilla, naranja, manzana, ananá, uva y cereza. Todos hechos a mano con fruta de verdad, sin conservantes.',
+      answer: 'Tenemos 6 sabores: frutilla, naranja, manzana, ananá, uva y cereza. Todos hechos a mano con la receta de siempre.',
+    },
+    {
+      question: '¿Qué ingredientes tienen?',
+      answer: 'Solo 5 ingredientes: azúcar, glucosa, pectina, ácido cítrico y esencia de cada fruta. Nada más.',
     },
   ]
 

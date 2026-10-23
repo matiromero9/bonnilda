@@ -76,11 +76,11 @@ const Hero: React.FC = () => {
           >
             <div className="space-y-4 md:space-y-6">
               <h1 className="text-balance relative text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                <span className="relative block">Dulzura natural,</span>
+                <span className="relative block">Dulzura auténtica,</span>
                 <span className="relative block text-accent-peach mt-1 md:mt-2">sabor artesanal</span>
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-text-secondary max-w-xl leading-relaxed">
-                Bombones de fruta 100% artesanales de Los Molles, San Luis. Sin conservantes, sin culpa. Cada bocado es una explosión de sabor auténtico.
+                Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Cada bocado es una explosión de sabor.
               </p>
               <div className="inline-flex items-center gap-2 bg-accent-peach/10 px-4 py-2 rounded-full border-2 border-accent-peach/30">
                 <span className="text-sm md:text-base text-text-secondary font-medium">📦 Envíos a todo el país</span>
@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
             <div className="flex flex-wrap gap-4 md:gap-6 pt-4 md:pt-6 border-t border-border-light">
               {[
                 { icon: '✓', text: '100% artesanal' },
-                { icon: '✓', text: 'Sin conservantes' },
+                { icon: '✓', text: 'Hecho a mano' },
                 { icon: '✓', text: 'Envíos a todo el país' },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm text-text-secondary font-medium">
@@ -147,7 +147,7 @@ const Hero: React.FC = () => {
                   />
                   <Image
                     src="/images/hero-caja-abierta.jpeg"
-                    alt="Caja de bombones Bonnilda abierta mostrando el interior con bombones de fruta de multiples colores."
+                    alt="Caja de bombones Bonnilda abierta mostrando el interior con bombones frutales de múltiples colores."
                     fill
                     className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-700"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
