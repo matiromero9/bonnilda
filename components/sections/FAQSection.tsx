@@ -11,7 +11,7 @@ const FAQSection: React.FC = () => {
   const faqs = [
     {
       question: '¿Cómo hago para pedir?',
-      answer: 'Muy fácil: escribinos por WhatsApp al 266 458-0822, contanos qué sabores y cantidad querés, y coordinamos el pago y envío. Aceptamos efectivo y transferencia bancaria.',
+      answer: 'Muy fácil: escribinos por WhatsApp al 266 458-0822, contanos qué sabores y cantidad querés, y coordinamos el pago y envío. Aceptamos efectivo, transferencia bancaria y Mercado Pago.',
     },
     {
       question: '¿Hacen envíos a todo el país?',

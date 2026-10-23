@@ -16,7 +16,7 @@ const HowToOrderSection: React.FC = () => {
     {
       number: '2',
       title: 'Confirmá tu pedido',
-      description: 'Te pasamos el total y coordinamos la forma de pago: efectivo o transferencia bancaria.',
+      description: 'Te pasamos el total y coordinamos la forma de pago: efectivo, transferencia o Mercado Pago.',
       icon: '✅',
     },
     {

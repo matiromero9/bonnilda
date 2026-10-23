@@ -53,7 +53,7 @@ export const BUSINESS_INFO = {
 // Información de pedidos
 export const ORDER_INFO = {
   whatsappMessage: '¡Hola! 🍑 Me interesa hacer un pedido de bombones Bonnilda.',
-  paymentMethods: ['Efectivo', 'Transferencia bancaria'],
+  paymentMethods: ['Efectivo', 'Transferencia bancaria', 'Mercado Pago'],
   shipping: 'Envíos a todo el país',
 }
 

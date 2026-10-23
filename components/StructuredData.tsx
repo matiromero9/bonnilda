@@ -56,6 +56,7 @@ const StructuredData: React.FC = () => {
       latitude: LOCATION.coordinates.latitude,
       longitude: LOCATION.coordinates.longitude,
     },
+    paymentAccepted: ['Efectivo', 'Transferencia bancaria', 'Mercado Pago'],
   }
 
   // Schema.org Product
