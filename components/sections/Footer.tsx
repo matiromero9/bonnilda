@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-text-primary text-white py-8 md:py-14 -mt-16 md:-mt-28 pt-20 md:pt-36 relative" role="contentinfo">
       {/* Elemento decorativo de overlap superior */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10" aria-hidden="true">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none" aria-hidden="true">
         <div className="bg-surface px-8 py-4 rounded-2xl shadow-artisan-large border-2 border-accent-peach/30 rotate-[2deg] hover:rotate-0 transition-all duration-300">
           <div className="flex items-center gap-3">
             <span className="text-3xl">📧</span>

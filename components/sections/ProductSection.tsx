@@ -58,7 +58,7 @@ const ProductSection: React.FC = () => {
   return (
     <section id="producto" className="py-16 md:py-24 bg-background-soft relative overflow-hidden">
       {/* Patrón decorativo de fondo */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
         <svg width="100%" height="100%">
           <pattern id="product-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
             <circle cx="30" cy="30" r="2" fill="currentColor" className="text-accent-peach" />

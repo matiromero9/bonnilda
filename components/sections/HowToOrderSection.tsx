@@ -29,7 +29,7 @@ const HowToOrderSection: React.FC = () => {
 
   return (
     <section id="como-pedir" className="py-16 md:py-24 bg-background-soft relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
         <svg width="100%" height="100%">
           <pattern id="order-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
             <circle cx="30" cy="30" r="2" fill="currentColor" className="text-accent-peach" />
@@ -68,7 +68,7 @@ const HowToOrderSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="bg-surface rounded-2xl p-8 shadow-soft border border-border-light">
+        <div className="relative z-10 bg-surface rounded-2xl p-8 shadow-soft border border-border-light">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-4">
               <h3 className="text-2xl font-serif font-bold text-text-primary">
@@ -90,11 +90,11 @@ const HowToOrderSection: React.FC = () => {
                 📍 Despachamos desde San Luis a todo el país.
               </p>
             </div>
-            <div className="text-center md:text-right">
+            <div className="relative z-10 text-center md:text-right">
               <Button 
                 variant="primary" 
                 size="lg" 
-                className="group"
+                className="group w-full sm:w-auto min-h-12"
                 href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)} 
                 target="_blank" 
                 rel="noopener noreferrer"

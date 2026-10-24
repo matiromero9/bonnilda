@@ -69,14 +69,16 @@ const WholesalersSection: React.FC = () => {
     <section id="mayoristas" className="py-12 md:py-20 -mt-16 md:-mt-28 pt-24 md:pt-36 bg-gradient-to-b from-background to-background-soft relative overflow-hidden">
       {/* Formas decorativas de fondo con parallax */}
       <div 
-        className="absolute top-20 right-10 w-64 h-64 bg-accent-peach/10 rounded-full blur-3xl"
+        className="absolute top-20 right-10 w-64 h-64 bg-accent-peach/10 rounded-full blur-3xl pointer-events-none"
+        aria-hidden="true"
         style={{
           transform: `translateY(${(scrollY - 500) * 0.08}px)`,
           transition: 'transform 0.1s ease-out',
         }}
       />
       <div 
-        className="absolute bottom-20 left-10 w-80 h-80 bg-accent-raspberry/10 rounded-full blur-3xl"
+        className="absolute bottom-20 left-10 w-80 h-80 bg-accent-raspberry/10 rounded-full blur-3xl pointer-events-none"
+        aria-hidden="true"
         style={{
           transform: `translateY(${(scrollY - 500) * -0.06}px)`,
           transition: 'transform 0.1s ease-out',
