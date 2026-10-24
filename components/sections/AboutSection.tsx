@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useCallback } from 'react'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Card from '@/components/ui/Card'
@@ -8,10 +8,13 @@ import Card from '@/components/ui/Card'
 const AboutSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const progressRef = useRef<HTMLDivElement>(null)
   const [isMuted, setIsMuted] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
   const [showPlayButton, setShowPlayButton] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [showControls, setShowControls] = useState(false)
 
   useEffect(() => {
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -60,7 +63,7 @@ const AboutSection: React.FC = () => {
     }
   }
 
-  const handlePlayClick = () => {
+  const handlePlayClick = useCallback(() => {
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause()
@@ -69,7 +72,37 @@ const AboutSection: React.FC = () => {
         videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
       }
     }
-  }
+  }, [isPlaying])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handleTimeUpdate = () => {
+      const percent = (video.currentTime / video.duration) * 100
+      setProgress(isNaN(percent) ? 0 : percent)
+    }
+
+    video.addEventListener('timeupdate', handleTimeUpdate)
+    return () => video.removeEventListener('timeupdate', handleTimeUpdate)
+  }, [])
+
+  const handleSeek = useCallback((e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    const video = videoRef.current
+    const progressBar = progressRef.current
+    if (!video || !progressBar) return
+
+    let clientX: number
+    if ('touches' in e) {
+      clientX = e.touches[0].clientX
+    } else {
+      clientX = e.clientX
+    }
+
+    const rect = progressBar.getBoundingClientRect()
+    const percent = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width))
+    video.currentTime = percent * video.duration
+  }, [])
 
   const values = [
     {
@@ -78,9 +111,9 @@ const AboutSection: React.FC = () => {
       description: 'La misma receta que nos hacía la abuela Nilda cuando éramos chicos.',
     },
     {
-      icon: '🍓',
-      title: 'Sabor frutal único',
-      description: 'Sin moldes, cada bombón es distinto. Hechos a mano con dedicación.',
+      icon: '🏭',
+      title: 'La receta de la abuela',
+      description: 'La misma receta familiar desde 2013, ahora con la precisión de nuestra fábrica.',
     },
     {
       icon: '❤️',
@@ -98,8 +131,11 @@ const AboutSection: React.FC = () => {
             <div 
               ref={containerRef}
               className="relative max-w-[360px] mx-auto lg:mx-0"
+              onMouseEnter={() => setShowControls(true)}
+              onMouseLeave={() => setShowControls(false)}
+              onTouchStart={() => setShowControls(true)}
             >
-              <div className="aspect-[9/16] rounded-2xl overflow-hidden shadow-large bg-text-primary">
+              <div className="aspect-[9/16] rounded-2xl overflow-hidden shadow-large bg-text-primary relative">
                 <video
                   ref={videoRef}
                   className="w-full h-full object-cover"
@@ -113,10 +149,65 @@ const AboutSection: React.FC = () => {
                   <source src="/videos/proceso-sonido.mp4" type="video/mp4" />
                 </video>
                 
+                {/* Controls overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent transition-opacity duration-300 pointer-events-none ${
+                  showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
+                }`} />
+
+                {/* Play/Pause button - always accessible */}
+                <button
+                  onClick={handlePlayClick}
+                  className={`absolute inset-0 flex items-center justify-center transition-all focus:outline-none ${
+                    showPlayButton ? 'bg-black/30 hover:bg-black/40' : ''
+                  }`}
+                  aria-label={isPlaying ? 'Pausar video' : 'Reproducir video'}
+                >
+                  <div className={`w-16 h-16 rounded-full bg-white/90 flex items-center justify-center transition-all duration-300 ${
+                    isPlaying && !showControls ? 'opacity-0 scale-75' : 'opacity-100 scale-100 hover:scale-110'
+                  }`}>
+                    {isPlaying ? (
+                      <svg className="w-8 h-8 text-accent-raspberry" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                      </svg>
+                    ) : (
+                      <svg className="w-8 h-8 text-accent-raspberry ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    )}
+                  </div>
+                </button>
+
+                {/* Progress bar - thin, at bottom, above subtitles area */}
+                <div 
+                  ref={progressRef}
+                  className={`absolute bottom-14 left-3 right-3 h-1 bg-white/30 rounded-full cursor-pointer transition-opacity duration-300 ${
+                    showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  onClick={handleSeek}
+                  onTouchStart={handleSeek}
+                  onTouchMove={handleSeek}
+                  role="slider"
+                  aria-label="Progreso del video"
+                  aria-valuenow={Math.round(progress)}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  tabIndex={0}
+                >
+                  <div 
+                    className="absolute inset-y-0 left-0 bg-accent-peach rounded-full"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+                
                 {/* Mute/Unmute button */}
                 <button
-                  onClick={toggleMute}
-                  className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleMute()
+                  }}
+                  className={`absolute bottom-4 right-4 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 ${
+                    showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
+                  }`}
                   aria-label={isMuted ? 'Activar sonido' : 'Silenciar'}
                 >
                   {isMuted ? (
@@ -130,23 +221,6 @@ const AboutSection: React.FC = () => {
                     </svg>
                   )}
                 </button>
-
-                {/* Play button for reduced motion or autoplay failure */}
-                {showPlayButton && (
-                  <button
-                    onClick={handlePlayClick}
-                    className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-all focus:outline-none"
-                    aria-label={isPlaying ? 'Pausar video' : 'Reproducir video'}
-                  >
-                    {!isPlaying && (
-                      <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-accent-raspberry ml-1" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    )}
-                  </button>
-                )}
               </div>
               
               {/* Caption */}
