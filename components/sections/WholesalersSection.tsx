@@ -188,7 +188,7 @@ const WholesalersSection: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 -translate-x-full group-hover/cta:translate-x-full transition-transform duration-1000 ease-out" />
 
             {/* Patrón decorativo */}
-            <div className="absolute inset-0 opacity-10 group-hover/cta:opacity-20 transition-opacity duration-500">
+            <div className="absolute inset-0 opacity-10 group-hover/cta:opacity-20 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
               <svg width="100%" height="100%">
                 <pattern id="wholesaler-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
                   <circle cx="20" cy="20" r="2" fill="white" />
