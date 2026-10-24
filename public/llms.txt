@@ -1,31 +1,24 @@
-# Bonnilda - Bombones Frutales Artesanales
+# Bonnilda
 
-## Sobre nosotros
-Bonnilda es una marca familiar de bombones frutales artesanales, elaborados en Los Molles, San Luis, Argentina desde 2013. Cada bombón está hecho a mano con la misma receta de siempre.
+> Bombones frutales artesanales de Los Molles, San Luis, Argentina.
 
-## Productos
-- **Sabores disponibles**: Frutilla, Naranja, Manzana, Ananá, Uva, Cereza (6 sabores)
-- **Ingredientes**: Azúcar, glucosa, pectina, ácido cítrico, esencia de cada fruta (5 ingredientes)
-- **Duración**: 6 meses desde la fecha de elaboración
+- Sitio: https://www.bonnilda.com.ar
+- Pedidos: WhatsApp https://wa.me/5492664580822
+- Instagram: @bonnildadulzuras https://instagram.com/bonnildadulzuras
+- Fundada: 2013 (inspirada en la abuela Nilda)
+- Sabores: frutilla, naranja, manzana, ananá, uva, cereza (6 sabores)
+- Ingredientes: ácido cítrico, pectina, esencia de cada fruta, glucosa, azúcar (solo 5)
+- Envíos: a todo el país, despacho en 48 hs
+- Pagos: efectivo, transferencia, Mercado Pago
+- Mayoristas: mínimo 16 cajas (56 unidades cada una)
+- Sin e-commerce: pedidos por WhatsApp
+- No afirmar: sin TACC, vegano, sin conservantes, fruta natural (no tienen logos/certificación / no usan fruta natural)
 
-## Cómo pedir
-1. Escribí por WhatsApp al +54 9 266 458-0822 o visitá https://wa.me/5492664580822
-2. Contanos qué sabores y cantidad querés
-3. Coordinamos el pago y envío
-
-## Medios de pago
-- Efectivo
-- Transferencia bancaria
-- Mercado Pago
-
-## Envíos
-- Despachamos en 48 hs a todo el país desde Los Molles, San Luis
-
-## Mayoristas
-Para revendedores, la compra mínima es de 16 cajas (cada caja trae 56 unidades). Consultá por precios especiales.
-
-## Contacto
-- WhatsApp: https://wa.me/5492664580822
-- Instagram: @bonnildadulzuras
-- Ubicación: Los Molles, San Luis, Argentina
-- Web: https://www.bonnilda.com.ar
+## Páginas
+- / (inicio)
+- /#sabores (productos)
+- /#historia (sobre nosotros)
+- /#como-pedir (cómo pedir)
+- /#mayoristas (para revendedores)
+- /#faq (preguntas frecuentes)
+- /#contacto (contacto)

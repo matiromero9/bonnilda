@@ -19,20 +19,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Bonnilda | Bombones Frutales Artesanales - Los Molles, San Luis',
-  description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Compra para vos o reventa mayorista. Envíos a todo el país.',
-  keywords: [
-    'bombones artesanales',
-    'bombones frutales',
-    'dulces artesanales',
-    'golosinas artesanales',
-    'bombones san luis',
-    'bombones los molles',
-    'reventa mayorista',
-    'dulces para revender',
-    'bombones hechos a mano',
-    'artesanal argentina'
-  ],
+  title: 'Bonnilda | Bombones frutales artesanales de Los Molles, San Luis',
+  description: 'Bombones frutales artesanales desde 2013 en Los Molles, San Luis. 6 sabores, hechos a mano. Pedí por WhatsApp o consultá para revender. Envíos a todo el país.',
   authors: [{ name: 'Bonnilda' }],
   creator: 'Bonnilda',
   publisher: 'Bonnilda',
@@ -45,22 +33,22 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: 'https://www.bonnilda.com.ar',
     siteName: 'Bonnilda',
-    title: 'Bonnilda | Bombones Frutales Artesanales',
-    description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Compra para vos o reventa mayorista.',
+    title: 'Bonnilda | Bombones frutales artesanales de Los Molles, San Luis',
+    description: 'Bombones frutales artesanales desde 2013 en Los Molles, San Luis. 6 sabores, hechos a mano. Pedí por WhatsApp o consultá para revender. Envíos a todo el país.',
     images: [
       {
-        url: '/images/hero-caja-abierta.jpeg',
+        url: '/images/og-bonnilda.jpg',
         width: 1200,
         height: 630,
-        alt: 'Bombones frutales artesanales Bonnilda',
+        alt: 'Bombones frutales artesanales Bonnilda - Caja abierta mostrando bombones de colores',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bonnilda | Bombones Frutales Artesanales',
-    description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Para vos o para revender.',
-    images: ['/images/hero-caja-abierta.jpeg'],
+    title: 'Bonnilda | Bombones frutales artesanales de Los Molles, San Luis',
+    description: 'Bombones frutales artesanales desde 2013 en Los Molles, San Luis. 6 sabores, hechos a mano. Pedí por WhatsApp o consultá para revender.',
+    images: ['/images/og-bonnilda.jpg'],
   },
   robots: {
     index: true,
@@ -72,9 +60,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    // google: 'tu-codigo-de-verificacion-aqui', // TODO: Agregar cuando tengas Google Search Console
   },
 }
 

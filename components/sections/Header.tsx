@@ -85,15 +85,15 @@ const Header: React.FC = () => {
 
           {/* CTA Button Desktop */}
           <div className="hidden md:block">
-            <a 
+            <Button 
+              variant="primary" 
+              size="md"
               href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="primary" size="md">
-                Hacer pedido
-              </Button>
-            </a>
+              Hacer pedido
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -133,16 +133,17 @@ const Header: React.FC = () => {
                   {link.label}
                 </a>
               ))}
-              <a 
+              <Button 
+                variant="primary" 
+                size="md" 
+                className="mt-2 w-full"
                 href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <Button variant="primary" size="md" className="mt-2 w-full">
-                  Hacer pedido
-                </Button>
-              </a>
+                Hacer pedido
+              </Button>
             </div>
           </div>
         )}
