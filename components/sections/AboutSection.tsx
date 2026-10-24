@@ -150,7 +150,7 @@ const AboutSection: React.FC = () => {
     {
       icon: '🔧',
       title: 'De la cocina a la fábrica',
-      description: 'La misma receta familiar desde 2013, ahora con la precisión de nuestra fábrica.',
+      description: 'Empezamos a mano en 2013 y hoy elaboramos con maquinaria de fábrica, sin perder el cuidado de siempre.',
     },
     {
       icon: '❤️',
