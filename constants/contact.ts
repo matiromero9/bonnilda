@@ -40,7 +40,7 @@ export const LOCATION = {
 }
 
 // URLs del sitio
-export const SITE_URL = 'https://bonnilda.vercel.app'
+export const SITE_URL = 'https://www.bonnilda.com.ar'
 
 // Metadata para SEO
 export const BUSINESS_INFO = {

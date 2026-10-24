@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://bonnilda.vercel.app'
+  const baseUrl = 'https://www.bonnilda.com.ar'
   
   return [
     {
