@@ -29,9 +29,7 @@
   --color-border: #E8DFD4; /* Borde suave */
   --color-border-light: #F2EDE6; /* Borde muy suave */
 
-  /* Tipografía */
-  --font-title: 'Montserrat', sans-serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Tipografía: next/font define --font-title (Fraunces) y --font-sans (Nunito Sans) en <html> */
 
   /* Border Radius */
   --radius-sm: 0.5rem;   /* 8px */
@@ -62,7 +60,7 @@
 
   /* Tipografía base */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-title font-extrabold tracking-tight text-text-primary;
+    @apply font-title font-semibold tracking-tight text-text-primary;
   }
 
   h1 {

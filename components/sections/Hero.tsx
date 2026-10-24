@@ -62,17 +62,17 @@ const Hero: React.FC = () => {
     <section className="relative py-12 md:py-20 lg:py-28 pb-24 md:pb-36 overflow-hidden">
       {/* Formas orgánicas de fondo - Artesanal (decorativo) */}
       <div className="absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-b from-background-soft to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background-soft to-background pointer-events-none" />
         <div 
-          className="absolute top-20 -right-20 w-96 h-96 bg-accent-peach/15 blur-3xl"
+          className="absolute top-20 -right-20 w-96 h-96 bg-accent-peach/15 blur-3xl pointer-events-none"
           style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%', animation: 'blob 7s infinite' }}
         />
         <div 
-          className="absolute bottom-20 -left-20 w-[32rem] h-[32rem] bg-accent-raspberry/10 blur-3xl"
+          className="absolute bottom-20 -left-20 w-[32rem] h-[32rem] bg-accent-raspberry/10 blur-3xl pointer-events-none"
           style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%', animation: 'blob 8s infinite 2s' }}
         />
         <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-peach-light/10 blur-2xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-peach-light/10 blur-2xl pointer-events-none"
           style={{ borderRadius: '45% 55% 60% 40% / 55% 45% 55% 45%', animation: 'blob 9s infinite 4s' }}
         />
       </div>
@@ -89,20 +89,20 @@ const Hero: React.FC = () => {
             }
           >
             <div className="space-y-4 md:space-y-6">
-              <h1 className="text-balance relative text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+              <h1 className="text-balance relative text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight">
                 <span className="relative block">Bombones frutales artesanales</span>
                 <span className="relative block text-accent-peach mt-1 md:mt-2">de Los Molles, San Luis</span>
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-text-secondary max-w-xl leading-relaxed">
-                Hechos a mano con la receta de siempre. Cada bocado es una explosión de sabor.
+                Seis sabores, cinco ingredientes, la receta de la abuela Nilda. Pedís por WhatsApp y despachamos en 48 hs a todo el país.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="relative z-10 flex flex-col sm:flex-row gap-4">
               <Button 
                 variant="primary" 
                 size="lg" 
-                className="group w-full sm:w-auto"
+                className="group w-full sm:w-auto min-h-12"
                 href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)} 
                 target="_blank" 
                 rel="noopener noreferrer"
