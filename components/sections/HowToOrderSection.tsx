@@ -1,7 +1,6 @@
 import React from 'react'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
-import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 import { SOCIAL_MEDIA, ORDER_INFO } from '@/constants/contact'
 
@@ -11,19 +10,16 @@ const HowToOrderSection: React.FC = () => {
       number: '1',
       title: 'Escribinos por WhatsApp',
       description: 'Mandanos un mensaje contándonos qué sabores querés y la cantidad.',
-      icon: '💬',
     },
     {
       number: '2',
       title: 'Confirmá tu pedido',
       description: 'Te pasamos el total y coordinamos la forma de pago: efectivo, transferencia o Mercado Pago.',
-      icon: '✅',
     },
     {
       number: '3',
-      title: 'Recibí en tu casa',
-      description: 'Coordinamos el envío que mejor te quede según tu ubicación.',
-      icon: '📦',
+      title: 'Despacho en 48 hs',
+      description: 'Confirmado el pago, despachamos en 48 hs a todo el país.',
     },
   ]
 
@@ -41,22 +37,20 @@ const HowToOrderSection: React.FC = () => {
       <Container>
         <SectionHeading
           title="¿Cómo pedir?"
-          subtitle="Hacer tu pedido es muy fácil. Seguí estos pasos:"
+          subtitle="Escribinos por WhatsApp, coordinamos el pago y despachamos en 48 hs."
           className="mb-12 md:mb-16"
         />
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <ol className="mb-12 max-w-2xl mx-auto space-y-8">
           {steps.map((step, index) => (
-            <Card 
-              key={index} 
-              padding="lg" 
-              className="text-center relative border-2 border-text-primary/5 hover:border-accent-peach/30 hover:-translate-y-2 transition-all duration-300"
+            <li
+              key={index}
+              className={`flex gap-4 md:gap-6 ${index % 2 === 1 ? 'md:flex-row-reverse md:text-right' : ''}`}
             >
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-accent-peach text-white font-bold flex items-center justify-center text-lg shadow-md">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent-peach text-white font-bold flex items-center justify-center text-lg shadow-md">
                 {step.number}
               </div>
-              <div className="pt-4 space-y-4">
-                <span className="text-5xl block">{step.icon}</span>
+              <div className="space-y-1 min-w-0">
                 <h3 className="text-xl font-serif font-bold text-text-primary">
                   {step.title}
                 </h3>
@@ -64,9 +58,9 @@ const HowToOrderSection: React.FC = () => {
                   {step.description}
                 </p>
               </div>
-            </Card>
+            </li>
           ))}
-        </div>
+        </ol>
 
         <div className="relative z-10 bg-surface rounded-2xl p-8 shadow-soft border border-border-light">
           <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -87,7 +81,7 @@ const HowToOrderSection: React.FC = () => {
                 ))}
               </ul>
               <p className="text-sm text-text-muted">
-                📍 Despachamos desde San Luis a todo el país.
+                📍 Despacho en 48 hs desde San Luis, a todo el país.
               </p>
             </div>
             <div className="relative z-10 text-center md:text-right">

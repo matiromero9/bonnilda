@@ -23,7 +23,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
     <div className={`space-y-3 ${alignClasses[align]} ${className}`}>
       <h2 className="text-balance">{title}</h2>
       {subtitle && (
-        <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
+        <p className={`text-lg md:text-xl text-text-secondary max-w-2xl ${align === 'center' ? 'mx-auto' : ''}`}>
           {subtitle}
         </p>
       )}
