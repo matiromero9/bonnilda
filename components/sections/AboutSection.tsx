@@ -9,6 +9,7 @@ const AboutSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
+  const hideControlsTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const [isMuted, setIsMuted] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false)
   const [showPlayButton, setShowPlayButton] = useState(false)
@@ -104,6 +105,42 @@ const AboutSection: React.FC = () => {
     video.currentTime = percent * video.duration
   }, [])
 
+  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+    const video = videoRef.current
+    if (!video) return
+
+    const step = 5
+    if (e.key === 'ArrowRight') {
+      e.preventDefault()
+      video.currentTime = Math.min(video.duration, video.currentTime + step)
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault()
+      video.currentTime = Math.max(0, video.currentTime - step)
+    }
+  }, [])
+
+  const resetHideControlsTimer = useCallback(() => {
+    if (hideControlsTimeoutRef.current) {
+      clearTimeout(hideControlsTimeoutRef.current)
+    }
+    setShowControls(true)
+    hideControlsTimeoutRef.current = setTimeout(() => {
+      setShowControls(false)
+    }, 2500)
+  }, [])
+
+  const handleTouchInteraction = useCallback(() => {
+    resetHideControlsTimer()
+  }, [resetHideControlsTimer])
+
+  useEffect(() => {
+    return () => {
+      if (hideControlsTimeoutRef.current) {
+        clearTimeout(hideControlsTimeoutRef.current)
+      }
+    }
+  }, [])
+
   const values = [
     {
       icon: '👵',
@@ -111,14 +148,14 @@ const AboutSection: React.FC = () => {
       description: 'La misma receta que nos hacía la abuela Nilda cuando éramos chicos.',
     },
     {
-      icon: '🏭',
-      title: 'La receta de la abuela',
+      icon: '🔧',
+      title: 'De la cocina a la fábrica',
       description: 'La misma receta familiar desde 2013, ahora con la precisión de nuestra fábrica.',
     },
     {
       icon: '❤️',
       title: 'Hecho con cariño',
-      description: 'Crecimos, sumamos herramientas, pero mantenemos el mismo amor de siempre.',
+      description: 'Cada caja sale de la misma familia que empezó en Los Molles.',
     },
   ]
 
@@ -133,7 +170,7 @@ const AboutSection: React.FC = () => {
               className="relative max-w-[360px] mx-auto lg:mx-0"
               onMouseEnter={() => setShowControls(true)}
               onMouseLeave={() => setShowControls(false)}
-              onTouchStart={() => setShowControls(true)}
+              onTouchStart={handleTouchInteraction}
             >
               <div className="aspect-[9/16] rounded-2xl overflow-hidden shadow-large bg-text-primary relative">
                 <video
@@ -154,58 +191,62 @@ const AboutSection: React.FC = () => {
                   showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
                 }`} />
 
-                {/* Play/Pause button - always accessible */}
+                {/* Play/Pause button - min 44x44px for accessibility */}
                 <button
                   onClick={handlePlayClick}
-                  className={`absolute inset-0 flex items-center justify-center transition-all focus:outline-none ${
+                  className={`absolute inset-0 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-inset ${
                     showPlayButton ? 'bg-black/30 hover:bg-black/40' : ''
                   }`}
                   aria-label={isPlaying ? 'Pausar video' : 'Reproducir video'}
                 >
-                  <div className={`w-16 h-16 rounded-full bg-white/90 flex items-center justify-center transition-all duration-300 ${
+                  <div className={`w-14 h-14 min-w-[44px] min-h-[44px] rounded-full bg-white/90 flex items-center justify-center transition-all duration-300 ${
                     isPlaying && !showControls ? 'opacity-0 scale-75' : 'opacity-100 scale-100 hover:scale-110'
                   }`}>
                     {isPlaying ? (
-                      <svg className="w-8 h-8 text-accent-raspberry" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-7 h-7 text-accent-raspberry" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
                       </svg>
                     ) : (
-                      <svg className="w-8 h-8 text-accent-raspberry ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-7 h-7 text-accent-raspberry ml-1" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     )}
                   </div>
                 </button>
 
-                {/* Progress bar - thin, at bottom, above subtitles area */}
+                {/* Progress bar - larger hit area for accessibility */}
                 <div 
                   ref={progressRef}
-                  className={`absolute bottom-14 left-3 right-3 h-1 bg-white/30 rounded-full cursor-pointer transition-opacity duration-300 ${
+                  className={`absolute bottom-12 left-3 right-3 h-6 flex items-center cursor-pointer transition-opacity duration-300 ${
                     showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
                   }`}
                   onClick={handleSeek}
                   onTouchStart={handleSeek}
                   onTouchMove={handleSeek}
+                  onKeyDown={handleKeyDown}
                   role="slider"
                   aria-label="Progreso del video"
                   aria-valuenow={Math.round(progress)}
                   aria-valuemin={0}
                   aria-valuemax={100}
+                  aria-valuetext={`${Math.round(progress)}% del video`}
                   tabIndex={0}
                 >
-                  <div 
-                    className="absolute inset-y-0 left-0 bg-accent-peach rounded-full"
-                    style={{ width: `${progress}%` }}
-                  />
+                  <div className="w-full h-1 bg-white/30 rounded-full relative">
+                    <div 
+                      className="absolute inset-y-0 left-0 bg-accent-peach rounded-full"
+                      style={{ width: `${progress}%` }}
+                    />
+                  </div>
                 </div>
                 
-                {/* Mute/Unmute button */}
+                {/* Mute/Unmute button - min 44x44px for accessibility */}
                 <button
                   onClick={(e) => {
                     e.stopPropagation()
                     toggleMute()
                   }}
-                  className={`absolute bottom-4 right-4 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 ${
+                  className={`absolute bottom-4 right-4 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 ${
                     showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
                   }`}
                   aria-label={isMuted ? 'Activar sonido' : 'Silenciar'}

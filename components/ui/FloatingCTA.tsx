@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { SOCIAL_MEDIA } from '@/constants/contact'
+import { SOCIAL_MEDIA, ORDER_INFO } from '@/constants/contact'
 import { analytics } from '@/lib/analytics'
 
 /**
@@ -38,7 +38,7 @@ const FloatingCTA: React.FC = () => {
     >
       {/* Mobile: Botón circular con icono */}
       <a
-        href={SOCIAL_MEDIA.whatsapp.urlWithMessage('Hola! Quiero hacer un pedido de bombones Bonnilda 🍑')}
+        href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}
@@ -76,7 +76,7 @@ const FloatingCTA: React.FC = () => {
 
       {/* Desktop: Botón expandido con texto */}
       <a
-        href={SOCIAL_MEDIA.whatsapp.urlWithMessage('Hola! Quiero hacer un pedido de bombones Bonnilda 🍑')}
+        href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
         target="_blank"
         rel="noopener noreferrer"
         onClick={handleClick}

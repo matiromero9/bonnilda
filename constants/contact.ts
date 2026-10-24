@@ -52,7 +52,9 @@ export const BUSINESS_INFO = {
 
 // Información de pedidos
 export const ORDER_INFO = {
-  whatsappMessage: '¡Hola! 🍑 Me interesa hacer un pedido de bombones Bonnilda.',
+  whatsappMessage: '¡Hola! Me interesa hacer un pedido de bombones Bonnilda. 🍑',
+  whatsappMessageWholesale: '¡Hola! Me interesa revender bombones Bonnilda. ¿Me pasan info sobre precios mayoristas? 🍑',
+  whatsappMessageGeneral: '¡Hola! Me interesa conocer más sobre los bombones Bonnilda. 🍑',
   paymentMethods: ['Efectivo', 'Transferencia bancaria', 'Mercado Pago'],
   shipping: 'Envíos a todo el país',
 }

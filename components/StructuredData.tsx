@@ -44,7 +44,6 @@ const StructuredData: React.FC = () => {
     url: SITE_URL,
     telephone: PHONE_NUMBER.formatted,
     image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
-    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       addressLocality: LOCATION.city,
@@ -69,12 +68,6 @@ const StructuredData: React.FC = () => {
     brand: {
       '@type': 'Brand',
       name: 'Bonnilda',
-    },
-    offers: {
-      '@type': 'AggregateOffer',
-      priceCurrency: 'ARS',
-      availability: 'https://schema.org/InStock',
-      url: SITE_URL,
     },
   }
 

@@ -11,7 +11,7 @@ import Footer from '@/components/sections/Footer'
 import FloatingCTA from '@/components/ui/FloatingCTA'
 
 export const metadata: Metadata = {
-  title: 'Bonnilda | Bombones Frutales Artesanales - Compra Minorista y Mayorista',
+  title: 'Bonnilda | Bombones Frutales Artesanales - Para vos o para revender',
   description: 'Descubrí los mejores bombones frutales artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Ideales para regalar o revender. Envíos a todo el país.',
   openGraph: {
     title: 'Bonnilda - Bombones Frutales Artesanales',

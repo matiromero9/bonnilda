@@ -1,0 +1,31 @@
+# Bonnilda - Bombones Frutales Artesanales
+
+## Sobre nosotros
+Bonnilda es una marca familiar de bombones frutales artesanales, elaborados en Los Molles, San Luis, Argentina desde 2013. Cada bombón está hecho a mano con la misma receta de siempre.
+
+## Productos
+- **Sabores disponibles**: Frutilla, Naranja, Manzana, Ananá, Uva, Cereza (6 sabores)
+- **Ingredientes**: Azúcar, glucosa, pectina, ácido cítrico, esencia de cada fruta (5 ingredientes)
+- **Duración**: 6 meses desde la fecha de elaboración
+
+## Cómo pedir
+1. Escribí por WhatsApp al +54 9 266 458-0822 o visitá https://wa.me/5492664580822
+2. Contanos qué sabores y cantidad querés
+3. Coordinamos el pago y envío
+
+## Medios de pago
+- Efectivo
+- Transferencia bancaria
+- Mercado Pago
+
+## Envíos
+- Despachamos en 48 hs a todo el país desde Los Molles, San Luis
+
+## Mayoristas
+Para revendedores, la compra mínima es de 16 cajas (cada caja trae 56 unidades). Consultá por precios especiales.
+
+## Contacto
+- WhatsApp: https://wa.me/5492664580822
+- Instagram: @bonnildadulzuras
+- Ubicación: Los Molles, San Luis, Argentina
+- Web: https://bonnilda.vercel.app

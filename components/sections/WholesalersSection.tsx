@@ -5,7 +5,7 @@ import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
-import { SOCIAL_MEDIA } from '@/constants/contact'
+import { SOCIAL_MEDIA, ORDER_INFO } from '@/constants/contact'
 import { analytics } from '@/lib/analytics'
 
 const WholesalersSection: React.FC = () => {
@@ -39,7 +39,7 @@ const WholesalersSection: React.FC = () => {
         </svg>
       ),
       title: 'Producto de calidad',
-      description: 'Bombones premium que se venden solos. Tus clientes siempre vuelven por más.',
+      description: 'La misma receta familiar en cada caja.',
       highlight: '100%',
       emoji: '⭐',
     },
@@ -49,7 +49,7 @@ const WholesalersSection: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: 'Envíos rápidos',
+      title: 'Despacho en 48 hs',
       description: 'Despachamos en 48 hs a todo el país.',
       highlight: '48hs',
       emoji: '⚡',
@@ -60,9 +60,8 @@ const WholesalersSection: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       ),
-      title: 'Soporte dedicado',
-      description: 'Te acompañamos en todo el proceso. Asesoramiento y atención personalizada.',
-      highlight: '24/7',
+      title: 'Atención por WhatsApp',
+      description: 'Te respondemos rápido y coordinamos todo por ahí.',
       emoji: '🤝',
     },
   ]
@@ -227,7 +226,7 @@ const WholesalersSection: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <a 
-                  href={SOCIAL_MEDIA.whatsapp.urlWithMessage('Hola! Me interesa revender bombones Bonnilda. ¿Podrían enviarme info sobre precios mayoristas? 🍑')}
+                  href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessageWholesale)}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => analytics.trackWhatsAppClick('mayoristas')}
