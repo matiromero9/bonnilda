@@ -25,7 +25,7 @@ const FAQSection: React.FC = () => {
       <Container>
         <SectionHeading
           title="Preguntas frecuentes"
-          subtitle="Todo lo que necesitás saber sobre Bonnilda"
+          subtitle="Pedidos por WhatsApp, despacho en 48 hs y los seis sabores de siempre."
           className="mb-12 md:mb-16"
         />
 

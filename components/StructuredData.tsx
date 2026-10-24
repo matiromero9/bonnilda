@@ -41,7 +41,7 @@ const StructuredData: React.FC = () => {
     '@type': 'LocalBusiness',
     '@id': SITE_URL,
     name: 'Bonnilda',
-    description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Para vos o para revender.',
+    description: 'Bombones de fruta de Los Molles, San Luis. Receta familiar desde 2013, inspirada en la abuela Nilda. Pedidos por WhatsApp.',
     url: SITE_URL,
     telephone: PHONE_NUMBER.formatted,
     image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
@@ -64,7 +64,7 @@ const StructuredData: React.FC = () => {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: 'Bombones Artesanales de Fruta',
-    description: `Bombones frutales 100% artesanales. Elaborados a mano con la receta tradicional en ${LOCATION.displayShort}.`,
+    description: `Bombones de fruta con la receta familiar de Bonnilda, elaborados en ${LOCATION.displayShort}.`,
     image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
     brand: {
       '@type': 'Brand',

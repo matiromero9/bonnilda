@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
           <div className="text-center">
             <h3 className="text-2xl font-serif font-bold mb-2">Bonnilda</h3>
             <p className="text-white/90 text-sm mb-4">
-              Bombones frutales artesanales 🇦🇷
+              Bombones de fruta desde Los Molles 🇦🇷
             </p>
             
             {/* Redes sociales */}
@@ -115,8 +115,8 @@ const Footer: React.FC = () => {
           <div className="md:col-span-5">
             <h3 className="text-3xl lg:text-4xl font-serif font-bold mb-4">Bonnilda</h3>
             <p className="text-white/90 text-base mb-6 leading-relaxed">
-              Bombones frutales 100% artesanales. Sabor auténtico, hecho con amor.
-              Cada bombón está hecho a mano con la receta de siempre en {LOCATION.displayShort}.
+              Bombones de fruta desde 2013 en {LOCATION.displayShort}.
+              Receta de la abuela Nilda: seis sabores, cinco ingredientes. Pedidos por WhatsApp.
             </p>
             
             {/* Info de contacto destacada */}
@@ -208,31 +208,31 @@ const Footer: React.FC = () => {
 
           {/* Horarios y beneficios */}
           <div className="md:col-span-3">
-            <h4 className="font-bold mb-4 text-lg">¿Por qué elegirnos?</h4>
+            <h4 className="font-bold mb-4 text-lg">Datos útiles</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2 text-white/70">
                 <svg className="w-5 h-5 text-accent-peach flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>100% artesanal</span>
+                <span>Receta familiar desde 2013</span>
               </li>
               <li className="flex items-start gap-2 text-white/70">
                 <svg className="w-5 h-5 text-accent-peach flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Envíos a todo el país</span>
+                <span>Despacho en 48 hs a todo el país</span>
               </li>
               <li className="flex items-start gap-2 text-white/70">
                 <svg className="w-5 h-5 text-accent-peach flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Precios mayoristas disponibles</span>
+                <span>Consultas para revender por WhatsApp</span>
               </li>
               <li className="flex items-start gap-2 text-white/70">
                 <svg className="w-5 h-5 text-accent-peach flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Atención personalizada</span>
+                <span>Efectivo, transferencia o Mercado Pago</span>
               </li>
             </ul>
           </div>

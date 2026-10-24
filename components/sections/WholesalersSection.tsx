@@ -38,9 +38,8 @@ const WholesalersSection: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
         </svg>
       ),
-      title: 'Producto de calidad',
-      description: 'La misma receta familiar en cada caja.',
-      highlight: '100%',
+      title: 'Misma receta familiar',
+      description: 'La receta de la abuela Nilda en cada caja.',
       emoji: '⭐',
     },
     {
@@ -98,7 +97,7 @@ const WholesalersSection: React.FC = () => {
                   ¿Querés vender Bonnilda?
                 </h3>
                 <p className="text-text-secondary text-xs md:text-base">
-                  Descubrí cómo empezar tu negocio con nuestros bombones premium
+                  Si tenés kiosco, dietética o querés revender, escribinos por WhatsApp.
                 </p>
               </div>
               <div className="hidden sm:block">
@@ -112,7 +111,7 @@ const WholesalersSection: React.FC = () => {
 
         <SectionHeading
           title="Revendé Bonnilda"
-          subtitle="Sumá un producto de calidad premium a tu catálogo. Simple, rentable y con respaldo."
+          subtitle="Compra mínima de 16 cajas. Te contamos cantidades y condiciones por WhatsApp."
           className="mb-12 md:mb-16"
         />
 
@@ -154,20 +153,10 @@ const WholesalersSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Título con highlight animado */}
                   <div>
                     <h3 className="text-sm md:text-xl font-serif font-bold text-text-primary mb-1 leading-tight">
                       {benefit.title}
                     </h3>
-                    {benefit.highlight && (
-                      <span className={`
-                        inline-block text-lg md:text-2xl font-black text-accent-raspberry
-                        transition-all duration-300
-                        ${hoveredCard === index ? 'scale-125' : 'scale-100'}
-                      `}>
-                        {benefit.highlight}
-                      </span>
-                    )}
                   </div>
 
                   <p className="text-text-secondary text-xs md:text-sm leading-relaxed hidden md:block">
@@ -212,7 +201,7 @@ const WholesalersSection: React.FC = () => {
               {/* Badge pequeño arriba */}
               <div className="inline-block">
                 <div className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/30">
-                  🎉 Programa para revendedores
+                  Para revender
                 </div>
               </div>
 
@@ -221,8 +210,8 @@ const WholesalersSection: React.FC = () => {
               </h3>
               
               <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                Completá el formulario de contacto o escribinos directo por WhatsApp. 
-                Te contamos todo sobre precios, cantidades mínimas y condiciones.
+                Escribinos por WhatsApp o dejá tus datos en el formulario.
+                Te contamos cantidades mínimas y condiciones, sin local a la calle.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
