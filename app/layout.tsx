@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
-import { Lora, Inter } from 'next/font/google'
+import { Fraunces, Nunito_Sans } from 'next/font/google'
 import './globals.css'
 import SkipLink from '@/components/ui/SkipLink'
 import StructuredData from '@/components/StructuredData'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 
-const lora = Lora({
+const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-title',
-  weight: ['400', '500', '600', '700'],
+  weight: ['500', '600', '700'],
   display: 'swap',
 })
 
-const inter = Inter({
+const nunitoSans = Nunito_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
+  weight: ['400', '600', '700', '800'],
   display: 'swap',
 })
 
@@ -71,7 +72,7 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
   return (
-    <html lang="es-AR" className={`${lora.variable} ${inter.variable}`}>
+    <html lang="es-AR" className={`${fraunces.variable} ${nunitoSans.variable}`}>
       <head>
         <StructuredData />
       </head>
