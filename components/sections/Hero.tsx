@@ -76,8 +76,8 @@ const Hero: React.FC = () => {
           >
             <div className="space-y-4 md:space-y-6">
               <h1 className="text-balance relative text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-                <span className="relative block">Dulzura auténtica,</span>
-                <span className="relative block text-accent-peach mt-1 md:mt-2">sabor artesanal</span>
+                <span className="relative block">Bombones frutales artesanales</span>
+                <span className="relative block text-accent-peach mt-1 md:mt-2">de Los Molles, San Luis</span>
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-text-secondary max-w-xl leading-relaxed">
                 Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Cada bocado es una explosión de sabor.

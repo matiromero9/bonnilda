@@ -1,5 +1,6 @@
 import React from 'react'
 import { SOCIAL_MEDIA, PHONE_NUMBER, LOCATION, SITE_URL } from '@/constants/contact'
+import { FAQS } from '@/constants/faq'
 
 /**
  * Structured Data (JSON-LD) para SEO
@@ -71,18 +72,18 @@ const StructuredData: React.FC = () => {
     },
   }
 
-  // Schema.org BreadcrumbList
-  const breadcrumbSchema = {
+  // Schema.org FAQPage
+  const faqSchema = {
     '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Inicio',
-        item: SITE_URL,
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
       },
-    ],
+    })),
   }
 
   return (
@@ -101,7 +102,7 @@ const StructuredData: React.FC = () => {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </>
   )
