@@ -36,14 +36,14 @@ export const metadata: Metadata = {
   authors: [{ name: 'Bonnilda' }],
   creator: 'Bonnilda',
   publisher: 'Bonnilda',
-  metadataBase: new URL('https://bonnilda.vercel.app'),
+  metadataBase: new URL('https://www.bonnilda.com.ar'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'es_AR',
-    url: 'https://bonnilda.vercel.app',
+    url: 'https://www.bonnilda.com.ar',
     siteName: 'Bonnilda',
     title: 'Bonnilda | Bombones Frutales Artesanales',
     description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre. Compra para vos o reventa mayorista.',
