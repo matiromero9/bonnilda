@@ -7,7 +7,7 @@ const ProductSection: React.FC = () => {
   const products = [
     {
       name: 'Frutilla',
-      description: 'Dulce, suave y delicada. Frutillas frescas transformadas en pequeñas joyas de sabor.',
+      description: 'Dulce y suave, el clásico que nunca falla.',
       emoji: '🍓',
       rotation: 'rotate-[-1.5deg]',
       hoverRotation: 'hover:rotate-0',
@@ -15,7 +15,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Naranja',
-      description: 'El cítrico que refresca. Sabor a naranja intenso y vibrante.',
+      description: 'El cítrico que refresca. Sabor intenso y vibrante.',
       emoji: '🍊',
       rotation: 'rotate-[0.5deg]',
       hoverRotation: 'hover:rotate-0',
@@ -23,7 +23,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Manzana',
-      description: 'El clásico de siempre. Manzana fresca con ese toque dulce que enamora.',
+      description: 'Ese dulce que enamora.',
       emoji: '🍏',
       rotation: 'rotate-[-0.8deg]',
       hoverRotation: 'hover:rotate-0',
@@ -47,7 +47,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Cereza',
-      description: 'Intenso y seductor. Cerezas seleccionadas para un sabor inolvidable.',
+      description: 'Intenso y con carácter.',
       emoji: '🍒',
       rotation: 'rotate-[1deg]',
       hoverRotation: 'hover:rotate-0',
@@ -121,7 +121,7 @@ const ProductSection: React.FC = () => {
               Azúcar, glucosa, pectina, ácido cítrico y esencia de cada fruta.
             </p>
             <p className="text-text-muted text-sm">
-              ¿No sabés cuál elegir? ¡Consultá precios por WhatsApp!
+              ¿No sabés cuál elegir? Escribinos y te ayudamos.
             </p>
           </div>
         </div>

@@ -9,7 +9,7 @@ import FormSkeleton from '@/components/ui/FormSkeleton'
 import { useFormValidation, FieldName } from '@/hooks/useFormValidation'
 import { sanitizeName, sanitizePhone, sanitizeText, rateLimiter, checkHoneypot, checkMinimumTime } from '@/lib/security'
 import { ContactFormData } from '@/lib/validations'
-import { SOCIAL_MEDIA, PHONE_NUMBER } from '@/constants/contact'
+import { SOCIAL_MEDIA, PHONE_NUMBER, ORDER_INFO } from '@/constants/contact'
 import { analytics } from '@/lib/analytics'
 
 type SubmitState = 'idle' | 'validating' | 'submitting' | 'success' | 'error'
@@ -32,13 +32,9 @@ const ContactSection: React.FC = () => {
 
   const { errors, touched, validateField, validateAllFields, markAsTouched, markAllAsTouched, clearAllErrors } = useFormValidation()
 
-  // Simular carga inicial del formulario
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-      formLoadTime.current = Date.now()
-    }, 1500)
-    return () => clearTimeout(timer)
+    setIsLoading(false)
+    formLoadTime.current = Date.now()
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -101,7 +97,7 @@ const ContactSection: React.FC = () => {
 
 ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
 
-¡Espero su respuesta! Gracias 😊`
+¡Espero tu respuesta! Gracias 😊`
 
       // Abrir WhatsApp con el mensaje pre-cargado
       const whatsappURL = SOCIAL_MEDIA.whatsapp.urlWithMessage(whatsappMessage)
@@ -177,7 +173,7 @@ ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
       <Container>
         <SectionHeading
           title="Hablemos"
-          subtitle="¿Tenés dudas? ¿Querés hacer un pedido? Escribinos y te respondemos al toque."
+          subtitle="¿Tenés dudas? ¿Querés hacer un pedido? Escribinos y te respondemos por WhatsApp."
           className="mb-12 md:mb-16"
         />
 
@@ -374,7 +370,7 @@ ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
                 <p className="text-sm text-text-muted text-center">
                   También podés escribirnos directamente por WhatsApp al{' '}
                   <a 
-                    href={SOCIAL_MEDIA.whatsapp.urlWithMessage('Hola! Me interesa conocer más sobre los bombones Bonnilda 🍑')}
+                    href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessageGeneral)}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => analytics.trackWhatsAppClick('contact')}

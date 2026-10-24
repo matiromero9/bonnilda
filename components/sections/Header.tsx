@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
+import { SOCIAL_MEDIA, ORDER_INFO } from '@/constants/contact'
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -21,8 +23,10 @@ const Header: React.FC = () => {
   }, [])
 
   const navLinks = [
+    { label: 'Sabores', href: '#producto' },
+    { label: 'Historia', href: '#sobre' },
+    { label: 'Cómo pedir', href: '#como-pedir' },
     { label: 'Mayoristas', href: '#mayoristas' },
-    { label: 'Testimonios', href: '#testimonios' },
     { label: 'Preguntas', href: '#faq' },
     { label: 'Contacto', href: '#contacto' },
   ]
@@ -47,12 +51,8 @@ const Header: React.FC = () => {
       <Container>
         <nav className="flex items-center justify-between py-4 md:py-5" aria-label="Navegación principal">
           {/* Logo */}
-          <a 
-            href="#top" 
-            onClick={(e) => {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-            }}
+          <Link 
+            href="/" 
             className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
             aria-label="Bonnilda - Ir al inicio"
           >
@@ -68,7 +68,7 @@ const Header: React.FC = () => {
             <span className="text-2xl md:text-3xl font-serif font-bold text-text-primary">
               Bonnilda
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -85,7 +85,11 @@ const Header: React.FC = () => {
 
           {/* CTA Button Desktop */}
           <div className="hidden md:block">
-            <a href="#contacto">
+            <a 
+              href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="primary" size="md">
                 Hacer pedido
               </Button>
@@ -129,7 +133,12 @@ const Header: React.FC = () => {
                   {link.label}
                 </a>
               ))}
-              <a href="#contacto" onClick={() => setMobileMenuOpen(false)}>
+              <a 
+                href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 <Button variant="primary" size="md" className="mt-2 w-full">
                   Hacer pedido
                 </Button>

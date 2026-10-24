@@ -18,6 +18,14 @@ const FAQSection: React.FC = () => {
       answer: 'Sí, despachamos a todo el país desde Los Molles, San Luis. Coordinamos el envío que mejor te quede según tu ubicación.',
     },
     {
+      question: '¿Cuánto tardan en despachar?',
+      answer: 'Despachamos en 48 hs a todo el país. Una vez que coordinamos el pago, preparamos tu pedido y lo enviamos lo antes posible.',
+    },
+    {
+      question: '¿Qué medios de pago aceptan?',
+      answer: 'Aceptamos efectivo, transferencia bancaria y Mercado Pago. Coordinamos todo por WhatsApp antes del envío.',
+    },
+    {
       question: '¿Cuál es la cantidad mínima para compra mayorista?',
       answer: 'Para revendedores y mayoristas, la compra mínima es de 16 cajas (cada caja trae 56 unidades). Contamos con precios especiales y descuentos según la cantidad. Consultanos por WhatsApp para más info.',
     },
