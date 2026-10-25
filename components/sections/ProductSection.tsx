@@ -110,21 +110,6 @@ const ProductSection: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Ingredientes */}
-        <div className="mt-12 bg-surface rounded-2xl p-6 md:p-8 shadow-soft border border-border-light max-w-2xl mx-auto">
-          <div className="text-center space-y-4">
-            <h3 className="text-xl font-serif font-bold text-text-primary">
-              Solo 5 ingredientes
-            </h3>
-            <p className="text-text-secondary">
-              Azúcar, glucosa, pectina, ácido cítrico y esencia de cada fruta.
-            </p>
-            <p className="text-text-muted text-sm">
-              ¿No sabés cuál elegir? Escribinos y te ayudamos.
-            </p>
-          </div>
-        </div>
       </Container>
     </section>
   )

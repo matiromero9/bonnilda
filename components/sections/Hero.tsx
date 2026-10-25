@@ -11,31 +11,22 @@ const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0)
   const [isParallaxEnabled, setIsParallaxEnabled] = useState(false)
   const [showOpenBox, setShowOpenBox] = useState(true)
-  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const desktopQuery = window.matchMedia('(min-width: 1024px)')
-    const mobileQuery = window.matchMedia('(max-width: 767px)')
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
     const updateParallaxMode = () => {
       setIsParallaxEnabled(desktopQuery.matches && !reducedMotionQuery.matches)
     }
 
-    const updateMobileMode = () => {
-      setIsMobile(mobileQuery.matches)
-    }
-
     updateParallaxMode()
-    updateMobileMode()
 
     desktopQuery.addEventListener('change', updateParallaxMode)
-    mobileQuery.addEventListener('change', updateMobileMode)
     reducedMotionQuery.addEventListener('change', updateParallaxMode)
 
     return () => {
       desktopQuery.removeEventListener('change', updateParallaxMode)
-      mobileQuery.removeEventListener('change', updateMobileMode)
       reducedMotionQuery.removeEventListener('change', updateParallaxMode)
     }
   }, [])
@@ -154,13 +145,6 @@ const Hero: React.FC = () => {
                 />
               </div>
             </button>
-
-            {/* Hint mobile */}
-            {isMobile && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full pointer-events-none">
-                Tocá la foto
-              </div>
-            )}
 
             <div 
               className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent-peach-light rounded-full opacity-40 blur-xl pointer-events-none"
