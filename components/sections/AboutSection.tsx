@@ -148,6 +148,7 @@ const AboutSection: React.FC = () => {
             <div 
               ref={containerRef}
               className="relative max-w-[360px] mx-auto lg:mx-0 lg:-rotate-1"
+              data-hide-fab
               onMouseEnter={() => setShowControls(true)}
               onMouseLeave={() => setShowControls(false)}
               onTouchStart={handleTouchInteraction}
@@ -194,10 +195,10 @@ const AboutSection: React.FC = () => {
                   </div>
                 </button>
 
-                {/* Progress bar - larger hit area for accessibility */}
+                {/* Progress bar — barra fina, área táctil de 44px */}
                 <div 
                   ref={progressRef}
-                  className={`absolute bottom-12 left-3 right-3 h-6 flex items-center cursor-pointer transition-opacity duration-300 ${
+                  className={`absolute bottom-2 left-3 right-3 h-11 flex items-center cursor-pointer transition-opacity duration-300 ${
                     showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
                   }`}
                   onClick={handleSeek}
@@ -212,7 +213,7 @@ const AboutSection: React.FC = () => {
                   aria-valuetext={`${Math.round(progress)}% del video`}
                   tabIndex={0}
                 >
-                  <div className="w-full h-1 bg-white/30 rounded-full relative">
+                  <div className="w-full h-1.5 bg-white/30 rounded-full relative">
                     <div 
                       className="absolute inset-y-0 left-0 bg-accent-peach rounded-full"
                       style={{ width: `${progress}%` }}
@@ -220,13 +221,13 @@ const AboutSection: React.FC = () => {
                   </div>
                 </div>
                 
-                {/* Mute/Unmute button - min 44x44px for accessibility */}
+                {/* Mute/Unmute — arriba a la derecha, lejos de la barra */}
                 <button
                   onClick={(e) => {
                     e.stopPropagation()
                     toggleMute()
                   }}
-                  className={`absolute bottom-4 right-4 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 ${
+                  className={`absolute top-4 right-4 w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 ${
                     showControls || !isPlaying ? 'opacity-100' : 'opacity-0'
                   }`}
                   aria-label={isMuted ? 'Activar sonido' : 'Silenciar'}

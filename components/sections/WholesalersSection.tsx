@@ -28,9 +28,9 @@ const WholesalersSection: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      title: 'Precios por cantidad',
-      description: 'Consultanos por WhatsApp según el volumen que necesites.',
-      emoji: '💰',
+      title: 'Consultá por volumen',
+      description: 'Te las pasamos por WhatsApp, según la cantidad.',
+      emoji: '💬',
     },
     {
       icon: (
@@ -65,7 +65,7 @@ const WholesalersSection: React.FC = () => {
   ]
 
   return (
-    <section id="mayoristas" className="py-12 md:py-20 -mt-16 md:-mt-28 pt-24 md:pt-36 bg-gradient-to-b from-background to-background-soft relative overflow-hidden">
+    <section id="mayoristas" className="py-12 md:py-20 -mt-16 md:-mt-28 pt-24 md:pt-36 bg-gradient-to-b from-background to-background-soft relative overflow-hidden" data-hide-fab>
       {/* Formas decorativas de fondo con parallax */}
       <div 
         className="absolute top-20 right-10 w-64 h-64 bg-accent-peach/10 rounded-full blur-3xl pointer-events-none"
@@ -85,22 +85,22 @@ const WholesalersSection: React.FC = () => {
       />
 
       <Container>
-        {/* Elemento decorativo de overlap - card flotante */}
-        <div className="relative -mt-16 md:-mt-24 mb-12 md:mb-16 max-w-4xl mx-auto">
-          <div className="bg-surface rounded-xl md:rounded-2xl shadow-artisan-large p-4 md:p-6 lg:p-8 border-2 border-accent-peach/20 rotate-[-0.5deg] hover:rotate-0 transition-all duration-300">
-            <div className="flex items-center gap-3 md:gap-6">
-              <div className="flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-accent-peach to-accent-raspberry flex items-center justify-center text-2xl md:text-4xl">
-                💰
+        {/* Promo de overlap: se oculta en mobile para no duplicar el heading */}
+        <div className="relative hidden md:block -mt-24 mb-16 max-w-4xl mx-auto">
+          <div className="bg-surface rounded-2xl shadow-artisan-large p-6 lg:p-8 border-2 border-accent-peach/20 md:rotate-[-0.5deg] hover:rotate-0 transition-all duration-300">
+            <div className="flex items-center gap-6">
+              <div className="flex-shrink-0 w-20 h-20 rounded-full bg-gradient-to-br from-accent-peach to-accent-raspberry flex items-center justify-center text-4xl">
+                🍑
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg md:text-2xl font-serif font-bold text-text-primary mb-1 md:mb-2">
+                <h3 className="text-2xl font-serif font-bold text-text-primary mb-2">
                   ¿Querés vender Bonnilda?
                 </h3>
-                <p className="text-text-secondary text-xs md:text-base">
+                <p className="text-text-secondary text-base">
                   Si tenés kiosco, dietética o querés revender, escribinos por WhatsApp.
                 </p>
               </div>
-              <div className="hidden sm:block">
+              <div>
                 <svg className="w-8 h-8 text-accent-peach" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -112,7 +112,7 @@ const WholesalersSection: React.FC = () => {
         <SectionHeading
           title="Revendé Bonnilda"
           subtitle="Compra mínima de 16 cajas. Te contamos cantidades y condiciones por WhatsApp."
-          className="mb-12 md:mb-16"
+          className="mb-12 md:mb-16 mt-4 md:mt-0"
         />
 
         {/* Grid de beneficios con animaciones - Mobile optimizado */}
@@ -141,25 +141,25 @@ const WholesalersSection: React.FC = () => {
                   {benefit.emoji}
                 </div>
 
-                <div className="space-y-2 md:space-y-4 relative z-10">
+                <div className="space-y-3 md:space-y-4 relative z-10">
                   {/* Ícono con animación */}
                   <div className={`
                     text-accent-peach
                     transition-all duration-300
                     ${hoveredCard === index ? 'scale-110 rotate-12' : 'scale-100'}
                   `}>
-                    <div className="[&>svg]:w-6 [&>svg]:h-6 md:[&>svg]:w-8 md:[&>svg]:h-8">
+                    <div className="[&>svg]:w-7 [&>svg]:h-7 md:[&>svg]:w-8 md:[&>svg]:h-8">
                       {benefit.icon}
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-sm md:text-xl font-serif font-bold text-text-primary mb-1 leading-tight">
+                    <h3 className="text-base md:text-xl font-serif font-bold text-text-primary mb-1 leading-snug">
                       {benefit.title}
                     </h3>
                   </div>
 
-                  <p className="text-text-secondary text-xs md:text-sm leading-relaxed hidden md:block">
+                  <p className="text-text-secondary text-sm leading-relaxed">
                     {benefit.description}
                   </p>
                 </div>
@@ -209,7 +209,7 @@ const WholesalersSection: React.FC = () => {
                 ¿Querés empezar a vender?
               </h3>
               
-              <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+              <p className="text-base md:text-xl text-white/90 leading-relaxed">
                 Escribinos por WhatsApp o dejá tus datos en el formulario.
                 Te contamos cantidades mínimas y condiciones, sin local a la calle.
               </p>
@@ -218,7 +218,7 @@ const WholesalersSection: React.FC = () => {
                 <Button 
                   variant="secondary" 
                   size="lg"
-                  className="group shadow-lg hover:shadow-xl w-full sm:w-auto"
+                  className="group shadow-lg hover:shadow-xl w-full sm:w-auto min-h-11"
                   href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessageWholesale)}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -234,7 +234,7 @@ const WholesalersSection: React.FC = () => {
                 <Button 
                   variant="ghost" 
                   size="lg" 
-                  className="text-white border-white/30 hover:bg-white/20 hover:border-white/50 w-full sm:w-auto"
+                  className="text-white border-white/30 hover:bg-white/20 hover:border-white/50 w-full sm:w-auto min-h-11"
                   href="#contacto"
                 >
                   Formulario de contacto
