@@ -29,7 +29,7 @@ const WholesalersSection: React.FC = () => {
         </svg>
       ),
       title: 'Consultá por volumen',
-      description: 'Escribinos por WhatsApp y te armamos las condiciones según la cantidad.',
+      description: 'Te las pasamos por WhatsApp, según la cantidad.',
       emoji: '💬',
     },
     {
@@ -66,7 +66,7 @@ const WholesalersSection: React.FC = () => {
   ]
 
   return (
-    <section id="mayoristas" className="py-12 md:py-20 -mt-16 md:-mt-28 pt-24 md:pt-36 bg-gradient-to-b from-background to-background-soft relative overflow-hidden">
+    <section id="mayoristas" className="py-12 md:py-20 -mt-16 md:-mt-28 pt-24 md:pt-36 bg-gradient-to-b from-background to-background-soft relative overflow-hidden" data-hide-fab>
       {/* Formas decorativas de fondo con parallax */}
       <div 
         className="absolute top-20 right-10 w-64 h-64 bg-accent-peach/10 rounded-full blur-3xl"
@@ -185,7 +185,7 @@ const WholesalersSection: React.FC = () => {
         </div>
 
         {/* CTA Card con diseño mejorado */}
-        <div className="relative group/cta" data-hide-fab>
+        <div className="relative group/cta">
           {/* Glow effect */}
           <div className="absolute -inset-4 bg-gradient-to-br from-accent-peach to-accent-raspberry opacity-20 group-hover/cta:opacity-40 blur-3xl rounded-3xl transition-opacity duration-500" />
           

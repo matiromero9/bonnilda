@@ -26,14 +26,22 @@ const FloatingCTA: React.FC = () => {
     const targets = document.querySelectorAll('[data-hide-fab]')
     if (targets.length === 0) return
 
-    // Zona inferior derecha, donde vive el FAB en mobile
+    const intersecting = new Set<Element>()
     const observer = new IntersectionObserver(
       (entries) => {
-        setIsBlocked(entries.some((entry) => entry.isIntersecting))
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            intersecting.add(entry.target)
+          } else {
+            intersecting.delete(entry.target)
+          }
+        }
+        setIsBlocked(intersecting.size > 0)
       },
       {
         root: null,
-        rootMargin: '-55% 0px 0px -35%',
+        // Mitad inferior del viewport, donde el FAB se superpone
+        rootMargin: '-40% 0px 0px 0px',
         threshold: 0,
       }
     )

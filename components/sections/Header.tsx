@@ -51,8 +51,17 @@ const Header: React.FC = () => {
   ]
 
   return (
+    <>
+    {mobileMenuOpen && (
+      <button
+        type="button"
+        className="fixed inset-0 z-40 bg-text-primary/50 md:hidden"
+        aria-label="Cerrar menú"
+        onClick={() => setMobileMenuOpen(false)}
+      />
+    )}
     <header
-      className={`sticky top-0 z-50 isolate border-b border-border-light ${
+      className={`sticky top-0 z-50 border-b border-border-light ${
         mobileMenuOpen ? 'bg-background' : 'bg-background/95 backdrop-blur-sm'
       }`}
     >
@@ -148,15 +157,6 @@ const Header: React.FC = () => {
         </nav>
       </Container>
 
-      {mobileMenuOpen && (
-        <button
-          type="button"
-          className="fixed inset-0 z-10 bg-text-primary/45 md:hidden"
-          aria-label="Cerrar menú"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
-
       {/* Mobile Menu — panel opaco a ancho completo, por encima del contenido */}
       {mobileMenuOpen && (
         <div
@@ -194,6 +194,7 @@ const Header: React.FC = () => {
         </div>
       )}
     </header>
+    </>
   )
 }
 
