@@ -7,7 +7,7 @@ const ProductSection: React.FC = () => {
   const products = [
     {
       name: 'Frutilla',
-      description: 'Dulce y suave, el clásico que nunca falla.',
+      description: 'Dulce y suave: el que más piden.',
       emoji: '🍓',
       rotation: 'rotate-[-1.5deg]',
       hoverRotation: 'hover:rotate-0',
@@ -15,7 +15,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Naranja',
-      description: 'El cítrico que refresca. Sabor intenso y vibrante.',
+      description: 'Cítrica, con un dejo de cáscara.',
       emoji: '🍊',
       rotation: 'rotate-[0.5deg]',
       hoverRotation: 'hover:rotate-0',
@@ -23,7 +23,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Manzana',
-      description: 'Ese dulce que enamora.',
+      description: 'Verde y fresca, más liviana.',
       emoji: '🍏',
       rotation: 'rotate-[-0.8deg]',
       hoverRotation: 'hover:rotate-0',
@@ -31,7 +31,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Ananá',
-      description: 'Tropical y exótico. El sabor del ananá en cada bocado.',
+      description: 'Dulce-ácida, la más tropical.',
       emoji: '🍍',
       rotation: 'rotate-[0.8deg]',
       hoverRotation: 'hover:rotate-0',
@@ -39,7 +39,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Uva',
-      description: 'Suave y elegante. El sabor de la uva en su máxima expresión.',
+      description: 'Violeta y perfumada, bien definida.',
       emoji: '🍇',
       rotation: 'rotate-[-0.5deg]',
       hoverRotation: 'hover:rotate-0',
@@ -47,7 +47,7 @@ const ProductSection: React.FC = () => {
     },
     {
       name: 'Cereza',
-      description: 'Intenso y con carácter.',
+      description: 'Intensa, la más golosa de las seis.',
       emoji: '🍒',
       rotation: 'rotate-[1deg]',
       hoverRotation: 'hover:rotate-0',
@@ -58,7 +58,7 @@ const ProductSection: React.FC = () => {
   return (
     <section id="producto" className="py-16 md:py-24 bg-background-soft relative overflow-hidden">
       {/* Patrón decorativo de fondo */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
         <svg width="100%" height="100%">
           <pattern id="product-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
             <circle cx="30" cy="30" r="2" fill="currentColor" className="text-accent-peach" />
@@ -70,7 +70,7 @@ const ProductSection: React.FC = () => {
       <Container>
         <SectionHeading
           title="Nuestros sabores"
-          subtitle="Cada bombón es único, hecho a mano con mucho amor"
+          subtitle="Seis sabores. Cinco ingredientes. La misma receta familiar desde 2013."
           className="mb-12 md:mb-16"
         />
 

@@ -43,6 +43,7 @@ const FloatingCTA: React.FC = () => {
         rel="noopener noreferrer"
         onClick={handleClick}
         className="
+          relative
           md:hidden
           flex items-center justify-center
           w-14 h-14
@@ -81,6 +82,7 @@ const FloatingCTA: React.FC = () => {
         rel="noopener noreferrer"
         onClick={handleClick}
         className="
+          relative
           hidden md:flex
           items-center gap-3
           px-6 py-4

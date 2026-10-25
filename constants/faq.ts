@@ -15,7 +15,7 @@ export const FAQS: FAQ[] = [
   },
   {
     question: '¿Hacen envíos a todo el país?',
-    answer: 'Sí, despachamos a todo el país desde Los Molles, San Luis. Coordinamos el envío que mejor te quede según tu ubicación.',
+    answer: 'Sí, despachamos a todo el país desde Los Molles, San Luis. El envío se coordina por WhatsApp cuando confirmás el pedido.',
   },
   {
     question: '¿Cuánto tardan en despachar?',

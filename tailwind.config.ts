@@ -39,8 +39,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        title: ['var(--font-title)'],
-        sans: ['var(--font-sans)'],
+        title: ['var(--font-title)', 'Georgia', 'serif'],
+        serif: ['var(--font-title)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         // Escala tipográfica
