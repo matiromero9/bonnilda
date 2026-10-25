@@ -1,278 +1,151 @@
-# 🔍 Checklist SEO - Bonnilda
+# Checklist SEO — Bonnilda
 
-Esta guía te ayuda a completar la configuración SEO antes del lanzamiento.
+**Actualizado 2026-10-25.** Estado real post PRs #7 / #8 / #9. Dominio en prod: `https://www.bonnilda.com.ar` (apex `bonnilda.com.ar` redirige a www con 308).
+
+No inventar claims. En copy y schema: no prometer Sin TACC, vegano, sin conservantes ni “fruta natural”.
 
 ---
 
-## ✅ Ya Implementado
+## Ya implementado
 
-### Meta Tags
-- ✅ Title optimizado con palabras clave
-- ✅ Meta description atractiva (bajo 160 caracteres)
-- ✅ Keywords relevantes
-- ✅ Canonical URL
-- ✅ Language (es-AR)
-- ✅ Viewport responsive
+### Meta tags (`app/layout.tsx`)
 
-### Open Graph (Facebook, WhatsApp, LinkedIn)
-- ✅ og:type = website
-- ✅ og:title
-- ✅ og:description
-- ✅ og:image (1200x630px recomendado)
-- ✅ og:url
-- ✅ og:locale = es_AR
+- Title: “Bonnilda | Bombones frutales artesanales de Los Molles, San Luis”
+- Description (bajo 160 caracteres)
+- Canonical (`metadataBase` + `alternates.canonical`)
+- `lang="es-AR"` en `<html>`
+- Viewport responsive (default de Next.js)
+- Robots: index/follow + `googleBot` con preview grande
+
+**Nota:** Next.js `Metadata` no emite `<meta name="keywords">` salvo que se declare `keywords`. Este sitio no lo declara. No hace falta: Google ignora keywords meta.
+
+### Open Graph
+
+- `og:type` = website
+- `og:title` / `og:description`
+- `og:image` = `/images/og-bonnilda.jpg` (1200×630)
+- `og:url` = `https://www.bonnilda.com.ar`
+- `og:locale` = es_AR
 
 ### Twitter Cards
-- ✅ twitter:card = summary_large_image
-- ✅ twitter:title
-- ✅ twitter:description
-- ✅ twitter:image
 
-### Structured Data (JSON-LD)
-- ✅ Organization schema
-- ✅ LocalBusiness schema
-- ✅ Product schema
-- ✅ Breadcrumb schema
+- `twitter:card` = summary_large_image
+- title, description, image (`/images/og-bonnilda.jpg`)
 
-### Technical SEO
-- ✅ Sitemap.xml generado automáticamente
-- ✅ Robots.txt configurado
-- ✅ Manifest.json (PWA)
-- ✅ Semantic HTML
-- ✅ Alt texts en imágenes
-- ✅ Heading hierarchy (H1, H2, H3)
-- ✅ Internal linking
+### Structured Data (JSON-LD en `components/StructuredData.tsx`)
+
+Hay cuatro schemas, no más:
+
+- Organization
+- LocalBusiness
+- Product
+- FAQPage (sale de `constants/faq.ts`)
+
+**No hay** `BreadcrumbList`. No marcarlo como hecho.
+
+Contacto y geo en schema:
+
+- Teléfono: `+54 9 266 458-0822` (el de `constants/contact.ts`)
+- Email: N/A. No hay mail oficial. No inventar uno. No agregar `email` al schema hasta que Matias lo pida.
+- `sameAs`: solo Instagram `https://www.instagram.com/bonnildadulzuras` (handle **con s**, confirmado por Matias 2026-10-25). No “corregir” quitando la s.
+- Google Business Profile en `sameAs`: pendiente (ver abajo).
+- Localidad: Los Molles, San Luis, AR. Coords aproximadas en schema: OK.
+- **No publicar dirección de calle.** Negocio sin local a la calle.
+
+### Técnico
+
+- Sitemap: `https://www.bonnilda.com.ar/sitemap.xml` (`app/sitemap.ts`)
+- Robots: `https://www.bonnilda.com.ar/robots.txt` (`app/robots.ts`)
+- Manifest PWA (`app/manifest.ts` + `public/site.webmanifest`)
+- HTML semántico, alt texts, jerarquía de headings, linking interno
+- Favicon: **hecho**. Están `/public/favicon.ico`, `apple-touch-icon.png`, `android-chrome-192x192.png`, `android-chrome-512x512.png` (también `favicon-16x16.png` y `favicon-32x32.png`)
+
+### Analytics (código)
+
+- GA4 ya está cableado (`components/GoogleAnalytics.tsx` + `NEXT_PUBLIC_GA_MEASUREMENT_ID`).
+- Confirmar el ID en Vercel es opcional (ver pendientes).
 
 ---
 
-## 📋 Tareas Pendientes (Antes del Deploy)
+## Pendientes reales
 
-### 1. **Favicon** ⚠️ IMPORTANTE
+Nada de esto es “antes del deploy”: el sitio ya está en `www.bonnilda.com.ar`.
 
-**Dónde:** `/public/favicon.ico`
+### 1. Google Search Console
 
-**Qué hacer:**
-1. Crear favicon con tu logo
-2. Tamaños recomendados: 16x16, 32x32, 48x48
-3. Herramientas online: [favicon.io](https://favicon.io) o [realfavicongenerator.net](https://realfavicongenerator.net)
-4. Colocar archivo en `/public/favicon.ico`
+1. Agregar propiedad `https://www.bonnilda.com.ar` (URL-prefix o dominio).
+2. Verificar (DNS o meta `verification.google` en `app/layout.tsx` si hace falta).
+3. Enviar sitemap: `https://www.bonnilda.com.ar/sitemap.xml`
 
-**También recomendado:**
+### 2. Bing Webmaster Tools
+
+Misma propiedad y mismo sitemap.
+
+### 3. Google Business Profile
+
+- Reclamar / verificar GBP como **área (Argentina)**, sin calle pública.
+- Recién después de verificado, agregar la URL de GBP a `sameAs` en `StructuredData.tsx`.
+- Hasta entonces: no poner `sameAs` de GBP.
+
+### 4. Fotos reales de los 6 sabores
+
+Hoy la grilla usa emojis (frutilla, naranja, manzana, ananá, uva, cereza). Matias está en proceso de reemplazarlos por fotos. No tocar copy ni claims al subirlas.
+
+### 5. GA en Vercel (opcional)
+
+Confirmar que `NEXT_PUBLIC_GA_MEASUREMENT_ID` está seteado en el proyecto de Vercel. Si no hay ID, el componente no renderiza: no rompe el sitio.
+
+---
+
+## Después de Search Console / Bing
+
+### Indexación
+
 ```
-/public/apple-touch-icon.png (180x180)
-/public/android-chrome-192x192.png
-/public/android-chrome-512x512.png
-```
-
----
-
-### 2. **Dominio Real** ✅ COMPLETADO
-
-**Estado:** Ya configurado con `https://bonnilda.vercel.app`
-
-**Archivos actualizados:**
-- ✅ `app/layout.tsx`
-- ✅ `app/robots.ts`
-- ✅ `app/sitemap.ts`
-- ✅ `components/StructuredData.tsx`
-
-**Nota:** Si en el futuro comprás un dominio custom (ej: `bonnilda.com`), actualizá estas URLs nuevamente.
-
----
-
-### 3. **Google Search Console** 🔧
-
-**Pasos:**
-1. Ir a [search.google.com/search-console](https://search.google.com/search-console)
-2. Agregar propiedad (tu dominio)
-3. Verificar propiedad (opción recomendada: DNS)
-4. Obtener código de verificación
-5. Agregar en `app/layout.tsx`:
-
-```typescript
-verification: {
-  google: 'TU-CODIGO-AQUI',
-},
-```
-
-6. Enviar sitemap: `https://tudominio.com/sitemap.xml`
-
----
-
-### 4. **Información de Contacto** ⚠️ IMPORTANTE
-
-**Actualizar en `components/StructuredData.tsx`:**
-
-```typescript
-// Línea 21
-telephone: '+54 9 11 1234-5678', // ← TU NÚMERO REAL
-
-// Línea 22
-email: 'hola@bonnilda.com', // ← TU EMAIL REAL
+site:www.bonnilda.com.ar
 ```
 
----
+Si no hay nada a la semana, mirar cobertura en Search Console.
 
-### 5. **Redes Sociales** (Opcional pero recomendado)
+### Previews
 
-**Actualizar en `components/StructuredData.tsx`:**
+- Facebook/LinkedIn: [Sharing Debugger](https://developers.facebook.com/tools/debug/) → `https://www.bonnilda.com.ar`
+- WhatsApp: mandar la URL y chequear la card (usa OG)
 
-```typescript
-// Línea 31-34
-sameAs: [
-  'https://www.instagram.com/bonnilda',  // ← TU INSTAGRAM
-  'https://www.facebook.com/bonnilda',   // ← TU FACEBOOK
-],
-```
+### Structured Data
 
----
+- [Rich Results Test](https://search.google.com/test/rich-results) sobre `https://www.bonnilda.com.ar`
+- Esperable: Organization / LocalBusiness / Product / FAQ. **No** Breadcrumb.
 
-### 6. **Geolocalización** (Si tenés local físico)
-
-**Actualizar en `components/StructuredData.tsx`:**
-
-```typescript
-// Líneas 54-57
-geo: {
-  '@type': 'GeoCoordinates',
-  latitude: -34.6037,   // ← TU LATITUD
-  longitude: -58.3816,  // ← TU LONGITUD
-},
-```
-
-**Cómo obtener coordenadas:**
-1. Ir a Google Maps
-2. Click derecho en tu ubicación
-3. Copiar coordenadas
-
----
-
-### 7. **Horarios de Atención** (Opcional)
-
-**Actualizar en `components/StructuredData.tsx` (líneas 59-66):**
-
-```typescript
-openingHoursSpecification: [
-  {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    opens: '09:00',  // ← TU HORARIO
-    closes: '18:00', // ← TU HORARIO
-  },
-],
-```
-
----
-
-## 🚀 Después del Deploy
-
-### 1. **Verificar indexación en Google**
-
-Buscar en Google:
-```
-site:tudominio.com
-```
-
-Si no aparece nada después de 1 semana, revisar Google Search Console.
-
----
-
-### 2. **Probar preview en redes sociales**
-
-**Facebook/LinkedIn:**
-- [Debugger de Facebook](https://developers.facebook.com/tools/debug/)
-- Pegar tu URL
-- Click en "Scrape Again"
-
-**Twitter:**
-- [Card Validator de Twitter](https://cards-dev.twitter.com/validator)
-- Pegar tu URL
-
-**WhatsApp:**
-- Simplemente enviar tu URL en un chat y ver el preview
-
----
-
-### 3. **Verificar Structured Data**
-
-- [Rich Results Test de Google](https://search.google.com/test/rich-results)
-- Pegar tu URL
-- Verificar que no haya errores
-
----
-
-### 4. **Performance Check**
+### Performance
 
 - [PageSpeed Insights](https://pagespeed.web.dev/)
-- Objetivo: Score > 90 en mobile y desktop
+- Objetivo: > 90 mobile y desktop
 
 ---
 
-## 📊 Monitoreo Continuo
+## Objetivos SEO (3–6 meses)
 
-### Google Analytics (Opcional)
+Orientar a búsquedas reales de la marca, sin claims de dieta ni “fruta natural”:
 
-1. Crear cuenta en [analytics.google.com](https://analytics.google.com)
-2. Crear propiedad para tu sitio
-3. Obtener ID de medición (ej: `G-XXXXXXXXXX`)
-4. Instalar en Next.js:
-
-```bash
-npm install @next/third-parties
-```
-
-```typescript
-// app/layout.tsx
-import { GoogleAnalytics } from '@next/third-parties/google'
-
-export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>{children}</body>
-      <GoogleAnalytics gaId="G-XXXXXXXXXX" />
-    </html>
-  )
-}
-```
-
----
-
-### Google Search Console (Revisión mensual)
-
-Revisar:
-- ✅ Errores de indexación
-- ✅ Cobertura de páginas
-- ✅ Rendimiento de búsqueda (clicks, impresiones)
-- ✅ Core Web Vitals
-
----
-
-## 🎯 Objetivos SEO (3-6 meses)
-
-- [ ] Aparecer en primera página para "bombones artesanales buenos aires"
-- [ ] Aparecer en primera página para "bombones de fruta naturales"
-- [ ] Rich snippets en resultados de búsqueda
+- [ ] Aparecer para “bombones de fruta artesanales”
+- [ ] Aparecer para “bombones Los Molles”
+- [ ] Aparecer para “bombones San Luis”
+- [ ] Aparecer para “bombones abuela Nilda”
+- [ ] Rich snippets (FAQ / producto) cuando Search Console los habilite
 - [ ] Tráfico orgánico > 100 visitas/mes
 
----
-
-## 💡 Tips Extra
-
-### Crear contenido adicional (futuro)
-
-- Blog con recetas o historias del proceso artesanal
-- Página de cada sabor con descripción detallada
-- Página "Sobre nosotros" con historia de la marca
-- Página de preguntas frecuentes más extensa
-
-### Link building
-
-- Aparecer en directorios locales de emprendimientos
-- Colaborar con influencers gastronómicos
-- Instagram + link a tu web en bio
-- Google My Business (si tenés local)
+No apuntar a “fruta naturales”, “Sin TACC”, vegano ni “sin conservantes”.
 
 ---
 
-**¿Dudas?** Revisá la documentación oficial de Next.js sobre [metadata](https://nextjs.org/docs/app/building-your-application/optimizing/metadata).
+## Tips
 
+- **GBP / Google Business:** perfil de área Argentina. Sin dirección de calle. El negocio no tiene local a la calle.
+- **Instagram:** bio con `www.bonnilda.com.ar`. Handle oficial: `@bonnildadulzuras`.
+- Contenido futuro (si se suma): recetas/proceso, página por sabor, sobre nosotros, FAQ más larga. Sin claims prohibidos.
+- Link building: directorios de emprendimientos, colaboradores gastronómicos, IG → www. No listar una calle.
+
+---
+
+Docs de Next.js sobre [metadata](https://nextjs.org/docs/app/building-your-application/optimizing/metadata).
