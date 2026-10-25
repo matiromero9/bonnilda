@@ -143,8 +143,8 @@ const AboutSection: React.FC = () => {
   return (
     <section id="sobre" className="py-16 md:py-24 bg-background">
       <Container>
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-x-12 lg:gap-y-8 items-start">
-          <div className="lg:col-span-5 lg:row-span-2 lg:pt-6">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-x-12 items-start">
+          <div className="lg:col-span-5 lg:pt-6">
             <div 
               ref={containerRef}
               className="relative max-w-[360px] mx-auto lg:mx-0 lg:-rotate-1"
@@ -267,7 +267,7 @@ const AboutSection: React.FC = () => {
               <p>
                 Con los años sumamos herramientas de fábrica, pero la receta no cambió:
                 ácido cítrico, pectina, esencia de cada fruta, glucosa y azúcar. Cinco ingredientes,
-                seis sabores. No usamos fruta natural ni tenemos local a la calle.
+                seis sabores.
               </p>
               <p className="font-medium text-text-primary">
                 Sigue siendo un negocio de familia. Los pedidos se cierran por WhatsApp
@@ -275,17 +275,6 @@ const AboutSection: React.FC = () => {
               </p>
             </div>
           </div>
-
-          <aside className="lg:col-span-6 lg:col-start-7">
-            <blockquote className="relative bg-background-soft border-l-4 border-accent-peach rounded-r-2xl px-6 py-5 md:px-8 md:py-6">
-              <p className="font-title text-xl md:text-2xl text-text-primary leading-snug">
-                Los bombones de la abuela Nilda, ahora con las manos de la misma familia.
-              </p>
-              <p className="mt-3 text-sm text-text-muted">
-                2013 · Los Molles · frutilla, naranja, manzana, ananá, uva y cereza
-              </p>
-            </blockquote>
-          </aside>
         </div>
       </Container>
     </section>
