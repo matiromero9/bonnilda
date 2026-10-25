@@ -22,6 +22,25 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [mobileMenuOpen])
+
   const navLinks = [
     { label: 'Sabores', href: '#producto' },
     { label: 'Historia', href: '#sobre' },
@@ -32,7 +51,11 @@ const Header: React.FC = () => {
   ]
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border-light">
+    <header
+      className={`sticky top-0 z-50 isolate border-b border-border-light ${
+        mobileMenuOpen ? 'bg-background' : 'bg-background/95 backdrop-blur-sm'
+      }`}
+    >
       {/* Scroll Progress Bar - Decorativo */}
       <div 
         className="absolute bottom-0 left-0 right-0 h-1 bg-border-light overflow-hidden" 
@@ -49,7 +72,7 @@ const Header: React.FC = () => {
       </div>
 
       <Container>
-        <nav className="flex items-center justify-between py-4 md:py-5" aria-label="Navegación principal">
+        <nav className="relative z-20 flex items-center justify-between py-4 md:py-5" aria-label="Navegación principal">
           {/* Logo */}
           <Link 
             href="/" 
@@ -96,38 +119,60 @@ const Header: React.FC = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-text-primary hover:text-accent-peach transition-colors focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 rounded-lg"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+          {/* Mobile actions */}
+          <div className="flex items-center gap-2 md:hidden">
+            <a
+              href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center min-h-11 px-4 rounded-full bg-accent-peach text-text-inverse text-sm font-semibold hover:bg-accent-raspberry transition-colors focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2"
+            >
+              Pedir
+            </a>
+            <button
+              className="inline-flex items-center justify-center min-h-11 min-w-11 text-text-primary hover:text-accent-peach transition-colors focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 rounded-lg"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </nav>
+      </Container>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div 
-            id="mobile-menu" 
-            className="md:hidden py-4 border-t border-border-light"
-            role="menu"
-            aria-label="Menú de navegación"
-          >
-            <div className="flex flex-col gap-4">
+      {mobileMenuOpen && (
+        <button
+          type="button"
+          className="fixed inset-0 z-10 bg-text-primary/45 md:hidden"
+          aria-label="Cerrar menú"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Menu — panel opaco a ancho completo, por encima del contenido */}
+      {mobileMenuOpen && (
+        <div
+          id="mobile-menu"
+          className="absolute inset-x-0 top-full z-20 md:hidden bg-background border-b border-border-light shadow-large"
+          role="menu"
+          aria-label="Menú de navegación"
+        >
+          <Container>
+            <div className="flex flex-col py-3">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-text-secondary hover:text-accent-peach font-medium transition-colors py-2"
+                  role="menuitem"
+                  className="flex items-center min-h-11 text-text-secondary hover:text-accent-peach font-medium transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -136,7 +181,7 @@ const Header: React.FC = () => {
               <Button 
                 variant="primary" 
                 size="md" 
-                className="mt-2 w-full"
+                className="mt-3 mb-3 w-full min-h-11"
                 href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -145,12 +190,11 @@ const Header: React.FC = () => {
                 Hacer pedido
               </Button>
             </div>
-          </div>
-        )}
-      </Container>
+          </Container>
+        </div>
+      )}
     </header>
   )
 }
 
 export default Header
-

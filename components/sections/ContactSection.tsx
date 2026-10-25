@@ -169,7 +169,7 @@ ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
   const showSuccessMessage = submitState === 'success'
 
   return (
-    <section id="contacto" className="py-16 md:py-24 pb-32 md:pb-40 bg-background">
+    <section id="contacto" className="py-16 md:py-24 pb-32 md:pb-40 bg-background" data-hide-fab>
       <Container>
         <SectionHeading
           title="Hablemos"
@@ -374,7 +374,7 @@ ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => analytics.trackWhatsAppClick('contact')}
-                    className="text-accent-peach hover:text-accent-raspberry font-medium transition-colors"
+                    className="inline-flex items-center min-h-11 text-accent-peach hover:text-accent-raspberry font-medium transition-colors"
                   >
                     {PHONE_NUMBER.display}
                   </a>

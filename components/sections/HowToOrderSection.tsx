@@ -86,8 +86,8 @@ const HowToOrderSection: React.FC = () => {
                   </li>
                 ))}
               </ul>
-              <p className="text-sm text-text-muted">
-                📍 Despachamos desde San Luis a todo el país.
+              <p className="text-sm md:text-base text-text-secondary">
+                Despacho en 48 hs desde San Luis a todo el país.
               </p>
             </div>
             <div className="text-center md:text-right">
