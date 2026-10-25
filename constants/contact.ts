@@ -46,8 +46,8 @@ export const SITE_URL = 'https://www.bonnilda.com.ar'
 export const BUSINESS_INFO = {
   name: 'Bonnilda',
   legalName: 'Bonnilda Dulzuras Artesanales',
-  description: 'Bombones frutales 100% artesanales de Los Molles, San Luis. Hechos a mano con la receta de siempre.',
-  slogan: 'Dulzura auténtica, sabor artesanal',
+  description: 'Bombones de fruta de Los Molles, San Luis. Receta familiar desde 2013, inspirada en la abuela Nilda.',
+  slogan: 'La receta de la abuela Nilda, desde Los Molles',
 }
 
 // Información de pedidos

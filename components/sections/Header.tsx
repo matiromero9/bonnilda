@@ -128,16 +128,17 @@ const Header: React.FC = () => {
             </Button>
           </div>
 
-          {/* Mobile actions */}
           <div className="flex items-center gap-2 md:hidden">
-            <a
+            <Button
+              variant="primary"
+              size="sm"
               href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center min-h-11 px-4 rounded-full bg-accent-peach text-text-inverse text-sm font-semibold hover:bg-accent-raspberry transition-colors focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2"
+              className="relative z-10 min-h-11 px-4"
             >
               Pedir
-            </a>
+            </Button>
             <button
               className="inline-flex items-center justify-center min-h-11 min-w-11 text-text-primary hover:text-accent-peach transition-colors focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 rounded-lg"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

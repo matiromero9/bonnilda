@@ -38,9 +38,8 @@ const WholesalersSection: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
         </svg>
       ),
-      title: 'Producto de calidad',
-      description: 'La misma receta familiar en cada caja.',
-      highlight: '100%',
+      title: 'Misma receta familiar',
+      description: 'La receta de la abuela Nilda en cada caja.',
       emoji: '⭐',
     },
     {
@@ -69,14 +68,16 @@ const WholesalersSection: React.FC = () => {
     <section id="mayoristas" className="py-12 md:py-20 -mt-16 md:-mt-28 pt-24 md:pt-36 bg-gradient-to-b from-background to-background-soft relative overflow-hidden" data-hide-fab>
       {/* Formas decorativas de fondo con parallax */}
       <div 
-        className="absolute top-20 right-10 w-64 h-64 bg-accent-peach/10 rounded-full blur-3xl"
+        className="absolute top-20 right-10 w-64 h-64 bg-accent-peach/10 rounded-full blur-3xl pointer-events-none"
+        aria-hidden="true"
         style={{
           transform: `translateY(${(scrollY - 500) * 0.08}px)`,
           transition: 'transform 0.1s ease-out',
         }}
       />
       <div 
-        className="absolute bottom-20 left-10 w-80 h-80 bg-accent-raspberry/10 rounded-full blur-3xl"
+        className="absolute bottom-20 left-10 w-80 h-80 bg-accent-raspberry/10 rounded-full blur-3xl pointer-events-none"
+        aria-hidden="true"
         style={{
           transform: `translateY(${(scrollY - 500) * -0.06}px)`,
           transition: 'transform 0.1s ease-out',
@@ -96,7 +97,7 @@ const WholesalersSection: React.FC = () => {
                   ¿Querés vender Bonnilda?
                 </h3>
                 <p className="text-text-secondary text-base">
-                  Escribinos y te contamos cómo sumar las cajas a tu kiosco o negocio.
+                  Si tenés kiosco, dietética o querés revender, escribinos por WhatsApp.
                 </p>
               </div>
               <div>
@@ -110,7 +111,7 @@ const WholesalersSection: React.FC = () => {
 
         <SectionHeading
           title="Revendé Bonnilda"
-          subtitle="Sumá un producto de calidad a tu catálogo. Te contamos cantidades y condiciones por WhatsApp."
+          subtitle="Compra mínima de 16 cajas. Te contamos cantidades y condiciones por WhatsApp."
           className="mb-12 md:mb-16 mt-4 md:mt-0"
         />
 
@@ -152,20 +153,10 @@ const WholesalersSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Título con highlight animado */}
                   <div>
                     <h3 className="text-base md:text-xl font-serif font-bold text-text-primary mb-1 leading-snug">
                       {benefit.title}
                     </h3>
-                    {benefit.highlight && (
-                      <span className={`
-                        inline-block text-lg md:text-2xl font-black text-accent-raspberry
-                        transition-all duration-300
-                        ${hoveredCard === index ? 'scale-125' : 'scale-100'}
-                      `}>
-                        {benefit.highlight}
-                      </span>
-                    )}
                   </div>
 
                   <p className="text-text-secondary text-sm leading-relaxed">
@@ -197,7 +188,7 @@ const WholesalersSection: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 -translate-x-full group-hover/cta:translate-x-full transition-transform duration-1000 ease-out" />
 
             {/* Patrón decorativo */}
-            <div className="absolute inset-0 opacity-10 group-hover/cta:opacity-20 transition-opacity duration-500">
+            <div className="absolute inset-0 opacity-10 group-hover/cta:opacity-20 transition-opacity duration-500 pointer-events-none" aria-hidden="true">
               <svg width="100%" height="100%">
                 <pattern id="wholesaler-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
                   <circle cx="20" cy="20" r="2" fill="white" />
@@ -210,7 +201,7 @@ const WholesalersSection: React.FC = () => {
               {/* Badge pequeño arriba */}
               <div className="inline-block">
                 <div className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/30">
-                  🎉 Programa para revendedores
+                  Para revender
                 </div>
               </div>
 
@@ -220,7 +211,7 @@ const WholesalersSection: React.FC = () => {
               
               <p className="text-base md:text-xl text-white/90 leading-relaxed">
                 Escribinos por WhatsApp o dejá tus datos en el formulario.
-                Te contamos cantidades, condiciones y cómo empezar.
+                Te contamos cantidades mínimas y condiciones, sin local a la calle.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

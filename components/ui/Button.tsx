@@ -21,9 +21,12 @@ export type ButtonProps = ButtonAsButton | ButtonAsLink
 
 const buttonStyles = {
   base: `
+    relative
     inline-flex items-center justify-center
     font-sans font-semibold
     rounded-lg
+    touch-manipulation
+    cursor-pointer
     transition-all duration-200
     disabled:opacity-50 disabled:cursor-not-allowed
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-peach focus-visible:ring-offset-2

@@ -173,7 +173,7 @@ ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
       <Container>
         <SectionHeading
           title="Hablemos"
-          subtitle="¿Tenés dudas? ¿Querés hacer un pedido? Escribinos y te respondemos por WhatsApp."
+          subtitle="Pedidos y consultas por WhatsApp. No tenemos local a la calle: coordinamos todo por mensaje."
           className="mb-12 md:mb-16"
         />
 

@@ -16,7 +16,7 @@ const FAQSection: React.FC = () => {
   return (
     <section id="faq" className="py-12 md:py-20 -mt-16 md:-mt-28 pt-24 md:pt-36 bg-background-soft relative">
       {/* Elemento decorativo de overlap superior */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none" aria-hidden="true">
         <div className="bg-accent-peach text-white px-6 py-3 rounded-full shadow-large font-bold text-sm md:text-base whitespace-nowrap rotate-[-3deg] hover:rotate-0 transition-all duration-300">
           ❓ ¿Tenés dudas?
         </div>
@@ -25,7 +25,7 @@ const FAQSection: React.FC = () => {
       <Container>
         <SectionHeading
           title="Preguntas frecuentes"
-          subtitle="Todo lo que necesitás saber sobre Bonnilda"
+          subtitle="Pedidos por WhatsApp, despacho en 48 hs y los seis sabores de siempre."
           className="mb-12 md:mb-16"
         />
 

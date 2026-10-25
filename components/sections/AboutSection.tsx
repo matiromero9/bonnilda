@@ -3,7 +3,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
-import Card from '@/components/ui/Card'
 
 const AboutSection: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -141,33 +140,14 @@ const AboutSection: React.FC = () => {
     }
   }, [])
 
-  const values = [
-    {
-      icon: '👵',
-      title: 'Receta de la abuela',
-      description: 'La misma receta que nos hacía la abuela Nilda cuando éramos chicos.',
-    },
-    {
-      icon: '🔧',
-      title: 'De la cocina a la fábrica',
-      description: 'Empezamos a mano en 2013 y hoy elaboramos con maquinaria de fábrica, sin perder el cuidado de siempre.',
-    },
-    {
-      icon: '❤️',
-      title: 'Hecho con cariño',
-      description: 'Cada caja sale de la misma familia que empezó en Los Molles.',
-    },
-  ]
-
   return (
     <section id="sobre" className="py-16 md:py-24 bg-background">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
-          {/* Video */}
-          <div className="order-2 lg:order-1">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-x-12 items-start">
+          <div className="lg:col-span-5 lg:pt-6">
             <div 
               ref={containerRef}
-              className="relative max-w-[360px] mx-auto lg:mx-0"
+              className="relative max-w-[360px] mx-auto lg:mx-0 lg:-rotate-1"
               data-hide-fab
               onMouseEnter={() => setShowControls(true)}
               onMouseLeave={() => setShowControls(false)}
@@ -265,53 +245,37 @@ const AboutSection: React.FC = () => {
                 </button>
               </div>
               
-              {/* Caption */}
-              <p className="text-center text-text-muted text-sm mt-3 italic">
-                Así hacemos nuestros bombones
+              <p className="text-center lg:text-left text-text-muted text-sm mt-3 italic">
+                El proceso de hoy, con la receta de siempre.
               </p>
             </div>
           </div>
 
-          {/* Contenido */}
-          <div className="order-1 lg:order-2 space-y-6">
+          <div className="lg:col-span-7 space-y-6 lg:pt-4">
+            <p className="text-sm font-semibold tracking-wide uppercase text-accent-raspberry">
+              Desde 2013 · Los Molles, San Luis
+            </p>
             <SectionHeading
               title="Nuestra historia"
               align="left"
             />
             <div className="space-y-4 text-text-secondary leading-relaxed">
               <p>
-                Bonnilda nació para recrear los bombones que nos hacía la abuela Nilda cuando éramos chicos.
+                Bonnilda nació para recrear los bombones de fruta que nos hacía la abuela Nilda
+                cuando éramos chicos. En 2013, nuestros padres empezaron a elaborarlos a mano
+                en Los Molles, San Luis: sin moldes, cada uno distinto.
               </p>
               <p>
-                En 2013, nuestros padres empezaron a elaborarlos a mano en Los Molles, San Luis: sin moldes, 
-                cada uno distinto, con el sabor frutal como protagonista.
+                Con los años sumamos herramientas de fábrica, pero la receta no cambió:
+                ácido cítrico, pectina, esencia de cada fruta, glucosa y azúcar. Cinco ingredientes,
+                seis sabores.
               </p>
               <p className="font-medium text-text-primary">
-                Con los años fuimos creciendo, sumamos maquinaria y herramientas de fábrica, pero mantenemos 
-                la misma receta y el mismo cariño de siempre.
+                Sigue siendo un negocio de familia. Los pedidos se cierran por WhatsApp
+                y despachamos en 48 hs a todo el país.
               </p>
             </div>
           </div>
-        </div>
-
-        {/* Valores */}
-        <SectionHeading
-          title="Lo que nos define"
-          className="mb-12"
-        />
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
-            <Card key={index} padding="lg" className="text-center">
-              <div className="text-5xl mb-4">{value.icon}</div>
-              <h3 className="text-xl font-serif font-bold text-text-primary mb-3">
-                {value.title}
-              </h3>
-              <p className="text-text-secondary leading-relaxed">
-                {value.description}
-              </p>
-            </Card>
-          ))}
         </div>
       </Container>
     </section>
