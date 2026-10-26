@@ -81,7 +81,7 @@ const Header: React.FC = () => {
       </div>
 
       <Container>
-        <nav className="relative z-20 flex items-center justify-between py-4 md:py-5" aria-label="Navegación principal">
+        <nav className="relative z-20 flex items-center justify-between py-5 md:py-6" aria-label="Navegación principal">
           <Link 
             href="/" 
             className="flex items-center hover:opacity-80 transition-opacity cursor-pointer"
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
               alt="Bonnilda"
               width={861}
               height={456}
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-14 md:h-18 w-auto object-contain"
               priority
             />
           </Link>
