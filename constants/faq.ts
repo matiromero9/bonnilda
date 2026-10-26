@@ -18,6 +18,10 @@ export const FAQS: FAQ[] = [
     answer: 'Sí, despachamos a todo el país desde Los Molles, San Luis. El envío se coordina por WhatsApp cuando confirmás el pedido.',
   },
   {
+    question: '¿Tienen local a la calle?',
+    answer: 'No, no tenemos local a la calle. Pedidos y consultas por WhatsApp.',
+  },
+  {
     question: '¿Cuánto tardan en despachar?',
     answer: 'Despachamos en 48 hs a todo el país. Una vez que coordinamos el pago, preparamos tu pedido y lo enviamos lo antes posible.',
   },
@@ -35,10 +39,6 @@ export const FAQS: FAQ[] = [
   },
   {
     question: '¿Qué sabores tienen?',
-    answer: 'Tenemos 6 sabores: frutilla, naranja, manzana, ananá, uva y cereza. Todos hechos a mano con la receta de siempre.',
-  },
-  {
-    question: '¿Qué ingredientes tienen?',
-    answer: 'Solo 5 ingredientes: azúcar, glucosa, pectina, ácido cítrico y esencia de cada fruta. Nada más.',
+    answer: 'Tenemos 6 sabores: frutilla, naranja, manzana, ananá, uva y cereza.',
   },
 ]
