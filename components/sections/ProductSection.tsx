@@ -70,7 +70,7 @@ const ProductSection: React.FC = () => {
       <Container>
         <SectionHeading
           title="Nuestros sabores"
-          subtitle="Seis sabores. Cinco ingredientes. La misma receta familiar desde 2013."
+          subtitle="Seis sabores. Cinco ingredientes."
           className="mb-12 md:mb-16"
         />
 

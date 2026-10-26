@@ -15,7 +15,7 @@ const StructuredData: React.FC = () => {
     name: 'Bonnilda',
     description: `Bombones frutales artesanales de ${LOCATION.displayShort}`,
     url: SITE_URL,
-    logo: `${SITE_URL}/images/logo.jpeg`,
+    logo: `${SITE_URL}/images/logo-bonnilda.png`,
     image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
     telephone: PHONE_NUMBER.formatted,
     address: {

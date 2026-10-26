@@ -211,7 +211,7 @@ const WholesalersSection: React.FC = () => {
               
               <p className="text-base md:text-xl text-white/90 leading-relaxed">
                 Escribinos por WhatsApp o dejá tus datos en el formulario.
-                Te contamos cantidades mínimas y condiciones, sin local a la calle.
+                Te contamos cantidades mínimas y condiciones.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">

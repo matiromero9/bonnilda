@@ -82,24 +82,19 @@ const Header: React.FC = () => {
 
       <Container>
         <nav className="relative z-20 flex items-center justify-between py-4 md:py-5" aria-label="Navegación principal">
-          {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
+            className="flex items-center hover:opacity-80 transition-opacity cursor-pointer"
             aria-label="Bonnilda - Ir al inicio"
           >
-            <div className="relative w-10 h-10 md:w-12 md:h-12">
-              <Image
-                src="/images/logo.jpeg"
-                alt="Logo Bonnilda"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <span className="text-2xl md:text-3xl font-serif font-bold text-text-primary">
-              Bonnilda
-            </span>
+            <Image
+              src="/images/logo-bonnilda.png"
+              alt="Bonnilda"
+              width={861}
+              height={456}
+              className="h-10 md:h-12 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
