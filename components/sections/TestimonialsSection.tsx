@@ -115,7 +115,11 @@ const TestimonialsSection: React.FC = () => {
   const testimonial = TESTIMONIALS[index]
 
   return (
-    <section id="testimonios" className="relative bg-background pt-16 pb-28 md:pt-24 md:pb-40">
+    <section
+      id="testimonios"
+      data-hide-fab
+      className="relative bg-background scroll-mt-28 pt-16 pb-28 md:scroll-mt-36 md:pt-24 md:pb-40"
+    >
       <Container>
         <SectionHeading
           title="Lo que dicen quienes los probaron"
