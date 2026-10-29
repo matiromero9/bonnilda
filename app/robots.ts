@@ -6,14 +6,18 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/'],
+        disallow: ['/api/'],
       },
       {
-        userAgent: 'GPTBot',
+        userAgent: 'Googlebot',
         allow: '/',
       },
       {
-        userAgent: 'ClaudeBot',
+        userAgent: 'Bingbot',
+        allow: '/',
+      },
+      {
+        userAgent: 'GPTBot',
         allow: '/',
       },
       {
@@ -21,7 +25,15 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
       {
+        userAgent: 'ClaudeBot',
+        allow: '/',
+      },
+      {
         userAgent: 'Google-Extended',
+        allow: '/',
+      },
+      {
+        userAgent: 'OAI-SearchBot',
         allow: '/',
       },
     ],

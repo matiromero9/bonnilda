@@ -1,4 +1,15 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Página no encontrada',
+  openGraph: {
+    title: 'Página no encontrada',
+  },
+  twitter: {
+    title: 'Página no encontrada',
+  },
+}
 
 export default function NotFound() {
   return (
