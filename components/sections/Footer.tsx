@@ -10,6 +10,7 @@ const Footer: React.FC = () => {
       { label: 'Nuestros sabores', href: '#producto' },
       { label: 'Nuestra historia', href: '#sobre' },
       { label: 'Cómo pedir', href: '#como-pedir' },
+      { label: 'Opiniones', href: '#testimonios' },
     ],
     business: [
       { label: 'Quiero revender', href: '#mayoristas' },
