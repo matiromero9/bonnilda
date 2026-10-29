@@ -19,8 +19,13 @@ const nunitoSans = Nunito_Sans({
   display: 'swap',
 })
 
+const defaultTitle = 'Bonnilda | Bombones frutales artesanales de Los Molles, San Luis'
+
 export const metadata: Metadata = {
-  title: 'Bonnilda | Bombones frutales artesanales de Los Molles, San Luis',
+  title: {
+    default: defaultTitle,
+    template: '%s | Bonnilda',
+  },
   description: 'Bombones frutales artesanales desde 2013 en Los Molles, San Luis. 6 sabores, hechos a mano. Pedí por WhatsApp o consultá para revender. Envíos a todo el país.',
   authors: [{ name: 'Bonnilda' }],
   creator: 'Bonnilda',
@@ -34,7 +39,10 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: 'https://www.bonnilda.com.ar',
     siteName: 'Bonnilda',
-    title: 'Bonnilda | Bombones frutales artesanales de Los Molles, San Luis',
+    title: {
+      default: defaultTitle,
+      template: '%s | Bonnilda',
+    },
     description: 'Bombones frutales artesanales desde 2013 en Los Molles, San Luis. 6 sabores, hechos a mano. Pedí por WhatsApp o consultá para revender. Envíos a todo el país.',
     images: [
       {
@@ -47,7 +55,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bonnilda | Bombones frutales artesanales de Los Molles, San Luis',
+    title: {
+      default: defaultTitle,
+      template: '%s | Bonnilda',
+    },
     description: 'Bombones frutales artesanales desde 2013 en Los Molles, San Luis. 6 sabores, hechos a mano. Pedí por WhatsApp o consultá para revender.',
     images: ['/images/og-bonnilda.jpg'],
   },
