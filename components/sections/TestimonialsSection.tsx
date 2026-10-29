@@ -185,7 +185,7 @@ const TestimonialsSection: React.FC = () => {
             </Card>
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-3 md:gap-4">
+          <div className="mt-6 flex items-center justify-center gap-2 md:gap-4">
             <button
               type="button"
               onClick={() => goTo(indexRef.current - 1)}
@@ -198,7 +198,7 @@ const TestimonialsSection: React.FC = () => {
               </svg>
             </button>
 
-            <div className="flex items-center gap-2" role="group" aria-label="Elegir testimonio">
+            <div className="flex items-center gap-1 sm:gap-2" role="group" aria-label="Elegir testimonio">
               {TESTIMONIALS.map((item, dotIndex) => {
                 const isActive = dotIndex === index
                 return (

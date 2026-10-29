@@ -17,6 +17,7 @@ export const TESTIMONIALS: Testimonial[] = [
   { name: 'Flavia L.', rating: 5, text: 'Son bombones de fruta como los que comía en mi infancia, ricos todos en especial el de uva. La atención de Matías 10/10', source: 'Google' },
   { name: 'Edith S.', rating: 5, text: 'Exquisitos los bombones!! El pedido llegó en tiempo y forma. Muy amables!! Gracias!!', source: 'Google' },
   { name: 'Mario R.', rating: 5, text: 'Excelente relación de precio calidad', source: 'Google' },
+  { name: 'Gabriel G.', rating: 5, text: 'Los mejores bombones de fruta, recomiendo los de membrillo, los de higo y los rojos', source: 'Google' },
 ]
 
 export const GOOGLE_REVIEW_URL = 'https://g.page/r/CUNtGMK9Fi6BEBE/review'
