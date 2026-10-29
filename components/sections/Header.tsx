@@ -46,6 +46,7 @@ const Header: React.FC = () => {
     { label: 'Historia', href: '#sobre' },
     { label: 'Cómo pedir', href: '#como-pedir' },
     { label: 'Mayoristas', href: '#mayoristas' },
+    { label: 'Opiniones', href: '#testimonios' },
     { label: 'Preguntas', href: '#faq' },
     { label: 'Contacto', href: '#contacto' },
   ]
@@ -98,7 +99,7 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-5 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}

@@ -4,6 +4,7 @@ import ProductSection from '@/components/sections/ProductSection'
 import AboutSection from '@/components/sections/AboutSection'
 import HowToOrderSection from '@/components/sections/HowToOrderSection'
 import WholesalersSection from '@/components/sections/WholesalersSection'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import FAQSection from '@/components/sections/FAQSection'
 import ContactSection from '@/components/sections/ContactSection'
 import Footer from '@/components/sections/Footer'
@@ -20,6 +21,7 @@ export default function Home() {
         <AboutSection />
         <HowToOrderSection />
         <WholesalersSection />
+        <TestimonialsSection />
         <FAQSection />
         <ContactSection />
       </main>
