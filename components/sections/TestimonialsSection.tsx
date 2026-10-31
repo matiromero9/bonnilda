@@ -13,6 +13,8 @@ import {
 
 const ROTATE_MS = 6000
 const FADE_MS = 400
+/** Con muchos ítems los puntos de 44px desbordan un viewport de 390px. */
+const COMPACT_PAGER_MIN = 7
 
 const StarIcon: React.FC<{ filled: boolean }> = ({ filled }) => (
   <svg
@@ -113,6 +115,7 @@ const TestimonialsSection: React.FC = () => {
   }
 
   const testimonial = TESTIMONIALS[index]
+  const useCompactPager = total >= COMPACT_PAGER_MIN
 
   return (
     <section
@@ -198,29 +201,39 @@ const TestimonialsSection: React.FC = () => {
               </svg>
             </button>
 
-            <div className="flex items-center gap-1 sm:gap-2" role="group" aria-label="Elegir testimonio">
-              {TESTIMONIALS.map((item, dotIndex) => {
-                const isActive = dotIndex === index
-                return (
-                  <button
-                    key={item.name}
-                    type="button"
-                    aria-label={`Ir al testimonio ${dotIndex + 1} de ${total}: ${item.name}`}
-                    aria-controls="testimonios-slide"
-                    aria-current={isActive ? 'true' : undefined}
-                    onClick={() => goTo(dotIndex)}
-                    className="h-11 min-h-11 min-w-11 rounded-full px-2 focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2"
-                  >
-                    <span
-                      className={`mx-auto block h-2.5 rounded-full transition-all ${
-                        isActive ? 'w-6 bg-accent-peach' : 'w-2.5 bg-border hover:bg-accent-peach/50'
-                      }`}
-                      aria-hidden="true"
-                    />
-                  </button>
-                )
-              })}
-            </div>
+            {useCompactPager ? (
+              <p
+                className="min-w-[4.5rem] select-none text-center font-title text-sm font-semibold tabular-nums text-text-secondary"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                {index + 1} / {total}
+              </p>
+            ) : (
+              <div className="flex items-center gap-1 sm:gap-2" role="group" aria-label="Elegir testimonio">
+                {TESTIMONIALS.map((item, dotIndex) => {
+                  const isActive = dotIndex === index
+                  return (
+                    <button
+                      key={item.name}
+                      type="button"
+                      aria-label={`Ir al testimonio ${dotIndex + 1} de ${total}: ${item.name}`}
+                      aria-controls="testimonios-slide"
+                      aria-current={isActive ? 'true' : undefined}
+                      onClick={() => goTo(dotIndex)}
+                      className="h-11 min-h-11 min-w-11 rounded-full px-2 focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2"
+                    >
+                      <span
+                        className={`mx-auto block h-2.5 rounded-full transition-all ${
+                          isActive ? 'w-6 bg-accent-peach' : 'w-2.5 bg-border hover:bg-accent-peach/50'
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  )
+                })}
+              </div>
+            )}
 
             <button
               type="button"
