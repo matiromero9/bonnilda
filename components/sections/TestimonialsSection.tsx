@@ -12,9 +12,8 @@ import {
 } from '@/constants/testimonials'
 
 const ROTATE_MS = 6000
+const REDUCED_ROTATE_MS = 12000
 const FADE_MS = 400
-/** Con muchos ítems los puntos de 44px desbordan un viewport de 390px. */
-const COMPACT_PAGER_MIN = 7
 
 const StarIcon: React.FC<{ filled: boolean }> = ({ filled }) => (
   <svg
@@ -87,11 +86,11 @@ const TestimonialsSection: React.FC = () => {
   )
 
   useEffect(() => {
-    if (prefersReducedMotion || isPaused || total < 2) return
+    if (isPaused || total < 2) return
 
     const timerId = window.setInterval(() => {
       goTo(indexRef.current + 1)
-    }, ROTATE_MS)
+    }, prefersReducedMotion ? REDUCED_ROTATE_MS : ROTATE_MS)
 
     return () => window.clearInterval(timerId)
   }, [goTo, isPaused, prefersReducedMotion, total])
@@ -104,18 +103,7 @@ const TestimonialsSection: React.FC = () => {
     setIsPaused(false)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'ArrowLeft') {
-      event.preventDefault()
-      goTo(indexRef.current - 1)
-    } else if (event.key === 'ArrowRight') {
-      event.preventDefault()
-      goTo(indexRef.current + 1)
-    }
-  }
-
   const testimonial = TESTIMONIALS[index]
-  const useCompactPager = total >= COMPACT_PAGER_MIN
 
   return (
     <section
@@ -139,7 +127,6 @@ const TestimonialsSection: React.FC = () => {
           onMouseLeave={() => setIsPaused(false)}
           onFocusCapture={() => setIsPaused(true)}
           onBlurCapture={handleBlur}
-          onKeyDown={handleKeyDown}
         >
           <div
             id="testimonios-slide"
@@ -188,78 +175,18 @@ const TestimonialsSection: React.FC = () => {
             </Card>
           </div>
 
-          <div className="mt-6 flex items-center justify-center gap-2 md:gap-4">
-            <button
-              type="button"
-              onClick={() => goTo(indexRef.current - 1)}
-              aria-label="Ver testimonio anterior"
-              aria-controls="testimonios-slide"
-              className="inline-flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full border-2 border-border bg-surface text-text-primary transition-colors hover:border-accent-peach hover:bg-surface-hover focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2"
+          <div className="mt-10 flex justify-center md:mt-12">
+            <Button
+              variant="primary"
+              size="md"
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="min-h-11 w-full sm:w-auto"
             >
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            {useCompactPager ? (
-              <p
-                className="min-w-[4.5rem] select-none text-center font-title text-sm font-semibold tabular-nums text-text-secondary"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                {index + 1} / {total}
-              </p>
-            ) : (
-              <div className="flex items-center gap-1 sm:gap-2" role="group" aria-label="Elegir testimonio">
-                {TESTIMONIALS.map((item, dotIndex) => {
-                  const isActive = dotIndex === index
-                  return (
-                    <button
-                      key={item.name}
-                      type="button"
-                      aria-label={`Ir al testimonio ${dotIndex + 1} de ${total}: ${item.name}`}
-                      aria-controls="testimonios-slide"
-                      aria-current={isActive ? 'true' : undefined}
-                      onClick={() => goTo(dotIndex)}
-                      className="h-11 min-h-11 min-w-11 rounded-full px-2 focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2"
-                    >
-                      <span
-                        className={`mx-auto block h-2.5 rounded-full transition-all ${
-                          isActive ? 'w-6 bg-accent-peach' : 'w-2.5 bg-border hover:bg-accent-peach/50'
-                        }`}
-                        aria-hidden="true"
-                      />
-                    </button>
-                  )
-                })}
-              </div>
-            )}
-
-            <button
-              type="button"
-              onClick={() => goTo(indexRef.current + 1)}
-              aria-label="Ver testimonio siguiente"
-              aria-controls="testimonios-slide"
-              className="inline-flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full border-2 border-border bg-surface text-text-primary transition-colors hover:border-accent-peach hover:bg-surface-hover focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2"
-            >
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+              Dejanos tu opinión
+            </Button>
           </div>
-        </div>
-
-        <div className="mt-10 flex justify-center md:mt-12">
-          <Button
-            variant="secondary"
-            size="md"
-            href={GOOGLE_REVIEW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="min-h-11 w-full sm:w-auto"
-          >
-            Dejanos tu opinión
-          </Button>
         </div>
       </Container>
     </section>
