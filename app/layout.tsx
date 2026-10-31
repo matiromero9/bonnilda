@@ -4,6 +4,7 @@ import './globals.css'
 import SkipLink from '@/components/ui/SkipLink'
 import StructuredData from '@/components/StructuredData'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import { GTM_ID } from '@/constants/gtm'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -80,15 +81,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-
   return (
     <html lang="es-AR" className={`${fraunces.variable} ${nunitoSans.variable}`}>
       <head>
         <StructuredData />
       </head>
       <body>
-        {gaId && <GoogleAnalytics measurementId={gaId} />}
+        <GoogleAnalytics gtmId={GTM_ID} />
         <SkipLink />
         {children}
       </body>
