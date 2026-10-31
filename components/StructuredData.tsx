@@ -4,10 +4,26 @@ import { FAQS } from '@/constants/faq'
 
 /**
  * Structured Data (JSON-LD) para SEO
- * Ayuda a Google a entender mejor el contenido de la página
- * y mostrar rich snippets en los resultados de búsqueda
+ *
+ * No incluir schema Product: Google exige offers, review o aggregateRating
+ * para un rich result válido. El sitio no publica precios y no se reutilizan
+ * reseñas de Google Business como Review/AggregateRating. Un Product incompleto
+ * genera el error de Search Console "must specify offers, review or aggregateRating".
  */
 const StructuredData: React.FC = () => {
+  const areaServed = {
+    '@type': 'Country',
+    name: LOCATION.country,
+  }
+
+  // Localidad/región/país sí; nunca streetAddress (negocio sin local a la calle).
+  const postalAddress = {
+    '@type': 'PostalAddress',
+    addressLocality: LOCATION.city,
+    addressRegion: LOCATION.province,
+    addressCountry: LOCATION.countryCode,
+  }
+
   // Schema.org Organization
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -18,12 +34,8 @@ const StructuredData: React.FC = () => {
     logo: `${SITE_URL}/images/logo-bonnilda.png`,
     image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
     telephone: PHONE_NUMBER.formatted,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: LOCATION.city,
-      addressRegion: LOCATION.province,
-      addressCountry: LOCATION.countryCode,
-    },
+    areaServed,
+    address: postalAddress,
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
@@ -43,33 +55,17 @@ const StructuredData: React.FC = () => {
     name: 'Bonnilda',
     description: 'Bombones de fruta de Los Molles, San Luis. Receta familiar desde 2013, inspirada en la abuela Nilda. Pedidos por WhatsApp.',
     url: SITE_URL,
+    logo: `${SITE_URL}/images/logo-bonnilda.png`,
     telephone: PHONE_NUMBER.formatted,
     image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: LOCATION.city,
-      addressRegion: LOCATION.province,
-      addressCountry: LOCATION.countryCode,
-    },
+    areaServed,
+    address: postalAddress,
     geo: {
       '@type': 'GeoCoordinates',
       latitude: LOCATION.coordinates.latitude,
       longitude: LOCATION.coordinates.longitude,
     },
     paymentAccepted: ['Efectivo', 'Transferencia bancaria', 'Mercado Pago'],
-  }
-
-  // Schema.org Product
-  const productSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: 'Bombones Artesanales de Fruta',
-    description: `Bombones de fruta con la receta familiar de Bonnilda, elaborados en ${LOCATION.displayShort}.`,
-    image: `${SITE_URL}/images/hero-caja-abierta.jpeg`,
-    brand: {
-      '@type': 'Brand',
-      name: 'Bonnilda',
-    },
   }
 
   // Schema.org FAQPage
@@ -95,10 +91,6 @@ const StructuredData: React.FC = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
       <script
         type="application/ld+json"
