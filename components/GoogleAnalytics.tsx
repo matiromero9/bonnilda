@@ -1,38 +1,27 @@
 import Script from 'next/script'
 
 interface GoogleAnalyticsProps {
-  measurementId: string
+  gtmId: string
 }
 
 /**
- * Google Analytics 4 Component
- * Tracks page views, events, and conversions
+ * Google tag en el layout raíz (una vez, todas las páginas).
+ * Snippet de "Instalar manualmente": gtm.js + dataLayer/gtag + gtag('js', new Date()).
  */
-export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
-  // No renderizar en desarrollo para no contaminar los datos
-  if (process.env.NODE_ENV === 'development') {
-    return null
-  }
-
+export default function GoogleAnalytics({ gtmId }: GoogleAnalyticsProps) {
   return (
     <>
-      {/* Google Analytics Script */}
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+        src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`}
         strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-tag-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-
-          gtag('config', '${measurementId}', {
-            page_path: window.location.pathname,
-          });
         `}
       </Script>
     </>
   )
 }
-

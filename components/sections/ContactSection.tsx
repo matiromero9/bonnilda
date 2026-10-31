@@ -11,6 +11,7 @@ import { sanitizeName, sanitizePhone, sanitizeText, rateLimiter, checkHoneypot, 
 import { ContactFormData } from '@/lib/validations'
 import { SOCIAL_MEDIA, PHONE_NUMBER, ORDER_INFO } from '@/constants/contact'
 import { analytics } from '@/lib/analytics'
+import WhatsAppLink from '@/components/ui/WhatsAppLink'
 
 type SubmitState = 'idle' | 'validating' | 'submitting' | 'success' | 'error'
 
@@ -110,6 +111,7 @@ ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
       
       // Trackear evento en Google Analytics
       analytics.trackFormSubmit(sanitizedData.type as 'minorista' | 'mayorista')
+      analytics.trackWhatsAppClick('formulario')
       
       // Abrir WhatsApp en nueva pestaña
       window.open(whatsappURL, '_blank')
@@ -369,15 +371,13 @@ ${sanitizedData.message ? `💬 *Mensaje:*\n${sanitizedData.message}` : ''}
 
                 <p className="text-sm text-text-muted text-center">
                   También podés escribirnos directamente por WhatsApp al{' '}
-                  <a 
-                    href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessageGeneral)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => analytics.trackWhatsAppClick('contact')}
+                  <WhatsAppLink
+                    location="contacto"
+                    message={ORDER_INFO.whatsappMessageGeneral}
                     className="inline-flex items-center min-h-11 text-accent-peach hover:text-accent-raspberry font-medium transition-colors"
                   >
                     {PHONE_NUMBER.display}
-                  </a>
+                  </WhatsAppLink>
                 </p>
               </form>
             </Card>

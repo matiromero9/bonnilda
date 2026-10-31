@@ -1,54 +1,67 @@
 /**
- * Google Analytics Helper Functions
- * Para trackear eventos personalizados
+ * Google tag / dataLayer helpers
  */
 
-// Definición de tipos para eventos
-export type GAEventName = 
+export type GAEventName =
   | 'form_submit'
   | 'whatsapp_click'
   | 'cta_click'
   | 'social_click'
   | 'faq_expand'
 
+export type WhatsAppClickLocation =
+  | 'header'
+  | 'hero'
+  | 'como-pedir'
+  | 'mayoristas'
+  | 'contacto'
+  | 'formulario'
+  | 'footer'
+  | 'floating-cta'
+
 interface GAEventParams {
   event_category?: string
   event_label?: string
   value?: number
+  location?: WhatsAppClickLocation | string
   [key: string]: unknown
 }
 
-type GtagFunction = (command: 'event', eventName: GAEventName, params?: GAEventParams) => void
-
 declare global {
   interface Window {
-    gtag?: GtagFunction
+    dataLayer?: unknown[]
+    gtag?: (...args: unknown[]) => void
   }
 }
 
+const pushToDataLayer = (payload: Record<string, unknown>) => {
+  if (typeof window === 'undefined') return
+  window.dataLayer = window.dataLayer || []
+  window.dataLayer.push(payload)
+}
+
 /**
- * Envía un evento a Google Analytics
- * @param eventName - Nombre del evento
- * @param params - Parámetros adicionales del evento
+ * Envía un evento a Google tag (gtag) o, si no está listo, a dataLayer.
  */
 export const trackEvent = (eventName: GAEventName, params?: GAEventParams) => {
-  // Solo trackear en producción
+  if (typeof window === 'undefined') return
+
   if (process.env.NODE_ENV === 'development') {
     console.log('📊 [GA Event]', eventName, params)
+  }
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params)
     return
   }
 
-  // Verificar que gtag esté disponible
-  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-    window.gtag('event', eventName, params)
-  }
+  pushToDataLayer({ event: eventName, ...params })
 }
 
 /**
  * Eventos específicos del negocio
  */
 export const analytics = {
-  // Tracking de formulario
   trackFormStart: () => {
     trackEvent('form_submit', {
       event_category: 'engagement',
@@ -64,15 +77,10 @@ export const analytics = {
     })
   },
 
-  // Tracking de WhatsApp
-  trackWhatsAppClick: (source: 'hero' | 'footer' | 'contact' | 'mayoristas' | 'floating-cta') => {
-    trackEvent('whatsapp_click', {
-      event_category: 'engagement',
-      event_label: `whatsapp_${source}`,
-    })
+  trackWhatsAppClick: (location: WhatsAppClickLocation) => {
+    trackEvent('whatsapp_click', { location })
   },
 
-  // Tracking de CTAs
   trackCTAClick: (ctaText: string, location: string) => {
     trackEvent('cta_click', {
       event_category: 'engagement',
@@ -80,7 +88,6 @@ export const analytics = {
     })
   },
 
-  // Tracking de redes sociales
   trackSocialClick: (platform: 'instagram' | 'facebook' | 'whatsapp') => {
     trackEvent('social_click', {
       event_category: 'engagement',
@@ -88,11 +95,10 @@ export const analytics = {
     })
   },
 
-  // Tracking de FAQ
   trackFAQExpand: (question: string) => {
     trackEvent('faq_expand', {
       event_category: 'engagement',
-      event_label: question.substring(0, 50), // Limitar longitud
+      event_label: question.substring(0, 50),
     })
   },
 }

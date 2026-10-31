@@ -1,8 +1,8 @@
 import React from 'react'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
-import Button from '@/components/ui/Button'
-import { SOCIAL_MEDIA, ORDER_INFO } from '@/constants/contact'
+import WhatsAppLink from '@/components/ui/WhatsAppLink'
+import { ORDER_INFO } from '@/constants/contact'
 
 const HowToOrderSection: React.FC = () => {
   const steps = [
@@ -85,13 +85,11 @@ const HowToOrderSection: React.FC = () => {
               </p>
             </div>
             <div className="relative z-10 text-center md:text-right">
-              <Button 
-                variant="primary" 
-                size="lg" 
+              <WhatsAppLink
+                location="como-pedir"
+                variant="primary"
+                size="lg"
                 className="group w-full sm:w-auto min-h-12"
-                href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)} 
-                target="_blank" 
-                rel="noopener noreferrer"
               >
                 <span className="flex items-center gap-2">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -102,7 +100,7 @@ const HowToOrderSection: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
-              </Button>
+              </WhatsAppLink>
             </div>
           </div>
         </div>

@@ -1,45 +1,55 @@
-# 📊 Configuración de Google Analytics 4
+# Google tag (GTM-NN2HMFH2)
 
-## Paso 1: Obtener el Measurement ID
+El sitio carga el Google tag una sola vez en el layout raíz, en todas las páginas.
 
-1. Ve a https://analytics.google.com/
-2. Sigue los pasos de configuración
-3. Copia tu **Measurement ID** (formato: `G-XXXXXXXXXX`)
+- Contenedor: `GTM-NN2HMFH2`
+- Snippet: `gtm.js?id=GTM-NN2HMFH2` + `dataLayer` / `gtag` + `gtag('js', new Date())`
+- ID: `constants/gtm.ts`, override opcional con `NEXT_PUBLIC_GTM_ID`
+- No hay banner de cookies por ahora
 
-## Paso 2: Configurar Variables de Entorno
+## Variable de entorno (opcional)
 
-Crea un archivo `.env.local` en la raíz del proyecto con:
+El default ya es `GTM-NN2HMFH2`. Solo hace falta `.env.local` si se quiere otro contenedor:
 
 ```bash
-# Google Analytics
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GTM_ID=GTM-NN2HMFH2
 ```
 
-Reemplaza `G-XXXXXXXXXX` con tu ID real.
+En Vercel el ID queda hardcodeado de default; `NEXT_PUBLIC_GTM_ID` es opcional.
 
-## Paso 3: Deploy en Vercel
+## Evento `whatsapp_click`
 
-1. Ve a tu proyecto en Vercel: https://vercel.com/
-2. Settings → Environment Variables
-3. Agrega la variable:
-   - Name: `NEXT_PUBLIC_GA_MEASUREMENT_ID`
-   - Value: `G-XXXXXXXXXX`
-4. Redeploy el proyecto
+Cada enlace a `wa.me/5492664580822` (componente `WhatsAppLink`) dispara:
 
-## 🎯 Eventos que se trackean automáticamente:
+```js
+window.gtag?.('event', 'whatsapp_click', { location: '<sección>' })
+```
 
-- ✅ Page views (vistas de página)
-- ✅ Form submissions (envíos de formulario)
-- ✅ WhatsApp clicks
-- ✅ Social media clicks (Instagram, Facebook)
-- ✅ CTA clicks
-- ✅ FAQ expansions
+Valores de `location`: `header`, `hero`, `como-pedir`, `mayoristas`, `contacto`, `formulario`, `footer`, `floating-cta`.
 
-## 📈 Ver los datos:
+El envío del formulario de contacto también abre WhatsApp y dispara `whatsapp_click` con `location: formulario`.
 
-- Ve a https://analytics.google.com/
-- Selecciona tu propiedad "Bonnilda"
-- Reportes → Tiempo real (para ver visitantes ahora)
-- Reportes → Adquisición (para ver de dónde vienen)
-- Reportes → Engagement (para ver qué hacen)
+---
 
+## Para Matias: marcar `whatsapp_click` como evento clave (conversión) en GA4
+
+Hacerlo **después del deploy**, con el tag ya en producción.
+
+1. Entrá a [Google Analytics](https://analytics.google.com/) y elegí la propiedad de Bonnilda.
+2. Abre **Administrar** (engranaje, abajo a la izquierda).
+3. En **Visualización de datos** → **Eventos**.
+4. Esperá a que aparezca `whatsapp_click` (puede tardar unas horas; en **Informes → Tiempo real** se ve antes).
+5. En la fila de `whatsapp_click`, activá **Marcar como evento clave** (interruptor o estrella).
+6. Si el evento todavía no está en la lista, andá a **Eventos clave** → **Nuevo evento clave** y creá exactamente `whatsapp_click`.
+7. Comprobación: en el sitio, hacé clic en un botón de WhatsApp (se abre en otra pestaña). En **Tiempo real** debería verse el evento `whatsapp_click` y el parámetro `location`.
+
+No hace falta un trigger extra en GTM si el Google tag ya recibe `gtag('event', ...)`. El nombre tiene que coincidir **exactamente**: `whatsapp_click`.
+
+## Cómo verificar en local
+
+```bash
+npm run build
+npm start
+```
+
+En el navegador, DevTools → Red: `gtm.js?id=GTM-NN2HMFH2`. Consola: `dataLayer` después de un clic en WhatsApp.
