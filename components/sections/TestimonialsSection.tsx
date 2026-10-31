@@ -11,9 +11,12 @@ import {
   TESTIMONIAL_SOURCE_LABEL,
 } from '@/constants/testimonials'
 
-const ROTATE_MS = 6000
+const ROTATE_MS = 4000
 const REDUCED_ROTATE_MS = 12000
 const FADE_MS = 400
+
+const chevronButtonClass =
+  'absolute top-1/2 z-20 inline-flex h-11 w-11 min-h-11 min-w-11 -translate-y-1/2 items-center justify-center rounded-full border border-accent-peach/40 bg-surface/95 text-accent-peach shadow-soft transition-colors hover:border-accent-peach hover:bg-accent-peach hover:text-text-inverse focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2'
 
 const StarIcon: React.FC<{ filled: boolean }> = ({ filled }) => (
   <svg
@@ -128,51 +131,77 @@ const TestimonialsSection: React.FC = () => {
           onFocusCapture={() => setIsPaused(true)}
           onBlurCapture={handleBlur}
         >
-          <div
-            id="testimonios-slide"
-            role="group"
-            aria-roledescription="slide"
-            aria-label={`Testimonio ${index + 1} de ${total}`}
-            aria-live="polite"
-            className={`transition-opacity ease-in-out motion-reduce:transition-none ${
-              prefersReducedMotion ? 'duration-0' : 'duration-[400ms]'
-            } ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-          >
-            <Card padding="lg" className="relative overflow-hidden border-2 border-text-primary/5 shadow-artisan-soft">
-              <span
-                className="pointer-events-none absolute -top-3 left-4 font-title text-7xl leading-none text-accent-peach/20 select-none md:left-6 md:text-8xl"
-                aria-hidden="true"
-              >
-                “
-              </span>
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => goTo(indexRef.current - 1)}
+              aria-label="Ver testimonio anterior"
+              aria-controls="testimonios-slide"
+              className={`${chevronButtonClass} left-0 -translate-x-1/3 md:-translate-x-1/2`}
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-              <div className="relative z-10 space-y-5">
-                <div
-                  className="flex gap-1 text-[#C9A227]"
-                  role="img"
-                  aria-label={`Calificación: ${testimonial.rating} de 5 estrellas`}
+            <div
+              id="testimonios-slide"
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`Testimonio ${index + 1} de ${total}`}
+              aria-live="polite"
+              className={`transition-opacity ease-in-out motion-reduce:transition-none ${
+                prefersReducedMotion ? 'duration-0' : 'duration-[400ms]'
+              } ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+            >
+              <Card padding="lg" className="relative overflow-hidden border-2 border-text-primary/5 shadow-artisan-soft">
+                <span
+                  className="pointer-events-none absolute -top-3 left-4 font-title text-7xl leading-none text-accent-peach/20 select-none md:left-6 md:text-8xl"
+                  aria-hidden="true"
                 >
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <StarIcon key={star} filled={star <= testimonial.rating} />
-                  ))}
-                </div>
+                  “
+                </span>
 
-                <blockquote className="min-h-[7.5rem] md:min-h-[6.5rem]">
-                  <p className="text-base leading-relaxed text-text-primary md:text-lg">
-                    {testimonial.text}
-                  </p>
-                </blockquote>
+                <div className="relative z-10 space-y-5 px-2 md:px-0">
+                  <div
+                    className="flex gap-1 text-[#C9A227]"
+                    role="img"
+                    aria-label={`Calificación: ${testimonial.rating} de 5 estrellas`}
+                  >
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <StarIcon key={star} filled={star <= testimonial.rating} />
+                    ))}
+                  </div>
 
-                <div className="border-t-2 border-dashed border-border-light pt-4">
-                  <p className="font-title text-lg font-semibold text-text-primary">
-                    {testimonial.name}
-                  </p>
-                  <p className="mt-1 text-sm text-text-muted">
-                    {TESTIMONIAL_SOURCE_LABEL[testimonial.source]}
-                  </p>
+                  <blockquote className="min-h-[7.5rem] md:min-h-[6.5rem]">
+                    <p className="text-base leading-relaxed text-text-primary md:text-lg">
+                      {testimonial.text}
+                    </p>
+                  </blockquote>
+
+                  <div className="border-t-2 border-dashed border-border-light pt-4">
+                    <p className="font-title text-lg font-semibold text-text-primary">
+                      {testimonial.name}
+                    </p>
+                    <p className="mt-1 text-sm text-text-muted">
+                      {TESTIMONIAL_SOURCE_LABEL[testimonial.source]}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => goTo(indexRef.current + 1)}
+              aria-label="Ver testimonio siguiente"
+              aria-controls="testimonios-slide"
+              className={`${chevronButtonClass} right-0 translate-x-1/3 md:translate-x-1/2`}
+            >
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
 
           <div className="mt-10 flex justify-center md:mt-12">
