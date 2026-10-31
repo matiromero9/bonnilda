@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from '@/components/ui/Container'
-import Button from '@/components/ui/Button'
-import { SOCIAL_MEDIA, ORDER_INFO } from '@/constants/contact'
+import WhatsAppLink from '@/components/ui/WhatsAppLink'
 
 const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -113,28 +112,24 @@ const Header: React.FC = () => {
 
           {/* CTA Button Desktop */}
           <div className="hidden md:block">
-            <Button 
-              variant="primary" 
+            <WhatsAppLink
+              location="header"
+              variant="primary"
               size="md"
-              href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Hacer pedido
-            </Button>
+            </WhatsAppLink>
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
-            <Button
+            <WhatsAppLink
+              location="header"
               variant="primary"
               size="sm"
-              href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
-              target="_blank"
-              rel="noopener noreferrer"
               className="relative z-10 min-h-11 px-4"
             >
               Pedir
-            </Button>
+            </WhatsAppLink>
             <button
               className="inline-flex items-center justify-center min-h-11 min-w-11 text-text-primary hover:text-accent-peach transition-colors focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 rounded-lg"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -175,17 +170,15 @@ const Header: React.FC = () => {
                   {link.label}
                 </a>
               ))}
-              <Button 
-                variant="primary" 
-                size="md" 
+              <WhatsAppLink
+                location="header"
+                variant="primary"
+                size="md"
                 className="mt-3 mb-3 w-full min-h-11"
-                href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Hacer pedido
-              </Button>
+              </WhatsAppLink>
             </div>
           </Container>
         </div>

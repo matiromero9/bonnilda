@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from '@/components/ui/Container'
+import WhatsAppLink from '@/components/ui/WhatsAppLink'
 import { SOCIAL_MEDIA, PHONE_NUMBER, LOCATION, ORDER_INFO } from '@/constants/contact'
 
 const Footer: React.FC = () => {
@@ -55,30 +56,41 @@ const Footer: React.FC = () => {
             
             {/* Redes sociales */}
             <div className="flex gap-3 justify-center mb-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-11 h-11 min-w-11 min-h-11 rounded-full bg-white/10 flex items-center justify-center text-white/80 hover:bg-accent-peach hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 focus:ring-offset-text-primary"
-                  aria-label={`Seguinos en ${social.name}`}
-                >
-                  <span aria-hidden="true">{social.icon}</span>
-                </a>
-              ))}
+              {socialLinks.map((social) =>
+                social.name === 'WhatsApp' ? (
+                  <WhatsAppLink
+                    key={social.name}
+                    location="footer"
+                    message={ORDER_INFO.whatsappMessageGeneral}
+                    className="w-11 h-11 min-w-11 min-h-11 rounded-full bg-white/10 flex items-center justify-center text-white/80 hover:bg-accent-peach hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 focus:ring-offset-text-primary"
+                    aria-label={`Seguinos en ${social.name}`}
+                  >
+                    <span aria-hidden="true">{social.icon}</span>
+                  </WhatsAppLink>
+                ) : (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 min-w-11 min-h-11 rounded-full bg-white/10 flex items-center justify-center text-white/80 hover:bg-accent-peach hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 focus:ring-offset-text-primary"
+                    aria-label={`Seguinos en ${social.name}`}
+                  >
+                    <span aria-hidden="true">{social.icon}</span>
+                  </a>
+                )
+              )}
             </div>
 
             {/* Info de contacto compacta */}
             <div className="space-y-1 text-sm">
-              <a
-                href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessageGeneral)}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                location="footer"
+                message={ORDER_INFO.whatsappMessageGeneral}
                 className="flex items-center justify-center min-h-11 text-white/90 hover:text-accent-peach"
               >
                 WhatsApp: {PHONE_NUMBER.display}
-              </a>
+              </WhatsAppLink>
               <p className="text-white/90">{LOCATION.displayShort}</p>
             </div>
           </div>
@@ -115,17 +127,16 @@ const Footer: React.FC = () => {
             
             {/* Info de contacto destacada */}
             <div className="space-y-3 mb-6">
-              <a 
-                href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessageGeneral)}
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                location="footer"
+                message={ORDER_INFO.whatsappMessageGeneral}
                 className="flex items-center gap-3 text-white/70 hover:text-accent-peach transition-colors group"
               >
                 <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <span className="text-sm text-white/90">WhatsApp: {PHONE_NUMBER.display}</span>
-              </a>
+              </WhatsAppLink>
               <a
                 href={SOCIAL_MEDIA.instagram.url}
                 target="_blank"
@@ -150,16 +161,28 @@ const Footer: React.FC = () => {
             <div>
               <p className="text-white/80 text-sm mb-3 font-medium">Seguinos en redes</p>
               <div className="flex gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className="w-11 h-11 min-w-11 min-h-11 rounded-full bg-white/10 flex items-center justify-center text-white/80 hover:bg-accent-peach hover:text-white transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 focus:ring-offset-text-primary"
-                    aria-label={`Seguinos en ${social.name}`}
-                  >
-                    <span aria-hidden="true">{social.icon}</span>
-                  </a>
-                ))}
+                {socialLinks.map((social) =>
+                  social.name === 'WhatsApp' ? (
+                    <WhatsAppLink
+                      key={social.name}
+                      location="footer"
+                      message={ORDER_INFO.whatsappMessageGeneral}
+                      className="w-11 h-11 min-w-11 min-h-11 rounded-full bg-white/10 flex items-center justify-center text-white/80 hover:bg-accent-peach hover:text-white transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 focus:ring-offset-text-primary"
+                      aria-label={`Seguinos en ${social.name}`}
+                    >
+                      <span aria-hidden="true">{social.icon}</span>
+                    </WhatsAppLink>
+                  ) : (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      className="w-11 h-11 min-w-11 min-h-11 rounded-full bg-white/10 flex items-center justify-center text-white/80 hover:bg-accent-peach hover:text-white transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent-peach focus:ring-offset-2 focus:ring-offset-text-primary"
+                      aria-label={`Seguinos en ${social.name}`}
+                    >
+                      <span aria-hidden="true">{social.icon}</span>
+                    </a>
+                  )
+                )}
               </div>
             </div>
           </div>

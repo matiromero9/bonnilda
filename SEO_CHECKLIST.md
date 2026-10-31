@@ -63,8 +63,9 @@ Contacto y geo en schema:
 
 ### Analytics (código)
 
-- GA4 ya está cableado (`components/GoogleAnalytics.tsx` + `NEXT_PUBLIC_GA_MEASUREMENT_ID`).
-- Confirmar el ID en Vercel es opcional (ver pendientes).
+- Google tag (`GTM-NN2HMFH2`) en el layout raíz (`components/GoogleAnalytics.tsx` + `constants/gtm.ts`).
+- Override opcional: `NEXT_PUBLIC_GTM_ID`. Si no hay env, usa el default.
+- Evento `whatsapp_click` en cada enlace a WhatsApp (`components/ui/WhatsAppLink.tsx`).
 
 ---
 
@@ -92,9 +93,9 @@ Misma propiedad y mismo sitemap.
 
 Hoy la grilla usa emojis (frutilla, naranja, manzana, ananá, uva, cereza). Matias está en proceso de reemplazarlos por fotos. No tocar copy ni claims al subirlas.
 
-### 5. GA en Vercel (opcional)
+### 5. Evento clave `whatsapp_click` en GA4
 
-Confirmar que `NEXT_PUBLIC_GA_MEASUREMENT_ID` está seteado en el proyecto de Vercel. Si no hay ID, el componente no renderiza: no rompe el sitio.
+El tag ya va en el deploy. Matias tiene que marcar `whatsapp_click` como evento clave (conversión) en GA4: ver `GOOGLE_ANALYTICS_SETUP.md`.
 
 ---
 

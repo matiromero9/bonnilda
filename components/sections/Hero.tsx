@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
+import WhatsAppLink from '@/components/ui/WhatsAppLink'
 import { analytics } from '@/lib/analytics'
-import { SOCIAL_MEDIA, ORDER_INFO } from '@/constants/contact'
 
 const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -90,14 +90,11 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="relative z-10 flex flex-col sm:flex-row gap-4">
-              <Button 
-                variant="primary" 
-                size="lg" 
+              <WhatsAppLink
+                location="hero"
+                variant="primary"
+                size="lg"
                 className="group w-full sm:w-auto min-h-12"
-                href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={() => analytics.trackCTAClick('Comprar ahora', 'hero')}
               >
                 <span className="flex items-center gap-2">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -105,7 +102,7 @@ const Hero: React.FC = () => {
                   </svg>
                   Pedir por WhatsApp
                 </span>
-              </Button>
+              </WhatsAppLink>
               <Button 
                 variant="secondary" 
                 size="lg" 

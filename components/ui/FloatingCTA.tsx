@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { SOCIAL_MEDIA, ORDER_INFO } from '@/constants/contact'
-import { analytics } from '@/lib/analytics'
+import { ORDER_INFO } from '@/constants/contact'
+import WhatsAppLink from '@/components/ui/WhatsAppLink'
 
 /**
  * CTA flotante de WhatsApp.
@@ -50,10 +50,6 @@ const FloatingCTA: React.FC = () => {
     return () => observer.disconnect()
   }, [])
 
-  const handleClick = () => {
-    analytics.trackWhatsAppClick('floating-cta')
-  }
-
   const showFab = isVisible && !isBlocked
 
   return (
@@ -70,11 +66,9 @@ const FloatingCTA: React.FC = () => {
       aria-hidden={!showFab}
     >
       {/* Mobile: Botón circular con icono */}
-      <a
-        href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={handleClick}
+      <WhatsAppLink
+        location="floating-cta"
+        message={ORDER_INFO.whatsappMessage}
         tabIndex={showFab ? 0 : -1}
         className="
           relative
@@ -106,14 +100,12 @@ const FloatingCTA: React.FC = () => {
           className="absolute inset-0 rounded-full bg-accent-peach animate-ping opacity-20"
           aria-hidden="true"
         />
-      </a>
+      </WhatsAppLink>
 
       {/* Desktop: Botón expandido con texto */}
-      <a
-        href={SOCIAL_MEDIA.whatsapp.urlWithMessage(ORDER_INFO.whatsappMessage)}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={handleClick}
+      <WhatsAppLink
+        location="floating-cta"
+        message={ORDER_INFO.whatsappMessage}
         tabIndex={showFab ? 0 : -1}
         className="
           relative
@@ -150,7 +142,7 @@ const FloatingCTA: React.FC = () => {
           className="absolute inset-0 rounded-full bg-accent-peach animate-ping opacity-20"
           aria-hidden="true"
         />
-      </a>
+      </WhatsAppLink>
     </div>
   )
 }

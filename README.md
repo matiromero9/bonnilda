@@ -199,7 +199,7 @@ La landing está optimizada para motores de búsqueda:
 - [ ] **Favicon**: Agregar `/public/favicon.ico` (16x16, 32x32, 48x48)
 - [ ] **Dominio**: Actualizar `https://bonnilda.com` en todos los metadatos
 - [ ] **Google Search Console**: Verificar propiedad y enviar sitemap
-- [ ] **Google Analytics**: Implementar tracking (opcional)
+- [x] **Google tag**: `GTM-NN2HMFH2` en el layout raíz + evento `whatsapp_click`
 - [ ] **Redes sociales**: Actualizar URLs en StructuredData.tsx
 - [ ] **Contacto**: Actualizar teléfono y email reales
 
@@ -239,7 +239,7 @@ Breakpoints: `sm`, `md`, `lg`, `xl`, `2xl`
 
 - [ ] **Envío de formulario**: Implementar integración real con API/email service (`ContactSection.tsx`)
   - Opciones: Formspree, Resend, EmailJS, o WhatsApp Business API
-- [ ] **Google Analytics**: Agregar tracking (opcional)
+- [x] **Google tag**: `GTM-NN2HMFH2` + `whatsapp_click` (falta marcar el evento clave en GA4)
 
 ---
 
