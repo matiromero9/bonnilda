@@ -34,12 +34,13 @@ No inventar claims. En copy y schema: no prometer Sin TACC, vegano, sin conserva
 
 ### Structured Data (JSON-LD en `components/StructuredData.tsx`)
 
-Hay cuatro schemas, no más:
+Hay tres schemas, no más:
 
-- Organization
-- LocalBusiness
-- Product
+- Organization (name, url, logo, description, `areaServed` Argentina; sin `streetAddress`)
+- LocalBusiness (mismo criterio de dirección; sin local a la calle)
 - FAQPage (sale de `constants/faq.ts`)
+
+**No hay** schema `Product`. Google exige `offers`, `review` o `aggregateRating` y el sitio no publica precios ni reutiliza reseñas de Google Business. Un Product incompleto dispara error en Search Console.
 
 **No hay** `BreadcrumbList`. No marcarlo como hecho.
 
