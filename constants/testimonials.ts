@@ -25,6 +25,12 @@ export const TESTIMONIALS: Testimonial[] = [
   { name: 'María Hortensia R.', rating: 5, text: 'Bombones frutales deliciosos', source: 'Google' },
   { name: 'Cinthia T.', rating: 5, text: 'Son muy ricos!! Tienen muy buena presentación 🫶🏼', source: 'Google' },
   { name: 'Nadia C.', rating: 5, text: 'Los más ricos bombones de fruta del país!!! Me encantaron!!! 🙌🏼🙌🏼🙌🏼', source: 'Google' },
+  { name: 'Jazmín L.', rating: 5, text: 'excelentes los bombones, muy simpático mati. Excelente servicio, aguante el de manzana verde y uvaa', source: 'Google' },
+  { name: 'Juan H.', rating: 5, text: 'Muy ricos, adictivos diría. El de uva es una fiesta.', source: 'Google' },
+  { name: 'Santiago M.', rating: 5, text: 'Excelente bombones. Muy recomendables!', source: 'Google' },
+  { name: 'Valeria V.', rating: 5, text: 'La verdad que la atención es excelente! Diez puntos. Compré a distancia éstos riquísimos bombones de fruta y me llegó todo muy rápido. Gracias Bonnilda, gracias Liliana por la confianza! Será hasta la próxima!! 🌸 💗', source: 'Google' },
+  { name: 'Adriana S.', rating: 5, text: 'Los probé aquí en Bs As y los contacté x Instagram. Hice un pedido y ya lo recibí. Riquísimo todo. Excelente presentación', source: 'Google' },
+  { name: 'Jorge D.', rating: 5, text: 'Buenisimo el producto . Atención en tiempo y forma .', source: 'Google' },
 ]
 
 export const GOOGLE_REVIEW_URL = 'https://g.page/r/CUNtGMK9Fi6BEBE/review'
