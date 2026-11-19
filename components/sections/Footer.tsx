@@ -153,7 +153,7 @@ const Footer: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span className="text-sm">{LOCATION.displayShort} 🇦🇷</span>
+                <span className="text-sm">{LOCATION.displayShort}</span>
               </div>
             </div>
 
@@ -247,7 +247,15 @@ const Footer: React.FC = () => {
         <div className="pt-6 md:pt-8 border-t border-white/10 pb-20 md:pb-0">
           <div className="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
             <p className="text-white/80 text-sm text-center md:text-left">
-              © {currentYear} Bonnilda. Todos los derechos reservados. Hecho con ❤️ en Argentina.
+              © {currentYear} Bonnilda. Todos los derechos reservados. Hecho por{' '}
+              <a
+                href="https://www.linkedin.com/in/mdromero/"
+                target="_blank"
+                rel="author noopener noreferrer"
+                className="text-inherit underline-offset-2 transition-colors hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-peach focus-visible:ring-offset-2 focus-visible:ring-offset-text-primary rounded-sm"
+              >
+                Matias Romero
+              </a>
             </p>
           </div>
         </div>
